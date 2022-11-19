@@ -1,0 +1,179 @@
+.blog {
+    &-article {
+        font-size: 16px;
+        line-height: 24px;
+        color: #434a59;
+
+        @media (min-width: 1024px) {
+            font-size: 18px;
+            line-height: 32px;
+        }
+
+        p {
+            margin-top: 24px;
+
+            a {
+                background-image: linear-gradient(
+                    90deg,
+                    #3f68e4 0%,
+                    #5ec4f7 146.04%
+                );
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                border-bottom: 1px solid #5ec4f7;
+                transition: 0.5s;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+
+                strong {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 80px;
+                    width: 100%;
+                    padding: 0 40px;
+                    border-radius: 60px;
+                    border: 1px solid #001f55;
+                    background: #001f55;
+                    -webkit-text-fill-color: #fff;
+                    transition: 0.5s;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+
+                    @media (min-width: 1024px) {
+                        width: max-content;
+                    }
+                }
+            }
+
+            strong {
+                font-weight: bold;
+            }
+
+            s {
+                font-size: 16px;
+                line-height: 24px;
+                text-decoration: none;
+            }
+        }
+
+        img {
+            margin-top: 92px;
+            width: 100%;
+        }
+
+        .image-style-side {
+            float: right;
+
+            img {
+                margin-top: 0;
+            }
+        }
+
+        ul,
+        ol {
+            margin-top: 8px;
+
+            li {
+                margin-top: 12px;
+
+                &::marker {
+                    color: #faa942;
+                }
+            }
+        }
+
+        ul {
+            margin-left: 23px;
+
+            li {
+                list-style-type: disc;
+
+                &::marker {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        ol {
+            margin-left: 32px;
+
+            li {
+                &::marker {
+                    font-size: 16px;
+
+                    @media (min-width: 1024px) {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
+        blockquote {
+            margin-top: 40px;
+            padding: 24px;
+            background-color: #f7f9fc;
+            border-radius: 20px;
+
+            @media (min-width: 1024px) {
+                margin-top: 72px;
+                padding: 32px 60px;
+            }
+
+            p {
+                margin-top: 0;
+                background-image: linear-gradient(
+                    90deg,
+                    #3f68e4 0%,
+                    #5ec4f7 146.04%
+                );
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        h2,
+        h3,
+        h4 {
+            font-weight: bold;
+        }
+
+        h2 {
+            margin-top: 40px;
+            font-size: 24px;
+            line-height: 28px;
+
+            @media (min-width: 1024px) {
+                margin-top: 92px;
+                font-size: 36px;
+                line-height: 40px;
+            }
+        }
+
+        h3 {
+            margin-top: 40px;
+            font-size: 24px;
+            line-height: 28px;
+
+            @media (min-width: 1024px) {
+                margin-top: 60px;
+                font-size: 28px;
+                line-height: 32px;
+            }
+        }
+
+        h4 {
+            margin-top: 40px;
+            font-size: 18px;
+            line-height: 24px;
+
+            @media (min-width: 1024px) {
+                line-height: 22px;
+            }
+        }
+    }
+}

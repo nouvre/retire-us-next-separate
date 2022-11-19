@@ -1,0 +1,342 @@
+import React, { useEffect, useState } from "react";
+import ArrowLeft from "@2fd/ant-design-icons/lib/ArrowLeft";
+import ArrowRight from "@2fd/ant-design-icons/lib/ArrowRight";
+import Information from "@2fd/ant-design-icons/lib/Information";
+import Stepper from "./Stepper";
+import { Slider, Tooltip } from "antd";
+import { Answer } from "@/store/questions/types";
+
+interface ComponentProps {
+    data: Answer;
+    handleNext: (e: Answer) => void;
+    handlePrev: (e: Answer) => void;
+}
+
+const Steps10: React.FC<ComponentProps> = (props) => {
+    const [submitData, setSubmitData] = useState<Answer>(props.data);
+    const [pensionAmount, setPensionAmount] = useState<number>(0);
+    const [partTimeAmount, setPartTimeAmount] = useState<number>(0);
+    const [socialSecurityAmount, setSocialSecurityAmount] = useState<number>(0);
+    const [rentalIncomeAmount, setRentalIncomeAmount] = useState<number>(0);
+    const [otherAmount, setOtherAmount] = useState<number>(0);
+    const [pensionAmountPercent, setPensionAmountPercent] = useState<number>(0);
+    useEffect(() => {
+        if (props.data) {
+            setSubmitData(props.data);
+            if (props.data.retireIncomePension) {
+                setPensionAmount(props.data.retireIncomePension);
+            }
+            if (props.data.retireIncomeSocial) {
+                setSocialSecurityAmount(props.data.retireIncomeSocial);
+            }
+            if (props.data.retireIncomePartTime) {
+                setPartTimeAmount(props.data.retireIncomePartTime);
+            }
+            if (props.data.retireIncomeRental) {
+                setRentalIncomeAmount(props.data.retireIncomeRental);
+            }
+            if (props.data.retireIncomeOther) {
+                setOtherAmount(props.data.retireIncomeOther);
+            }
+            if (props.data.retireIncomePensionAmountPercent) {
+                setPensionAmountPercent(
+                    props.data.retireIncomePensionAmountPercent
+                );
+            }
+        }
+    }, [props.data]);
+
+    const handleNext = () => {
+        return props.handleNext({
+            ...submitData,
+            retireIncomePension: pensionAmount,
+            retireIncomeSocial: partTimeAmount,
+            retireIncomePartTime: socialSecurityAmount,
+            retireIncomeRental: rentalIncomeAmount,
+            retireIncomeOther: otherAmount,
+            retireIncomePensionAmountPercent: pensionAmountPercent,
+        });
+    };
+
+    const handlePrev = () => {
+        return props.handlePrev({
+            ...submitData,
+            retireIncomePension: pensionAmount,
+            retireIncomeSocial: partTimeAmount,
+            retireIncomePartTime: socialSecurityAmount,
+            retireIncomeRental: rentalIncomeAmount,
+            retireIncomeOther: otherAmount,
+            retireIncomePensionAmountPercent: pensionAmountPercent,
+        });
+    };
+
+    const totalHidden = () => {
+        let index = 0;
+        if(submitData.retireIncomeTypePension) {
+            index++;
+        }
+        if(submitData.retireIncomeTypeSocial) {
+            index++;
+        }
+        if(submitData.retireIncomeTypePartTime) {
+            index++;
+        }
+        if(submitData.retireIncomeTypeRental) {
+            index++;
+        }
+        if(submitData.retireIncomeTypeOther) {
+            index++;
+        }
+        return index <= 1;
+    }
+
+    return (
+        <div className="ml-[218px] w-[40%] min-w-[800px] bg-white">
+            <div className="w-full h-[76px] bg-[#c1c3ce] flex justify-center items-center text-[#0A2C75] py-6 text-md md:text-lg lg:text-xl px-3 text-center"></div>
+            <div className="w-full px-[60px] pb-12 mt-5">
+                <Stepper step={7} />
+                <div className="my-5">
+                    <div className="w-full flex gap-1">
+                        <div className="w-6/12"></div>
+                        <div className="w-2/12 text-center">
+                            <span>Totals</span>
+                        </div>
+                        <div className="w-2/12 text-center">
+                            <span>Monthly</span>
+                        </div>
+                        <div className="w-2/12 text-center">
+                            <span>Annual</span>
+                        </div>
+                    </div>
+                    <div
+                        className="w-full flex gap-1 my-4"
+                        hidden={!submitData.retireIncomeTypePension}
+                    >
+                        <div className="w-2/12">
+                            <Tooltip title="List of normal bills including property tax and home insurance">
+                                <span>Pension</span>
+                            </Tooltip>
+                        </div>
+                        <div className="w-4/12 pr-4">
+                            <Slider
+                                defaultValue={30}
+                                max={12000}
+                                min={0}
+                                value={pensionAmount}
+                                className="w-full"
+                                onChange={(e) => {
+                                    setPensionAmount(e);
+                                }}
+                            />
+                            <div className="w-full mb-2">
+                                If you had to take an educated guess on how much
+                                income you will have in "Today's Dollars"
+                                <Tooltip title="(Today's Dollars Definition)">
+                                    <Information className="w-5 h-5" />
+                                </Tooltip>
+                                how much would you expect to make from your
+                                pension? (% of income)
+                            </div>
+                            <div className="flex items-center gap-1">
+                                %
+                                <input
+                                    // type="number"
+                                    className="w-14 h-8 p-2 border border-gray-300 rounded-md outline-none"
+                                    value={pensionAmountPercent}
+                                    onChange={(e) => {
+                                        let num = parseInt(e.target.value);
+                                        if(e.target.value == '' || num < 0) {
+                                            setPensionAmountPercent(0);
+                                        } else if(num <= 100) {
+                                            setPensionAmountPercent(num);
+                                        } else {
+                                            setPensionAmountPercent(100);
+                                        }
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <div className="w-2/12"></div>
+                        <div className="w-2/12 text-center">
+                            <span>${pensionAmount.toLocaleString()}</span>
+                        </div>
+                        <div className="w-2/12 text-center">
+                            <span>
+                                ${(pensionAmount * 12).toLocaleString()}
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="w-full flex gap-1 my-4"
+                        hidden={!submitData.retireIncomeTypeSocial}
+                    >
+                        <div className="w-2/12 flex gap-1">
+                            <span>Social Security</span>
+                            <Tooltip title="Calculated off DOB and salary">
+                                <Information className="w-5 h-5 mt-1" />
+                            </Tooltip>
+                        </div>
+                        <div className="w-4/12 pr-4">
+                            <Slider
+                                defaultValue={30}
+                                max={12000}
+                                min={0}
+                                value={socialSecurityAmount}
+                                className="w-full"
+                                onChange={(e) => {
+                                    setSocialSecurityAmount(e);
+                                }}
+                            />
+                        </div>
+                        <div className="w-2/12"></div>
+                        <div className="w-2/12 text-center">
+                            <span>
+                                ${socialSecurityAmount.toLocaleString()}
+                            </span>
+                        </div>
+                        <div className="w-2/12 text-center">
+                            <span>
+                                ${(socialSecurityAmount * 12).toLocaleString()}
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="w-full flex gap-1 my-4"
+                        hidden={!submitData.retireIncomeTypePartTime}
+                    >
+                        <div className="w-2/12">
+                            <span>Part Time</span>
+                        </div>
+                        <div className="w-4/12 pr-4">
+                            <Slider
+                                defaultValue={30}
+                                max={12000}
+                                min={0}
+                                value={partTimeAmount}
+                                className="w-full"
+                                onChange={(e) => {
+                                    setPartTimeAmount(e);
+                                }}
+                            />
+                        </div>
+                        <div className="w-2/12"></div>
+                        <div className="w-2/12 text-center">
+                            <span>${partTimeAmount.toLocaleString()}</span>
+                        </div>
+                        <div className="w-2/12 text-center">
+                            <span>
+                                ${(partTimeAmount * 12).toLocaleString()}
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="w-full flex gap-1 my-4"
+                        hidden={!submitData.retireIncomeTypeRental}
+                    >
+                        <div className="w-2/12">
+                            <span>Rental Income</span>
+                        </div>
+                        <div className="w-4/12 pr-4">
+                            <Slider
+                                defaultValue={30}
+                                max={12000}
+                                min={0}
+                                value={rentalIncomeAmount}
+                                className="w-full"
+                                onChange={(e) => {
+                                    setRentalIncomeAmount(e);
+                                }}
+                            />
+                        </div>
+                        <div className="w-2/12"></div>
+                        <div className="w-2/12 text-center">
+                            <span>${rentalIncomeAmount.toLocaleString()}</span>
+                        </div>
+                        <div className="w-2/12 text-center">
+                            <span>
+                                ${(rentalIncomeAmount * 12).toLocaleString()}
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="w-full flex gap-1 my-4"
+                        hidden={!submitData.retireIncomeTypeOther}
+                    >
+                        <div className="w-2/12">
+                            <span>Other</span>
+                        </div>
+                        <div className="w-4/12 pr-4">
+                            <Slider
+                                defaultValue={30}
+                                max={12000}
+                                min={0}
+                                value={otherAmount}
+                                className="w-full"
+                                onChange={(e) => {
+                                    setOtherAmount(e);
+                                }}
+                            />
+                        </div>
+                        <div className="w-2/12"></div>
+                        <div className="w-2/12 text-center">
+                            <span>${otherAmount.toLocaleString()}</span>
+                        </div>
+                        <div className="w-2/12 text-center">
+                            <span>${(otherAmount * 12).toLocaleString()}</span>
+                        </div>
+                    </div>
+                    <div className="w-full flex gap-1 my-3" hidden={totalHidden()}>
+                        <div className="w-8/12"></div>
+                        <div className="w-4/12 h-[2px] bg-gray-400"></div>
+                    </div>
+                    <div className="w-full flex gap-1 mt-3" hidden={totalHidden()}>
+                        <div className="w-8/12"></div>
+                        <div className="w-2/12 text-center">
+                            $
+                            {(
+                                pensionAmount +
+                                partTimeAmount +
+                                rentalIncomeAmount +
+                                socialSecurityAmount +
+                                otherAmount
+                            ).toLocaleString()}
+                        </div>
+                        <div className="w-2/12 text-center">
+                            $
+                            {(
+                                (pensionAmount +
+                                    partTimeAmount +
+                                    rentalIncomeAmount +
+                                    socialSecurityAmount +
+                                    otherAmount) *
+                                12
+                            ).toLocaleString()}
+                        </div>
+                    </div>
+                </div>
+                <div className="w-full flex justify-between">
+                    <button
+                        className="flex items-center justify-center px-12 h-[65px] text-xl font-bold bg-[#F2F3F8]"
+                        onClick={() => {
+                            handlePrev();
+                        }}
+                    >
+                        <ArrowLeft className="mr-3" />
+                        Back
+                    </button>
+                    <button
+                        className="flex items-center justify-center px-12 h-[65px] text-xl font-bold bg-[#0A2C75] text-white"
+                        onClick={() => {
+                            handleNext();
+                        }}
+                    >
+                        Continue
+                        <ArrowRight className="ml-3" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Steps10;

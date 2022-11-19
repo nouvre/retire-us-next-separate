@@ -1,0 +1,80 @@
+@keyframes load {
+    0% {
+        stroke-dashoffset: 0;
+    }
+}
+.progress,
+.progress-alt {
+    position: relative;
+    color: #93a2ac;
+
+    svg {
+        // width: 400px;
+        // height: 400px;
+    }
+
+    svg:nth-child(2) {
+        // position: absolute;
+        // left: 0;
+        // top: 0;
+        transform: rotate(-90deg);
+    }
+
+    svg:nth-child(2) path {
+        fill: none;
+        stroke-width: 3;
+        stroke-dasharray: 630;
+        stroke: #f7f9fc;
+        opacity: 0.98;
+        animation: load 4.4s;
+        animation-timing-function: linear;
+    }
+}
+
+.progress-alt {
+    svg:nth-child(2) path {
+        animation: load 9s;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .progress {
+        // svg {
+        //     width: 353px;
+        //     height: 353px;
+        // }
+    }
+}
+
+// animations go here
+
+.anim-pop-out {
+    animation: pop-out .5s;
+}
+
+@keyframes pop-out {
+    from {
+        transform : scale(.8);
+        opacity   : 0.1;
+    }
+    30% {
+        transform : scale(0.85);
+        opacity   : 0.3;
+    }
+    50% {
+        transform : scale(0.9);
+        opacity   : 0.5;
+    }
+    80% {
+        transform : scale(0.95);
+        opacity   : 0.8;
+    }
+    100% {
+        transform : scale(1);
+        opacity   : 1;
+    }
+}
+
+.hbspt-form {
+    display: none !important;
+}

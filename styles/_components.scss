@@ -1,0 +1,33 @@
+.font-karla {
+  font-family: 'Karla', sans-serif;
+}
+
+.nav-item:first-child {
+  padding-left: 0;
+}
+
+.hero > :nth-child(n) {
+  margin-bottom: 8px;
+}
+
+.hero > :last-child {
+  margin-bottom: 0 !important;
+}
+
+a.btn-link.primary:hover {
+  background-color: white;
+  border-color: white;
+  color: black;
+}
+
+a.btn-link.secondary:hover {
+  background-color: rgb(19, 63, 164);
+}
+
+// @media (min-width: $lg-sheet-width) {
+//   a.btn-link.secondary:hover {
+//     background-color: transparent;
+//     box-shadow: inset 0 0 0 2px;
+//     color: rgb(10, 43, 117);
+//   }
+// }

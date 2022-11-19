@@ -1,0 +1,178 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Answer } from "@/store/questions/types";
+import { ApplicationState } from "@/store";
+import { updateQuestionnare, getQuestionnare, finishQuestionnare } from "@/store/questions/action";
+import ProfileCompleteStep from '../../constants/routes';
+import Header from "../Header";
+import FinalStep from "./FinalStep";
+// import Steps1 from "./Steps1.tsx.bak";
+import Steps1 from "./Steps1";
+import Steps2 from "./Steps2";
+import Steps3 from "./Steps3";
+import Steps4 from "./Steps4";
+import Steps5 from "./Steps5";
+import Steps6 from "./Steps6";
+import Steps7 from "./Steps7";
+import Steps8 from "./Steps8";
+import Steps9 from "./Steps9";
+import Steps10 from "./Steps10";
+import Steps11 from "./Steps11";
+import Steps12 from "./Steps12";
+import Steps17 from "./Steps17";
+import Steps18 from "./Steps18";
+import Steps19 from "./Steps19";
+import Steps20 from "./Steps20";
+import Steps21 from "./Steps21";
+import Steps22 from "./Steps22";
+import Steps25 from "./Steps25";
+import Steps26 from "./Steps26";
+import Steps27 from "./Steps27";
+import Steps28 from "./Steps28";
+import Steps29 from "./Steps29";
+import Steps30 from "./Steps30";
+import Steps31 from "./Steps31";
+
+const quizSteps = [
+    ["whyRetireTiredWorking", "whyRetireFinancialFreedom"],
+    ["whatWouldUpsetLosingMoney", "whatWouldUpsetPushingBackDate"],
+    ["decideSaveRetirementMathThing", "decideSaveRetirementFeelingThing"],
+    ["valueMoreAccumulatingWelth", "valueMoreProtectingWelth"],
+    ["HowKnowRetireInKnow", "HowKnowRetireInNotSure"],
+    ["HowMuchToSuccessRetireNotSure", "HowMuchToSuccessRetireProbably"],
+    ["HowFeelMarketCrashedFind", "HowFeelMarketCrashedNervous"],
+    ["HowDoMarketCrashedInvest", "HowDoMarketCrashedCry"],
+    ["StillRetireMarketCrashedSure", "StillRetireMarketCrashedNotSure"],
+];
+
+const Questionnare: React.FC = (props: any) => {
+    const step = useSelector((state: ApplicationState) => state.questions.step);
+    const answers = useSelector((state: ApplicationState) => state.questions.answers);
+    const token = useSelector((state: ApplicationState) => state.auth.token);
+    const user = useSelector((state: ApplicationState) => state.auth.user);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (token) {
+            dispatch(getQuestionnare());
+        }
+    }, [token])
+
+    const handleNext = (data: Answer, step: number) => {
+        if (token && user) {
+            if (step == 25) {
+                dispatch(updateQuestionnare(data, 25, true));
+                dispatch(finishQuestionnare());
+                props.history.replace(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step + 1]);
+            } else {
+                dispatch(updateQuestionnare(data, step, true));
+            }
+        } else {
+            if (step == 25) {
+                dispatch(updateQuestionnare(data, 25, false));
+                props.history.replace('signup');
+            } else {
+                dispatch(updateQuestionnare(data, step, false));
+            }
+        }
+    };
+
+    const handlePrev = (data: Answer, step: number) => {
+        if (token && user) {
+            dispatch(updateQuestionnare(data, step, true));
+        } else {
+            dispatch(updateQuestionnare(data, step, false));
+        }
+    }
+
+    const quizRender = (data: Answer, step: number) => {
+        let start = step - 15;
+        if (step == 24) {
+            start = 0;
+        }
+        for (let index = start; index < quizSteps.length; index++) {
+            let isCompleted = false;
+            quizSteps[index].forEach((key) => {
+                if (data[key]) {
+                    isCompleted = true;
+                }
+            });
+            if (!isCompleted) {
+                handleNext(data, index + 15);
+                return;
+            }
+        }
+        for (let index = 0; index <= start; index++) {
+            let isCompleted = false;
+            quizSteps[index].forEach((key) => {
+                if (data[key]) {
+                    isCompleted = true;
+                }
+            });
+            if (!isCompleted) {
+                handleNext(data, index + 15);
+                return;
+            }
+        }
+        handleNext(data, 24);
+
+    }
+
+    const steps = [
+        <Steps1 data={answers} handleNext={(e) => handleNext(e, 1)} />,
+        <Steps2 data={answers} handleNext={(e) => handleNext(e, 2)} handlePrev={(e) => handlePrev(e, 0)} />,
+        <Steps3 data={answers} handleNext={(e) => handleNext(e, 3)} handlePrev={(e) => handlePrev(e, 1)} />,
+        <Steps4 data={answers} handleNext={(e) => handleNext(e, 4)} handlePrev={(e) => handlePrev(e, 2)} />,
+        <Steps5 data={answers} handleNext={(e) => handleNext(e, e.step5Answer_2 ? 2 : 5)} handlePrev={(e) => handlePrev(e, 3)} />,
+        <Steps6 data={answers} handleNext={(e) => handleNext(e, 6)} handlePrev={(e) => handlePrev(e, 4)}/>,
+        <Steps7 data={answers} handleNext={(e) => handleNext(e, 7)} handlePrev={(e) => handlePrev(e, 5)}/>,
+        <Steps8 data={answers} handleNext={(e) => handleNext(e, 8)} handlePrev={(e) => handlePrev(e, 6)}/>,
+        <Steps9 data={answers} handleNext={(e) => handleNext(e, 9)} handlePrev={(e) => handlePrev(e, 7)}/>,
+        <Steps10 data={answers} handleNext={(e) => handleNext(e, 10)} handlePrev={(e) => handlePrev(e, 8)}/>,
+        <Steps11 data={answers} handleNext={(e) => handleNext(e, 11)} handlePrev={(e) => handlePrev(e, 9)}/>,
+        <Steps12 data={answers} handleNext={(e) => handleNext(e, 12)} handlePrev={(e) => handlePrev(e, 10)}/>,
+        <Steps17 data={answers} handleNext={(e) => handleNext(e, 13)} handlePrev={(e) => handlePrev(e, 11)}/>,
+        <Steps18 data={answers} handleNext={(e) => handleNext(e, 14)} handlePrev={(e) => handlePrev(e, 12)}/>,
+        <Steps19 data={answers} handleNext={(e) => handleNext(e, 15)} handlePrev={(e) => handlePrev(e, 13)}/>,
+        <Steps20 data={answers} handleNext={(e) => quizRender(e, 16)} handlePrev={(e) => handlePrev(e, 14)}/>,
+        <Steps21 data={answers} handleNext={(e) => quizRender(e, 17)} handlePrev={(e) => handlePrev(e, 15)}/>,
+        <Steps22 data={answers} handleNext={(e) => quizRender(e, 18)} handlePrev={(e) => handlePrev(e, 16)}/>,
+        <Steps25 data={answers} handleNext={(e) => quizRender(e, 19)} handlePrev={(e) => handlePrev(e, 17)}/>,
+        <Steps26 data={answers} handleNext={(e) => quizRender(e, e.HowKnowRetireInKnow ? 20 : 21)} handlePrev={(e) => handlePrev(e, 18)}/>,
+        <Steps27 data={answers} handleNext={(e) => quizRender(e, 21)} handlePrev={(e) => handlePrev(e, e.HowKnowRetireInKnow ? 19 : 18)}/>,
+        <Steps28 data={answers} handleNext={(e) => quizRender(e, 22)} handlePrev={(e) => handlePrev(e, 20)}/>,
+        <Steps29 data={answers} handleNext={(e) => quizRender(e, 23)} handlePrev={(e) => handlePrev(e, 21)}/>,
+        <Steps30 data={answers} handleNext={(e) => quizRender(e, 24)} handlePrev={(e) => handlePrev(e, 22)}/>,
+        <Steps31 data={answers} handleNext={(e) => handleNext(e, 25)} handlePrev={(e) => handlePrev(e, 23)}/>,
+        <FinalStep
+            data={answers}
+            handleNext={(e) => {
+                if (token && user) {
+                    dispatch(finishQuestionnare());
+                    props.history.replace(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step + 1]);
+                } else {
+                    props.history.replace('signup');
+                }
+            }}
+            handlePrev={() => {
+                handlePrev(answers, 21);
+            }}
+        />,
+    ];
+
+    return (
+        <div className="w-full h-screen pt-32">
+            <Header opacity={false} />
+            <div className="w-full h-full flex items-center p-4 bg-[#F3F5F9]">
+                {steps[step] ? steps[step] : steps[0]}
+                {/* <Steps5 data={answers} handleNext={(e) => handleNext(e, 5)} handlePrev={(e) => handlePrev(e, 3)} hidden={step != 4}/> */}
+                <img
+                    src="storage/images/questionare_backgroud.png"
+                    alt=""
+                    className="h-full object-cover w-auto"
+                />
+            </div>
+        </div>
+    );
+};
+
+export default Questionnare;
