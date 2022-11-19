@@ -4,6 +4,7 @@ import ArrowRight from "@2fd/ant-design-icons/lib/ArrowRight";
 import Progress from "@/components/Questionnare/Progress";
 import { Answer } from "@/store/questions/types";
 import moment from "moment";
+import Image from '@/components/common/Image';
 
 interface ComponentProps {
     data: Answer;
@@ -65,9 +66,9 @@ const Steps5: React.FC<ComponentProps> = (props) => {
             <div className="w-full max-w-[840px] mx-auto">
                 <Progress step={props.step} />
                 <div className="w-full relative mt-9 mb-[101px] sm:mb-[111px]">
-                    <img src="/assets/images/cloud4.svg" alt="cloud" className="absolute top-0 hidden sm:block" />
-                    <img src="/assets/images/cloud1.svg" alt="cloud" className="absolute bottom-[-75px] right-0 sm:bottom-[-70px] sm:right-[-16px] md:bottom-[-60px] md:right-[-60px]" />
-                    <img src="/assets/images/cloud4-mobile.svg" alt="cloud" className="absolute top-0 block sm:hidden" />
+                    <Image src="/assets/images/cloud4.svg" alt="cloud" className="absolute top-0 hidden sm:block" />
+                    <Image src="/assets/images/cloud1.svg" alt="cloud" className="absolute bottom-[-75px] right-0 sm:bottom-[-70px] sm:right-[-16px] md:bottom-[-60px] md:right-[-60px]" />
+                    <Image src="/assets/images/cloud4-mobile.svg" alt="cloud" className="absolute top-0 block sm:hidden" />
                     <div className="relative py-[50px] px-[30px] md:py-[60px] md:pl-[110px] md:pr-[140px]">
                         <div className="w-full text-[20px] md:text-[23px] leading-7 text-[#000714] font-bold">
                             By our math, it sounds like you want to retire in {wantedYear} years. Does that sound right?
@@ -99,7 +100,7 @@ const Steps5: React.FC<ComponentProps> = (props) => {
                 </div>
             </div>
 
-            <img
+            <Image
                 src="/assets/images/glass-man.svg"
                 alt="Glass man"
                 className="relative ml-auto mt-auto max-w-[80%] right-[-20px] block md:hidden"

@@ -7,11 +7,11 @@ import Header from "../Header";
 import Footer from "../Footer";
 import { Post, blog } from "../../constants/variables";
 import { convertDate } from "../../util/helpers";
-import Img from "@/components/Image";
 import RelatedPosts from "@/components/RelatedPosts";
 import BlogError from "@/components/BlogError";
 import { fetchAPI } from "../../util/cms";
 import { fallback } from "../fallback";
+import Image from '@/components/common/Image';
 
 const Blog: React.FC = (props) => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -473,7 +473,7 @@ const Blog: React.FC = (props) => {
                         )}
                         {posts.length === 0 && (
                             <div className="flex flex-col items-center gap-y-[34px] mt-[120px]">
-                                <Img
+                                <Image
                                     className="w-[97px]"
                                     src="/assets/images/blog/nothing.svg"
                                     alt="Nothing"

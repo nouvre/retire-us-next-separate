@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import Img from "@/components/Image";
 import { navigation } from "../../constants/variables";
+import Image from '@/components/common/Image';
 
 const Footer: React.FC = () => {
     return (
@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
             <div className="md:w-full lg:max-w-[1024px] xl:max-w-[1440px] px-[20px] mx-auto">
                 <div className="flex flex-wrap justify-between pt-[60px] pb-6 md:pb-10 border-b border-[#DDE3F0]">
                     <div className="flex flex-col flex-auto justify-center items-center lg:items-start border-b lg:border-0 border-[#DDE3F0]">
-                        <Img
+                        <Image
                             src="/assets/images/logo-blue.svg"
                             alt="Footer Logo"
                             className="mb-6"

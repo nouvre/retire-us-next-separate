@@ -13,7 +13,7 @@ import PlansFeatures from "@/components/PlansFeatures";
 import { planFeatures, planSummaries } from "../Pricing/contents";
 import { fetchAPI } from "../../util/cms";
 import { fallback } from "../fallback";
-import Img from "@/components/Image";
+import Image from '@/components/common/Image';
 
 interface RedFlag {
     li: string;
@@ -156,12 +156,12 @@ const Recommendation = (props: any) => {
             <Header opacity={false} />
             <div className="w-full flex flex-col items-center pt-[146px] px-5">
                 <div className="w-full max-w-[840px] relative">
-                    <Img
+                    <Image
                         src="/assets/images/congratulation-bg.svg"
                         alt="congratulation"
                         className="relative w-full max-w-[840px] hidden sm:block z-10"
                     />
-                    <Img
+                    <Image
                         src="/assets/images/congratulation-bg-mobile.svg"
                         alt="congratulation mobile"
                         className="relative w-full block sm:hidden z-10"
@@ -238,25 +238,25 @@ const Recommendation = (props: any) => {
                             onClick={handleClick}
                         >
                             <span>Review my recommended plan</span>
-                            <Img
+                            <Image
                                 src="/assets/images/arrow-down.svg"
                                 alt="Right Arrow"
                             />
                         </SharedFillButton>
                     </div>
-                    <Img
+                    <Image
                         src="/assets/images/glass-man.svg"
                         alt="Glass man"
                         className="relative ml-auto z-0 max-w-[80%] right-[-20px] mt-[-293px] hidden sm:block"
                     />
                 </div>
                 <div className="relative flex sm:hidden justify-between items-end -ml-5 w-[calc(100%+40px)]">
-                    <Img
+                    <Image
                         src="/assets/images/recommendation-left-corner-m.svg"
                         alt="Corner Image"
                         className="w-[114px] h-[184px]"
                     />
-                    <Img
+                    <Image
                         src="/assets/images/glass-man.svg"
                         alt="Glass man"
                         className="w-[180px] h-[200px]"

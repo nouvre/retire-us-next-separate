@@ -7,6 +7,7 @@ import ProfileCompleteStep from '../../constants/routes';
 import Header from "../Header";
 import FinalStep from "./FinalStep";
 // import Steps1 from "./Steps1.tsx.bak";
+import Image from '@/components/common/Image';
 import Steps1 from "./Steps1";
 import Steps2 from "./Steps2";
 import Steps3 from "./Steps3";
@@ -165,7 +166,7 @@ const Questionnare: React.FC = (props: any) => {
             <div className="w-full h-full flex items-center p-4 bg-[#F3F5F9]">
                 {steps[step] ? steps[step] : steps[0]}
                 {/* <Steps5 data={answers} handleNext={(e) => handleNext(e, 5)} handlePrev={(e) => handlePrev(e, 3)} hidden={step != 4}/> */}
-                <img
+                <Image
                     src="storage/images/questionare_backgroud.png"
                     alt=""
                     className="h-full object-cover w-auto"

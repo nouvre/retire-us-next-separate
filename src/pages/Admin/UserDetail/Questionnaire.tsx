@@ -13,7 +13,7 @@ import { Answer } from "@/store/questions/types";
 
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
-import Img from "@/components/Image";
+import Image from '@/components/common/Image';
 
 import moment from "moment-timezone";
 moment.tz.add("America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0");
@@ -376,7 +376,7 @@ const Questionnaire: React.FC = () => {
                                     )
                                 }
                             >
-                                <Img
+                                <Image
                                     src="/assets/images/ico-xls-download.svg"
                                     alt="ico-xlsx-download"
                                     className="w-8"
@@ -391,7 +391,7 @@ const Questionnaire: React.FC = () => {
                                     )
                                 }
                             >
-                                <Img
+                                <Image
                                     src="/assets/images/ico-csv-download.svg"
                                     alt="ico-csv-download"
                                     className="w-8"

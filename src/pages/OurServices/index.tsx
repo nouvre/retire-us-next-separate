@@ -9,12 +9,12 @@ import {
 } from "@/components/Typographies";
 import { FillButtonLink } from "@/components/Buttons/WhiteButtons";
 import { Helmet } from "react-helmet";
-import Img from "@/components/Image";
 import Plans from "@/components/Plans";
 import Plannings from "@/components/Plannings";
 import Banner from "@/components/Banner";
 import { getImage, fetchAPI } from "../../util/cms";
 import { fallback } from "../fallback";
+import Image from '@/components/common/Image';
 
 const OurServices: React.FC = (props) => {
     const [ourServices, setOurServices] = useState<any>(null);
@@ -99,7 +99,7 @@ const OurServices: React.FC = (props) => {
                         </div>
                         <div className="flex pt-[32px] lg:pt-[126px] justify-center items-end">
                             {ourServices?.hero?.image && (
-                                <Img
+                                <Image
                                     src={getImage(ourServices.hero.image)}
                                     alt="Our Services"
                                     className="max-w-[320px] w-full"
@@ -107,7 +107,7 @@ const OurServices: React.FC = (props) => {
                             )}
                         </div>
 
-                        <Img
+                        <Image
                             src="/assets/images/ico-ellipse.svg"
                             alt="ico-ellipse"
                             className="absolute left-[55%] top-[70%] hidden lg:block"
@@ -137,7 +137,7 @@ const OurServices: React.FC = (props) => {
                     </div>
                     <div className="flex flex-col items-center">
                         {ourServices?.copyImageCaptionBlock?.image && (
-                            <Img
+                            <Image
                                 src={getImage(
                                     ourServices.copyImageCaptionBlock.image
                                 )}
@@ -168,7 +168,7 @@ const OurServices: React.FC = (props) => {
                 >
                     <div className="order-2 lg:order-1">
                         {ourServices?.imageCopyBlock?.image && (
-                            <Img
+                            <Image
                                 src={getImage(ourServices.imageCopyBlock.image)}
                                 alt="Mobile"
                                 className="w-full max-w-[590px]"
@@ -283,7 +283,7 @@ const OurServices: React.FC = (props) => {
                                     key={`toolkits_${index}`}
                                     className="flex flex-col items-center"
                                 >
-                                    <Img
+                                    <Image
                                         src={getImage(tool.icon)}
                                         className="mb-6 lg:mb-8"
                                     />
@@ -308,7 +308,7 @@ const OurServices: React.FC = (props) => {
                                             className="text-base lg:text-lg mt-4 text-[#001F55] flex items-center justify-center font-bold"
                                         >
                                             {tool.cta.text}&nbsp;&nbsp;
-                                            <Img
+                                            <Image
                                                 src="/assets/images/ico-external-link.svg"
                                                 alt="ico-external-link"
                                             />

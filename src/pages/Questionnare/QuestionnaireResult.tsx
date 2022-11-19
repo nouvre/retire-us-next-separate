@@ -8,6 +8,7 @@ import { Answer } from "@/store/questions/types";
 import { questionOrder } from "../../constants/variables";
 import { useQuestionnaire } from "../../util/func";
 import TagManager from "react-gtm-module";
+import Image from '@/components/common/Image';
 
 const QuestionnaireResult = (props: any) => {
     const dispatch = useDispatch();
@@ -116,17 +117,17 @@ const QuestionnaireResult = (props: any) => {
                 </div>
             )}
             <div className="md:hidden">
-                <img
+                <Image
                     src="/assets/images/glass-man.svg"
                     alt="Glass man"
                     className="relative ml-auto mt-auto z-[10] max-w-[250px]"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-retire-leaf.svg"
                     alt="ico-retire-leaf"
                     className="absolute left-0 bottom-0 max-w-[100px]"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute w-4 left-[50px] bottom-[100px] md:block"

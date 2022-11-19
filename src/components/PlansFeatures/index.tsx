@@ -4,7 +4,7 @@ import { Tooltip } from "antd";
 import { TextNormal, TextGradient } from "../Typographies";
 import { OutlineButton, OutlineButtonLink } from "../Buttons/WhiteButtons";
 import { selectPlan } from "@/store/auth/action";
-import Img from "../Image";
+import Image from '@/components/common/Image';
 
 interface PlansFeaturesProps {
     features: any;
@@ -165,7 +165,7 @@ const PlansFeatures = ({
                                                                     color="#FFFFFF"
                                                                     overlayClassName="feature-tooltip"
                                                                 >
-                                                                    <Img
+                                                                    <Image
                                                                         src="/assets/images/ico-info-gray.svg"
                                                                         alt="ico-info-gray"
                                                                         className="w-5 h-5 cursor-pointer"
@@ -187,13 +187,13 @@ const PlansFeatures = ({
                                                                     ][
                                                                         feature
                                                                     ] ? (
-                                                                        <Img
+                                                                        <Image
                                                                             src="/assets/images/ico-success-circle.svg"
                                                                             alt="ico-success-circle"
                                                                             className="mx-auto"
                                                                         />
                                                                     ) : (
-                                                                        <Img
+                                                                        <Image
                                                                             src="/assets/images/ico-danger-circle.svg"
                                                                             alt="ico-danger-circle"
                                                                             className="mx-auto"
@@ -248,7 +248,7 @@ const PlansFeatures = ({
                             }}
                         >
                             {summary.name}
-                            <Img
+                            <Image
                                 style={{
                                     transform:
                                         planTab === index
@@ -328,7 +328,7 @@ const PlansFeatures = ({
                                                                             color="#FFFFFF"
                                                                             overlayClassName="feature-tooltip"
                                                                         >
-                                                                            <Img
+                                                                            <Image
                                                                                 src="/assets/images/ico-info-gray.svg"
                                                                                 alt="ico-info-gray"
                                                                                 className="w-5 h-5 cursor-pointer"
@@ -342,13 +342,13 @@ const PlansFeatures = ({
                                                                     .features[
                                                                     section
                                                                 ][feature] ? (
-                                                                    <Img
+                                                                    <Image
                                                                         src="/assets/images/ico-success-circle.svg"
                                                                         alt="ico-success-circle"
                                                                         className="mx-auto"
                                                                     />
                                                                 ) : (
-                                                                    <Img
+                                                                    <Image
                                                                         src="/assets/images/ico-danger-circle.svg"
                                                                         alt="ico-danger-circle"
                                                                         className="mx-auto"

@@ -13,6 +13,7 @@ import TermsAndConditions from '@/components/common/TermsAndConditions'
 import { StateCheckbox } from '@/components/Checkbox/StateCheckbox'
 import { downloadFile } from '../../util/helpers'
 import { isMobile, isChrome } from 'react-device-detect'
+import Image from '@/components/common/Image';
 
 declare global {
   interface Window {
@@ -157,7 +158,7 @@ const SignatureWrapper: React.FC = (props: any) => {
               }}
             >
               Download Disclosure
-              <img
+              <Image
                 src="/assets/images/ico-download-white.svg"
                 alt="ico-download-white"
                 className="ml-[20px]"
@@ -234,7 +235,7 @@ const SignatureWrapper: React.FC = (props: any) => {
               Signature
             </span>
             {signatureImage ? (
-              <img
+              <Image
                 src={signatureImage}
                 className="w-full mt-1"
                 onClick={() => setvisible(true)}
@@ -249,7 +250,7 @@ const SignatureWrapper: React.FC = (props: any) => {
                     agreeStatus ? 'cursor-pointer' : 'cursor-not-allowed'
                   }`}
                 >
-                  <img
+                  <Image
                     src="/assets/images/ico-download-blue.svg"
                     alt="ico-download-blue"
                   />
@@ -274,7 +275,7 @@ const SignatureWrapper: React.FC = (props: any) => {
                 disabled={!saveAble}
               >
                 Save&nbsp;&nbsp;
-                <img
+                <Image
                   src="/assets/images/ico-check-circle-white.svg"
                   alt="ico-check-circle-white"
                 />
@@ -297,17 +298,17 @@ const SignatureWrapper: React.FC = (props: any) => {
         download="disclosure.pdf"
       ></a>
 
-      <img
+      <Image
         src="/assets/images/signup-texture.png"
         alt="texture"
         className="absolute left-0 bottom-0 hidden md:block"
       />
-      <img
+      <Image
         src="/assets/images/ico-ellipse.svg"
         alt="ico-ellipse"
         className="absolute left-[5%] bottom-[50%] hidden md:block"
       />
-      <img
+      <Image
         src="/assets/images/ico-ellipse.svg"
         alt="ico-ellipse"
         className="absolute right-[5%] top-[20%] hidden md:block"

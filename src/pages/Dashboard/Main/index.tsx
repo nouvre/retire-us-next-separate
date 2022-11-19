@@ -14,6 +14,7 @@ import { Todo } from "@/store/auth/types";
 import { ApplicationState } from "@/store";
 import { useQuestionnaire } from "../../../util/func";
 import { classNames } from "../../../util/helpers";
+import Image from '@/components/common/Image';
 
 const Main = (props) => {
     const dispatch = useDispatch();
@@ -251,7 +252,7 @@ const Main = (props) => {
                                                 Goal: $
                                             </div>
                                         </div>
-                                        <img
+                                        <Image
                                             src="/assets/images/lock-white.svg"
                                             alt="lock"
                                             className="absolute top-[-5px] right-[-5px]"
@@ -265,7 +266,7 @@ const Main = (props) => {
                                         //     handleCompletePlanningReview()
                                         // }
                                     >
-                                        <img
+                                        <Image
                                             src="/assets/images/lock-white.svg"
                                             alt="lock"
                                         />
@@ -545,7 +546,7 @@ const Main = (props) => {
                                         }}
                                     >
                                         <span>Schedule a meeting</span>
-                                        <img
+                                        <Image
                                             src="/assets/images/arrow-right.svg"
                                             alt="Right Arrow"
                                             className="ml-[12px]"
@@ -554,7 +555,7 @@ const Main = (props) => {
                                 </div>
                             </div>
                             <div className="col-span-1">
-                                <img
+                                <Image
                                     src={user?.rep?.avatar}
                                     className="w-full rounded-full border border-[#DDE3F0] max-w-[200px] ml-auto"
                                     alt="Planner"
@@ -574,7 +575,7 @@ const Main = (props) => {
                                         scheduleHover ? "block" : "hidden"
                                     } w-full h-full bg-[#ffffffcc] rounded-[20px] backdrop-blur-xl flex justify-center items-center `}
                                 >
-                                    <img
+                                    <Image
                                         className="w-[88px] h-[88px]"
                                         src="/assets/images/lock-dark.svg"
                                         alt="lock"
@@ -588,7 +589,7 @@ const Main = (props) => {
                                         props.history.push("/start-planning")
                                     }
                                 >
-                                    <img
+                                    <Image
                                         className="w-[88px] h-[88px]"
                                         src="/assets/images/lock-dark.svg"
                                         alt="lock"
@@ -616,7 +617,7 @@ const Main = (props) => {
                                         scheduleHover ? "block" : "hidden"
                                     } w-full h-full bg-[#ffffffcc] rounded-[20px] backdrop-blur-xl flex justify-center items-center `}
                                 >
-                                    <img
+                                    <Image
                                         className="w-[88px] h-[88px]"
                                         src="/assets/images/lock-dark.svg"
                                         alt="lock"
@@ -627,7 +628,7 @@ const Main = (props) => {
                                         scheduleHover ? "hidden" : "block"
                                     } cursor-pointer w-full h-full flex flex-col gap-2 justify-center items-center bg-[#ffffffcc] bg-opacity-20 backdrop-blur-2xl rounded-[12px] relative`}
                                 >
-                                    <img
+                                    <Image
                                         className="w-[88px] h-[88px]"
                                         src="/assets/images/lock-dark.svg"
                                         alt="lock"
@@ -658,7 +659,7 @@ const Main = (props) => {
                                         }}
                                     >
                                         <span>Speak with Wealth Concierge</span>
-                                        <img
+                                        <Image
                                             src="/assets/images/arrow-right.svg"
                                             alt="Right Arrow"
                                             className="ml-[12px]"
@@ -667,7 +668,7 @@ const Main = (props) => {
                                 </div>
                             </div>
                             <div className="col-span-1">
-                                <img
+                                <Image
                                     src="/assets/images/bullet.png"
                                     alt="bullet"
                                     className="w-full max-w-[200px] ml-auto"
@@ -676,7 +677,7 @@ const Main = (props) => {
                         </div>
                         {/* {!user?.profile && (
                             <div className="w-full h-full bg-[#ffffffcc] rounded-[20px] backdrop-blur-xl absolute top-0 flex justify-center items-center">
-                                <img className="w-[88px] h-[88px]"
+                                <Image className="w-[88px] h-[88px]"
                                     src="/assets/images/lock-dark.svg"
                                     alt="lock"
                                 />

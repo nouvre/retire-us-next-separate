@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Header from "@/pages/Header";
+import Image from '@/components/common/Image';
 
 
 const PageNotFound: React.FC = () => {
@@ -25,25 +26,25 @@ const PageNotFound: React.FC = () => {
                         <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-2 md:gap-4 pb-[20px]">
                             <Link href="/" className="px-[24px] py-3 md:py-4 rounded-[16px] flex justify-between bg-white" style={{ boxShadow: '0px 4px 32px rgba(24, 54, 98, 0.04)' }}>
                                 <div className="text-[16px] md:text-[20px] text-[#001F55] leading-6 md:leading-[32px] font-bold">Home page</div>
-                                <img src="/assets/images/arrow-fill-orange.svg" className="md:w-8 md:h-8" alt="Check Mark Yellow" />
+                                <Image src="/assets/images/arrow-fill-orange.svg" className="md:w-8 md:h-8" alt="Check Mark Yellow" />
                             </Link>
                             <Link href="/about-us" className="px-[24px] py-3 md:py-4 rounded-[16px] flex justify-between bg-white" style={{ boxShadow: '0px 4px 32px rgba(24, 54, 98, 0.04)' }}>
                                 <div className="text-[16px] md:text-[20px] text-[#001F55] leading-6 md:leading-[32px] font-bold">About us</div>
-                                <img src="/assets/images/arrow-fill-orange.svg" className="md:w-8 md:h-8" alt="Check Mark Yellow" />
+                                <Image src="/assets/images/arrow-fill-orange.svg" className="md:w-8 md:h-8" alt="Check Mark Yellow" />
                             </Link>
                             <Link href="/our-services" className="px-[24px] py-3 md:py-4 rounded-[16px] flex justify-between bg-white" style={{ boxShadow: '0px 4px 32px rgba(24, 54, 98, 0.04)' }}>
                                 <div className="text-[16px] md:text-[20px] text-[#001F55] leading-6 md:leading-[32px] font-bold">Our services</div>
-                                <img src="/assets/images/arrow-fill-orange.svg" className="md:w-8 md:h-8" alt="Check Mark Yellow" />
+                                <Image src="/assets/images/arrow-fill-orange.svg" className="md:w-8 md:h-8" alt="Check Mark Yellow" />
                             </Link>
                             <Link href="/help" className="px-[24px] py-3 md:py-4 rounded-[16px] flex justify-between bg-white" style={{ boxShadow: '0px 4px 32px rgba(24, 54, 98, 0.04)' }}>
                                 <div className="text-[16px] md:text-[20px] text-[#001F55] leading-6 md:leading-[32px] font-bold">Help</div>
-                                <img src="/assets/images/arrow-fill-orange.svg" className="md:w-8 md:h-8" alt="Check Mark Yellow" />
+                                <Image src="/assets/images/arrow-fill-orange.svg" className="md:w-8 md:h-8" alt="Check Mark Yellow" />
                             </Link>
                         </div>
                     </div>
 
-                    <img src="/assets/images/retire-texture.png" alt="texture" className="fixed bottom-0 right-0 max-w-[400px] md:max-w-[100%] z-[-1]" />
-                    <img src="/assets/images/404-girl.png" alt="Hero People" className="fixed bottom-0 right-0 max-w-[256px] md:max-w-[100%] z-[-1]" />
+                    <Image src="/assets/images/retire-texture.png" alt="texture" className="fixed bottom-0 right-0 max-w-[400px] md:max-w-[100%] z-[-1]" />
+                    <Image src="/assets/images/404-girl.png" alt="Hero People" className="fixed bottom-0 right-0 max-w-[256px] md:max-w-[100%] z-[-1]" />
                 </div>
             </div>
         </div>

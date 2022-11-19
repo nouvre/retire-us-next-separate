@@ -3,6 +3,7 @@ import ArrowLeft from "@2fd/ant-design-icons/lib/ArrowLeft";
 import ArrowRight from "@2fd/ant-design-icons/lib/ArrowRight";
 import Progress from "@/components/Questionnare/Progress";
 import { Answer } from "@/store/questions/types";
+import Image from '@/components/common/Image';
 
 interface ComponentProps {
     data: any;
@@ -33,22 +34,22 @@ const Steps25: React.FC<ComponentProps> = (props) => {
             <div className="w-full max-w-[840px] mx-auto">
                 <Progress step={props.step} />
                 <div className="relative mb-[60px] w-[373px] md:w-full mt-8 md:mt-[33px] m-auto">
-                    <img
+                    <Image
                         src="/assets/images/cloud.svg"
                         alt="cloud"
                         className="absolute top-0 hidden md:block"
                     />
-                    <img
+                    <Image
                         src="/assets/images/cloud1.svg"
                         alt="cloud"
                         className="absolute hidden md:block bottom-[-47px] right-[-65px]"
                     />
-                    <img
+                    <Image
                         src="/assets/images/cloud-mobile.svg"
                         alt="cloud"
                         className="absolute top-0 block md:hidden"
                     />
-                    <img
+                    <Image
                         src="/assets/images/cloud-mobile1.svg"
                         alt="cloud"
                         className="absolute block md:hidden bottom-[-47px] right-0"
@@ -85,7 +86,7 @@ const Steps25: React.FC<ComponentProps> = (props) => {
                             </div>
                             <div className="flex gap-x-4 md:gap-x-2 p-0 md:pl-11 md:pb-[16px] items-center mb-4 md:mb-0">
                                 <div className="w-[155px] md:w-[120px] h-[99px] md:h-[160px] bg-[#EEF1F8] rounded-[20px] pb-3 pt-[5.5px] md:py-[15px] items-center flex flex-col">
-                                    <img
+                                    <Image
                                         src="/assets/images/question.svg"
                                         className="w-[54px] md:w-[99px] mb-[5.7px] md:mb-[6.4px]"
                                     />
@@ -97,13 +98,13 @@ const Steps25: React.FC<ComponentProps> = (props) => {
                                     </div>
                                 </div>
                                 <div className="hidden md:flex items-center">
-                                    <img
+                                    <Image
                                         src="/assets/images/question-between.svg"
                                         alt=""
                                     />
                                 </div>
                                 <div className="w-[155px] md:w-[120px] h-[99px] md:h-[160px] bg-[#EEF1F8] rounded-[20px] pb-3 pt-[10px] md:py-[15px] items-center flex flex-col relative z-10">
-                                    <img
+                                    <Image
                                         src="/assets/images/timer.svg"
                                         className="absolute z-[-1] w-[37px] md:w-[61.5px] mb-[6.4px]"
                                     />
@@ -144,7 +145,7 @@ const Steps25: React.FC<ComponentProps> = (props) => {
                     </button>
                 </div>
             </div>
-            <img
+            <Image
                 src="/assets/images/glass-man.svg"
                 alt="Glass man"
                 className="relative ml-auto mt-auto max-w-[80%] right-[-20px] block md:hidden"

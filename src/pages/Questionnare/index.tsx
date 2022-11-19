@@ -5,6 +5,7 @@ import Header from "../Header";
 import { ApplicationState } from "@/store";
 import { Answer } from "@/store/questions/types";
 import GeneralPage from "@/components/Questionnare/page/generalPage";
+import Image from '@/components/common/Image';
 import ProfileCompleteStep from "../../constants/routes";
 import { Steps3, Steps4, Steps5, Steps25, Steps38 } from "./StepList";
 import Confetti from "./Confetti";
@@ -318,22 +319,22 @@ const Questionnare: React.FC = (props: any) => {
                 <div className="flex items-center justify-center relative z-10">
                     {getQuestionPage()}
                 </div>
-                <img
+                <Image
                     src="/assets/images/glass-man.svg"
                     alt="Glass man"
                     className="relative ml-auto mt-auto z-[10] max-w-[300px] md:absolute md:right-0 md:bottom-0 md:z-[0] hidden md:block"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-retire-leaf.svg"
                     alt="ico-retire-leaf"
                     className="absolute left-0 bottom-0"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute left-[5%] bottom-[20%] hidden md:block"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute right-[5%] top-[20%] hidden md:block"

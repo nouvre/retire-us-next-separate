@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
+import Image from '@/components/common/Image';
 
 interface ComponentProps {
     handleSubmit?: (submitData: any) => void;
@@ -74,7 +75,7 @@ const PhoneVerify: React.FC<ComponentProps> = ({
                             }}
                         >
                             Send code&nbsp;&nbsp;
-                            <img
+                            <Image
                                 src="/assets/images/dots-white-btn.svg"
                                 alt="dots"
                                 className="w-6 h-6"

@@ -7,6 +7,7 @@ import { ApplicationState } from "@/store";
 import Header from "../Header";
 import DashboardHeader from "../Dashboard/Header";
 import { Toast } from "@/components/common/notification";
+import Image from '@/components/common/Image';
 import axios from "../../util/api";
 
 interface Dima {
@@ -246,7 +247,7 @@ const StartPlanning: React.FC = (props: any) => {
                                             />
                                         )}
                                     </InputMask>
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-calendar.svg"
                                         alt="ico-calendar"
                                     />
@@ -412,7 +413,7 @@ const StartPlanning: React.FC = (props: any) => {
                                             />
                                         )}
                                     </InputMask>
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-calendar.svg"
                                         alt="ico-calendar"
                                     />

@@ -13,6 +13,7 @@ import { login, googleLogin, facebookLogin } from "@/store/auth/action";
 import { ApplicationState } from "@/store";
 import Header from "../Header";
 import { Helmet } from "react-helmet";
+import Image from '@/components/common/Image';
 
 interface locationStateProps {
     plan_id: number;
@@ -109,7 +110,7 @@ const SingleSignOn: React.FC = (props: any) => {
                                 href="/signup"
                             >
                                 <div className="flex items-center">
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-sso-email.jpg"
                                         alt="ico-sso-email"
                                         className="w-7"
@@ -118,7 +119,7 @@ const SingleSignOn: React.FC = (props: any) => {
                                         Continue with Email
                                     </span>
                                 </div>
-                                <img
+                                <Image
                                     src="/assets/images/arrow-right-circle-orange.svg"
                                     width="24"
                                     alt="ico-arrow-right"
@@ -141,7 +142,7 @@ const SingleSignOn: React.FC = (props: any) => {
                                         type="button"
                                     >
                                         <div className="flex items-center">
-                                            <img
+                                            <Image
                                                 src="/assets/images/ico-google.svg"
                                                 alt="ico-google"
                                                 className="w-7"
@@ -150,7 +151,7 @@ const SingleSignOn: React.FC = (props: any) => {
                                                 Continue with Google
                                             </span>
                                         </div>
-                                        <img
+                                        <Image
                                             src="/assets/images/arrow-right-circle-orange.svg"
                                             width="24"
                                             alt="ico-arrow-right"
@@ -183,7 +184,7 @@ const SingleSignOn: React.FC = (props: any) => {
                                 }}
                                 textButton={"Continue with Facebook"}
                                 icon={
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-facebook.svg"
                                         alt="ico-facebook"
                                         className="w-7"
@@ -195,17 +196,17 @@ const SingleSignOn: React.FC = (props: any) => {
                     </Form>
                 </div>
 
-                <img
+                <Image
                     src="/assets/images/signup-texture.png"
                     alt="texture"
                     className="absolute left-0 bottom-0 hidden md:block z-[-1]"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute left-[5%] bottom-[50%] hidden md:block"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute right-[5%] top-[20%] hidden md:block"

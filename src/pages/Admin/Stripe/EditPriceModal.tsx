@@ -6,6 +6,7 @@ import Minus from "@2fd/ant-design-icons/lib/Minus";
 import { Toast } from "@/components/common/notification";
 import { Plan, Plan_feature, UpdatePriceData } from "@/store/plan/types";
 import { Icon } from ".";
+import Image from '@/components/common/Image';
 
 interface ComponentProps {
     visible: boolean;
@@ -126,7 +127,7 @@ const NewPriceModal: React.FC<ComponentProps> = ({
                         <div className="text-sm">Icon</div>
                         <div className="w-full grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-2 items-center max-h-[150px] overflow-y-scroll border border-gray-300 py-1 px-2 rounded-lg">
                             {icons.map((icon: Icon, index) => (
-                                <img
+                                <Image
                                     src={icon.icon_url}
                                     className={`h-auto cursor-pointer ${
                                         icon.icon === selectedIcon

@@ -10,6 +10,7 @@ import {
 } from "@/components/Typographies";
 import AppointmentCalendar from "@/components/AppointmentCalendar";
 import axios from "axios";
+import Image from '@/components/common/Image';
 
 const quickLinks = [
     {
@@ -104,7 +105,7 @@ const Support: React.FC = (props: any) => {
                                         className="flex items-center py-[6px] md:py-[10px]"
                                         key={ql.title}
                                     >
-                                        <img src="/assets/images/ico-document-blue.svg" />
+                                        <Image src="/assets/images/ico-document-blue.svg" />
                                         <a
                                             href={ql.link}
                                             className="text-[16px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-br from-[#4D7EF2] to-[#5FD4F4] ml-[16px] border-b-gradient"
@@ -120,7 +121,7 @@ const Support: React.FC = (props: any) => {
                     <div className="flex-1 flex flex-col items-center bg-white px-[20px] py-[20px] md:px-[40px] md:py-[32px] rounded-[20px]">
                         <div className="w-[100px] max-h-[100px] rounded-full overflow-hidden">
                             {calendarData && 
-                                <img
+                                <Image
                                     src={calendarData.customParams.displayInfo.avatar}
                                     className="w-full"
                                     alt="Meeting person" 
@@ -152,7 +153,7 @@ const Support: React.FC = (props: any) => {
                                 }}
                             >
                                 <div className="max-w-[100px]">
-                                    <img
+                                    <Image
                                         src={tm.thumb}
                                         className="w-full rounded-full bg-[#F7F9FC] border border-[#EEF1F8]"
                                         alt={tm.name}
@@ -174,7 +175,7 @@ const Support: React.FC = (props: any) => {
                             </TextNormal>
                             <div className="mt-auto">
                                 <div className="flex flex-wrap item-center pb-3">
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-email.svg"
                                         alt="ico-email"
                                         className="mr-2"
@@ -189,7 +190,7 @@ const Support: React.FC = (props: any) => {
                                     </a>
                                 </div>
                                 <div className="flex flex-wrap item-center pb-3">
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-phone.svg"
                                         alt="ico-phone"
                                         className="mr-2"

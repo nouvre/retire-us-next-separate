@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import InputMask from "react-input-mask";
 import { Toast } from "@/components/common/notification";
+import Image from '@/components/common/Image';
 import axios from "../../util/api";
 import BeneFiciary, { BeneficiaryType } from "./Beneficiary";
 
@@ -234,7 +235,7 @@ const RollOver: React.FC = () => {
         >
             <form onSubmit={formik.handleSubmit}>
                 <div className="mb-10">
-                    <img
+                    <Image
                         src="https://f.hubspotusercontent10.net/hubfs/7437511/CCP%20Banner2-2.png"
                         alt=""
                     />

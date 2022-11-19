@@ -6,12 +6,12 @@ import Header from "../Header";
 import Footer from "../Footer";
 import { Post, blog } from "../../constants/variables";
 import { convertDate } from "../../util/helpers";
-import Img from "@/components/Image";
 import RelatedPosts from "@/components/RelatedPosts";
 import Banner from "@/components/Banner";
 import BlogError from "@/components/BlogError";
 import { fetchAPI } from "../../util/cms";
 import { fallback } from "../fallback";
+import Image from '@/components/common/Image';
 
 const Post: React.FC = (props) => {
     const params: any = useParams();
@@ -211,7 +211,7 @@ const Post: React.FC = (props) => {
                                     {post.attributes?.author?.data?.attributes
                                         ?.photo?.data?.attributes?.url && (
                                         <div>
-                                            <Img
+                                            <Image
                                                 className="w-[48px]"
                                                 src={
                                                     post.attributes.author.data
@@ -266,7 +266,7 @@ const Post: React.FC = (props) => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <Img
+                                        <Image
                                             className="w-[12px] lg:w-[16px]"
                                             src="/assets/images/blog/twitter.svg"
                                             alt="Twitter"
@@ -277,7 +277,7 @@ const Post: React.FC = (props) => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <Img
+                                        <Image
                                             className="w-[12px] lg:w-[16px]"
                                             src="/assets/images/blog/linkedin.svg"
                                             alt="LinkedIn"
@@ -288,7 +288,7 @@ const Post: React.FC = (props) => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <Img
+                                        <Image
                                             className="w-[12px] lg:w-[16px]"
                                             src="/assets/images/blog/facebook.svg"
                                             alt="Facebook"

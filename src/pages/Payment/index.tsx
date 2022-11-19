@@ -18,6 +18,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { ApplicationState } from "@/store";
 import ArrowLeft from "@2fd/ant-design-icons/lib/ArrowLeft";
+import Image from '@/components/common/Image';
 
 var couponChanged = false;
 
@@ -266,17 +267,17 @@ const Princing: React.FC = (props: any) => {
                 </div>
             </div>
 
-            <img
+            <Image
                 src="/assets/images/signup-texture.png"
                 alt="texture"
                 className="absolute left-0 bottom-0 hidden md:block"
             />
-            <img
+            <Image
                 src="/assets/images/ico-ellipse.svg"
                 alt="ico-ellipse"
                 className="absolute left-[5%] bottom-[50%] hidden md:block"
             />
-            <img
+            <Image
                 src="/assets/images/ico-ellipse.svg"
                 alt="ico-ellipse"
                 className="absolute right-[5%] top-[20%] hidden md:block"

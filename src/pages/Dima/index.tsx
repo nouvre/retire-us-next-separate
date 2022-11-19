@@ -7,6 +7,7 @@ import { ApplicationState } from "@/store";
 import Header from "../Header";
 import { Toast } from "@/components/common/notification";
 import axios from "../../util/api";
+import Image from '@/components/common/Image';
 
 interface Dima {
     firstname: string;
@@ -146,7 +147,7 @@ const DimaWrapper: React.FC = (props: any) => {
                     }}
                 >
                     <div className="mb-10">
-                        <img
+                        <Image
                             src="https://f.hubspotusercontent10.net/hubfs/7437511/CCP%20Banner2-2.png"
                             alt=""
                         />

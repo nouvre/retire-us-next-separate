@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { isDesktop } from "react-device-detect";
 import useButtonMouseMove from "../../hooks/useButtonMouseMove";
 import { cx } from "../../util/helpers";
+import Image from '@/components/common/Image';
 
 interface OptionButtonProps {
     isSelected: boolean;
@@ -42,7 +43,7 @@ const OptionButton: React.FC<OptionButtonProps> = ({
             <div className="text-[16px] md:text-[20px] text-[#000714] pr-4">
                 {buttonText}
             </div>
-            <img
+            <Image
                 src="/assets/images/arrow-right-circle-orange.svg"
                 className="ml-auto w-[24px] md:w-[32px]"
             />

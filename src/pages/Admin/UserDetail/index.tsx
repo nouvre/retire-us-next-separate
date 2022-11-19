@@ -12,6 +12,7 @@ import Assign from "./Assign";
 import IdInfo from "./IdInfo";
 import Goal from "./Goal";
 import DynamicList from "./DynamicList";
+import Image from '@/components/common/Image';
 
 const UserDetail: React.FC = (props: any) => {
      const [curItem, setCurItem] = useState<string>("Questionnaire");
@@ -32,61 +33,61 @@ const UserDetail: React.FC = (props: any) => {
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="Questionnaire"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("Questionnaire"):null}
                >
-                    <img src="../assets/images/icon-question.svg" alt="Questionnaire" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-question.svg" alt="Questionnaire" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">Checkpoint</span>
                </div>
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="Planning"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("Planning"):null}
                >
-                    <img src="../assets/images/icon-plan.svg" alt="Planning" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-plan.svg" alt="Planning" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">Planning Results</span>
                </div>
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="Flags"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("Flags"):null}
                >
-                    <img src="../assets/images/icon-flag.svg" alt="Flags" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-flag.svg" alt="Flags" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">Flags</span>
                </div>
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="Documents"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("Documents"):null}
                >
-                    <img src="../assets/images/icon-doc.svg" alt="Documents" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-doc.svg" alt="Documents" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">Documents</span>
                </div>
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="todo"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("todo"):null}
                >
-                    <img src="../assets/images/icon-todo.svg" alt="To-Do" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-todo.svg" alt="To-Do" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">To-Do List</span>
                </div>
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="dynamicList"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("dynamicList"):null}
                >
-                    <img src="../assets/images/icon-info.svg" alt="Info" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-info.svg" alt="Info" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">Dynamic List</span>
                </div>
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="Goal"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("Goal"):null}
                >
-                    <img src="../assets/images/icon-goal.svg" alt="Goal" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-goal.svg" alt="Goal" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">Goal Update</span>
                </div>   
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="quickView"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("quickView"):null}
                >
-                    <img src="../assets/images/icon-quick.svg" alt="Goal" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-quick.svg" alt="Goal" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">Quick View</span>
                </div>   
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="Assign"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("Assign"):null}
                >
-                    <img src="../assets/images/icon-assign.svg" alt="Goal" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-assign.svg" alt="Goal" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">Assign Rep</span>
                </div>   
                <div className={`w-full flex items-center justify-start p-[10px] py-1 gap-3 rounded-xl cursor-pointer ${curItem=="idInfo"? "bg-white bg-opacity-20" : null}`}
                     onClick={()=>selectedUser?.role=="user" ? setCurItem("idInfo"):null}
                >
-                    <img src="../assets/images/icon-id.svg" alt="Goal" className="w-5 h-5"/>
+                    <Image src="../assets/images/icon-id.svg" alt="Goal" className="w-5 h-5"/>
                     <span className="text-lg text-[#FFFFFF]">ID Info</span>
                </div>   
 

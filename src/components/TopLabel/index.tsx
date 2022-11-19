@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "../Image";
+import Image from '@/components/common/Image';
 
 const TopLabel = ({ text, cta, background, handleClose }) => {
     return (
@@ -25,7 +25,7 @@ const TopLabel = ({ text, cta, background, handleClose }) => {
                 className="absolute top-[18px] lg:top-0 lg:bottom-0 lg:my-auto right-[12px] lg:right-[27px] w-[24px] h-[24px]"
                 onClick={handleClose}
             >
-                <Img
+                <Image
                     src="assets/images/close.svg"
                     className="w-[24px]"
                     alt="Close"

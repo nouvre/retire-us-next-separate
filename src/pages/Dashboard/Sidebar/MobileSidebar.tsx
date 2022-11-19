@@ -6,6 +6,7 @@ import { ApplicationState } from "@/store";
 import { signOut } from "@/store/auth/action";
 import { gotoProfileStep } from "@/store/auth/action";
 import { get_file } from "../../../util/s3getfile";
+import Image from '@/components/common/Image';
 
 const MobileSidebar: React.FC = (props: any) => {
     const location = useLocation();
@@ -32,7 +33,7 @@ const MobileSidebar: React.FC = (props: any) => {
             <div className="w-full flex flex-wrap flex-row justify-between items-center px-[20px] py-[10px] h-[60px]">
                 <Link href="/" className="block">
                     <span className="sr-only">retire us</span>
-                    <img
+                    <Image
                         className="h-[24px]"
                         src="/assets/images/logo-white.svg"
                         alt="retireus Logo"
@@ -46,13 +47,13 @@ const MobileSidebar: React.FC = (props: any) => {
                     }}
                 >
                     {menuExpanded ? (
-                        <img
+                        <Image
                             src="/assets/images/ico-close-circle.svg"
                             className="h-full"
                             alt="ico-close-circle"
                         />
                     ) : (
-                        <img
+                        <Image
                             src="/assets/images/ico-collapsible-circle.svg"
                             className="h-full"
                             alt="ico-collapsible-circle"
@@ -77,7 +78,7 @@ const MobileSidebar: React.FC = (props: any) => {
                         }}
                     >
                         <div className="w-[38px]">
-                            <img
+                            <Image
                                 src={"/assets/images/dashboard-icon.svg"}
                                 alt="Dashboard Icon"
                             />
@@ -97,7 +98,7 @@ const MobileSidebar: React.FC = (props: any) => {
                         }}
                     >
                         <div className="w-[38px]">
-                            <img
+                            <Image
                                 src={"/assets/images/calendar-icon.svg"}
                                 alt="Calendar Icon"
                             />
@@ -117,7 +118,7 @@ const MobileSidebar: React.FC = (props: any) => {
                         }}
                     >
                         <div className="w-[38px]">
-                            <img
+                            <Image
                                 src={"/assets/images/document-icon.svg"}
                                 alt="Document Icon"
                             />
@@ -144,7 +145,7 @@ const MobileSidebar: React.FC = (props: any) => {
                         }}
                     >
                         <div className="w-[38px]">
-                            <img
+                            <Image
                                 src={"/assets/images/wrench-icon.svg"}
                                 alt="Support Icon"
                             />
@@ -164,7 +165,7 @@ const MobileSidebar: React.FC = (props: any) => {
                         }}
                     >
                         <div className="w-[38px]">
-                            <img
+                            <Image
                                 src={"/assets/images/dashboard-icon.svg"}
                                 alt="Dashboard Icon"
                             />
@@ -184,7 +185,7 @@ const MobileSidebar: React.FC = (props: any) => {
                         }}
                     >
                         <div className="w-[38px]">
-                            <img
+                            <Image
                                 src={"/assets/images/message-icon.svg"}
                                 alt="Message Icon"
                             />
@@ -222,7 +223,7 @@ const MobileSidebar: React.FC = (props: any) => {
                         }}
                     >
                         <div className="w-[38px]">
-                            <img
+                            <Image
                                 src={"/assets/images/logout-icon.svg"}
                                 alt="Logout Icon"
                             />
@@ -231,7 +232,7 @@ const MobileSidebar: React.FC = (props: any) => {
                     </div>
                 </div>
 
-                <img src="/assets/images/bg-retire-leaf.svg" className="w-full absolute left-0 bottom-0 z-[-1]" />
+                <Image src="/assets/images/bg-retire-leaf.svg" className="w-full absolute left-0 bottom-0 z-[-1]" />
             </div>
         </div>
     );

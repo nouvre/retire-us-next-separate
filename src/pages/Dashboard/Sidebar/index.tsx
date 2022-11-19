@@ -7,6 +7,7 @@ import { signOut } from "@/store/auth/action";
 import { gotoProfileStep } from "@/store/auth/action";
 import { get_file } from "../../../util/s3getfile";
 import { cx } from "../../../util/helpers";
+import Image from '@/components/common/Image';
 interface INavItem extends React.AllHTMLAttributes<HTMLElement> {
     to: string;
     icon: string;
@@ -25,7 +26,7 @@ const NavItem = ({ to, icon, className, ...props }: INavItem) => {
                 className
             )}
         >
-            <img
+            <Image
                 src={`assets/images/${icon}.svg`}
                 alt={icon}
                 className="w-5 h-5"
@@ -53,7 +54,7 @@ const SideBar: React.FC = (props: any) => {
         <div className="w-20 lg:w-[240px] min-h-screen fixed top-0 left-0 h-screen transition duration-200 hidden md:flex md:flex-col md:justify-between px-5 pt-11 pb-10 bg-sidebar-bg bg-no-repeat bg-bottom">
             <div className="w-full flex flex-col gap-10">
                 <Link href={"/"} className="w-full px-5 mt-3">
-                    <img
+                    <Image
                         src="/assets/images/logo-white.svg"
                         className="w-auto"
                         alt="Icon Info"
@@ -84,7 +85,7 @@ const SideBar: React.FC = (props: any) => {
                     </NavItem>
 
                     {/* <Link href={`contact-us`} className={`w-full flex items-center justify-center lg:justify-start p-[10px] lg:px-5 lg:py-4 gap-3 rounded-xl ${location.pathname === '/contact-us' ? 'bg-white bg-opacity-20' : ''} `}>
-                        <img src={'assets/images/dashboard-icon.svg'} alt="Dashboard Icon" className="w-5 h-5" />
+                        <Image src={'assets/images/dashboard-icon.svg'} alt="Dashboard Icon" className="w-5 h-5" />
                         <span className="text-lg text-[#FFFFFF] hidden lg:block">Contact Us</span>
                     </Link> */}
                     {/* <Link
@@ -139,7 +140,7 @@ const SideBar: React.FC = (props: any) => {
                     dispatch(signOut());
                 }}
             >
-                <img
+                <Image
                     src={"/assets/images/logout-icon.svg"}
                     alt="Logout Icon"
                     className="w-5 h-5"

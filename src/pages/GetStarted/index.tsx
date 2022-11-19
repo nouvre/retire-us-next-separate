@@ -3,10 +3,10 @@ import Header from "../Header";
 import Footer from "../Footer";
 import { Helmet } from "react-helmet";
 import Featured from "@/components/Featured";
-import Img from "@/components/Image";
 import { FillButtonLink } from "@/components/Buttons/WhiteButtons";
 import { getImage, fetchAPI } from "../../util/cms";
 import { fallback } from "../fallback";
+import Image from '@/components/common/Image';
 
 const GetStarted: React.FC = (props) => {
     const [getStarted, setGetStarted] = useState<any>(null);
@@ -105,7 +105,7 @@ const GetStarted: React.FC = (props) => {
                 <div className="w-full grid grid-cols-1 lg:grid-cols-2 bg-white">
                     <div className="bg-[#DDE3F0] pt-[60px] md:pt-[120px] flex items-end lg:order-2">
                         {getStarted?.twoHalfBlock?.right?.image && (
-                            <Img
+                            <Image
                                 src={getImage(
                                     getStarted.twoHalfBlock.right.image
                                 )}
@@ -157,7 +157,7 @@ const GetStarted: React.FC = (props) => {
                             </FillButtonLink>
                         )}
                         <div className="flex text-[#173A78] text-[14px] md:text-[16px] leading-[16px] md:leading-[24px] align-center justify-start mt-[36px] md:mt-[88px]">
-                            <Img
+                            <Image
                                 src="/assets/images/get-started/info.svg"
                                 alt="Icon Info"
                                 className="mr-2"

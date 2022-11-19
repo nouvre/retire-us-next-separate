@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CircularAnimProgress from "@/components/Slider/CircularAnimProgress";
 import { cx } from "../../util/helpers";
-import Img from "@/components/Image";
+import Image from '@/components/common/Image';
 
 interface CarouselBannerProps {
     slides: {
@@ -56,7 +56,7 @@ const CarouselBanner = ({ slides }: CarouselBannerProps) => {
                                 className="flex items-center text-[#001F55] text-base md:text-xl font-bold pb-10 md:pb-[60px]"
                             >
                                 {c.cta.text}&nbsp;&nbsp;
-                                <Img
+                                <Image
                                     src="/assets/images/ico-external-link.svg"
                                     alt="Ico-external-link"
                                 />
@@ -71,7 +71,7 @@ const CarouselBanner = ({ slides }: CarouselBannerProps) => {
                         key={`carousel_indicator_${i}`}
                         className="flex items-center justify-center w-8 h-8 relative"
                     >
-                        <img
+                        <Image
                             src={`assets/images/ico-carousel-dot${
                                 activeCarousel === i ? "-active" : ""
                             }.svg`}

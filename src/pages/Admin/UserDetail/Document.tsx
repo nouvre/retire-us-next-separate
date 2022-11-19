@@ -5,8 +5,8 @@ import { ApplicationState } from "@/store";
 import { Upload } from "antd";
 import { get_file } from "../../../util/s3getfile";
 import { addDocument, deleteDocument } from "@/store/auth/action";
-import Img from "@/components/Image";
 import CloseCircle from "@2fd/ant-design-icons/lib/CloseCircle";
+import Image from '@/components/common/Image';
 
 const { Dragger } = Upload;
 
@@ -64,7 +64,7 @@ const Document: React.FC = (props: any) => {
                         className="w-full flex gap-5 items-center md:justify-center"
                         id="file_upload_container"
                     >
-                        <Img
+                        <Image
                             src="/assets/images/upload.svg"
                             alt="Upload"
                             className="w-8 h-8"
@@ -107,7 +107,7 @@ const Document: React.FC = (props: any) => {
                                     );
                                 }}
                             >
-                                <img
+                                <Image
                                     src="../assets/images/document.svg"
                                     alt="document"
                                 />
@@ -130,7 +130,7 @@ const Document: React.FC = (props: any) => {
                                     setModalActive(false);
                                 }}
                             >
-                                <img
+                                <Image
                                     src="../assets/images/ico-close.svg"
                                     className="w-full"
                                     alt="ico-close"

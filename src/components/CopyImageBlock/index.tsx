@@ -1,7 +1,7 @@
 import React from "react";
-import Img from "../Image";
 import { FillButtonLink } from "../Buttons/WhiteButtons";
 import { getImage } from "../../util/cms";
+import Image from '@/components/common/Image';
 
 interface CopyImageBlockProps {
     title: string;
@@ -66,7 +66,7 @@ const CopyImageBlock = ({
                                     <div className="text-white text-[16px] md:text-[20px] leading-[24px] md:leading-8 font-bold">
                                         {item.text}
                                     </div>
-                                    <Img
+                                    <Image
                                         src="/assets/images/ico-check-circle.svg"
                                         alt="Check Mark"
                                     />
@@ -85,7 +85,7 @@ const CopyImageBlock = ({
                     </FillButtonLink>
                 </div>
                 <div className="absolute bottom-0 right-[-20%] w-[71%] md:w-auto md:max-w-[40%] md:mx-auto md:static md:self-end">
-                    <Img
+                    <Image
                         src={getImage(image)}
                         alt={title}
                         className="max-w-[100%]"

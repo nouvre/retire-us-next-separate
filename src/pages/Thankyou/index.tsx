@@ -5,6 +5,7 @@ import { ApplicationState } from "@/store";
 import { updateProfileStep } from "@/store/auth/action";
 import { SharedFillButton } from "@/components/Buttons/SharedFillButton";
 import Header from "../Header";
+import Image from '@/components/common/Image';
 
 const Thankyou = () => {
     const dispatch = useDispatch();
@@ -35,12 +36,12 @@ const Thankyou = () => {
             <Header opacity={false} />
             <div className="w-full flex flex-col items-center justify-center pt-[146px] px-5 relative z-10">
                 <div className="w-full max-w-[840px] relative">
-                    <img
+                    <Image
                         src="/assets/images/welcome-bg.svg"
                         alt=""
                         className="w-full hidden sm:block"
                     />
-                    <img
+                    <Image
                         src="/assets/images/welcome-bg-mobile.svg"
                         alt=""
                         className="w-full block sm:hidden"
@@ -69,7 +70,7 @@ const Thankyou = () => {
                         onClick={handleClick}
                     >
                         <span>Let's Go</span>
-                        <img
+                        <Image
                             src="/assets/images/arrow-right.svg"
                             alt="Right Arrow"
                             className="ml-[12px]"
@@ -77,22 +78,22 @@ const Thankyou = () => {
                     </SharedFillButton>
                 </div>
             </div>
-            <img
+            <Image
                 src="/assets/images/glass-girl.svg"
                 alt="Glass man"
                 className="relative mx-auto z-0 md:absolute md:right-0 md:bottom-0 md:z-20"
             />
-            <img
+            <Image
                 src="/assets/images/signup-texture.png"
                 alt="texture"
                 className="absolute z-0 left-0 bottom-0 hidden md:block"
             />
-            <img
+            <Image
                 src="/assets/images/ico-ellipse.svg"
                 alt="ico-ellipse"
                 className="fixed left-[5.97%] bottom-[51%]"
             />
-            <img
+            <Image
                 src="/assets/images/ico-ellipse.svg"
                 alt="ico-ellipse"
                 className="fixed right-[5%] top-[20%]"

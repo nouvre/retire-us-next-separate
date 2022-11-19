@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Image from '@/components/common/Image';
 
 interface RouterParamsProps {
     plan_id: number;
@@ -25,7 +26,7 @@ export const DarkButtonLink = ({ href, params, src, btnText }: DarkButtonLinkPro
         >
             <div className="flex items-center gap-4">
                 {btnText}
-                <img src={src} alt="" className="w-6 h-6" />
+                <Image src={src} alt="" className="w-6 h-6" />
             </div>
         </Link>
     );

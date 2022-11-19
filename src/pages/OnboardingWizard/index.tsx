@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { ApplicationState } from "@/store";
 import Select from "react-select";
 import ConfettiExplosion from "react-confetti-explosion";
+import Image from '@/components/common/Image';
 
 const OnboardingWizard = () => {
     const user = useSelector((state: ApplicationState) => state.auth.user);
@@ -829,7 +830,7 @@ const OnboardingWizard = () => {
                     <div className="relative">
                         <div className="w-full lg:w-[57%]">
                             <div className="flex items-center gap-x-[8px] mb-[29px] lg:mb-[40px]">
-                                <img
+                                <Image
                                     className="w-[20px] lg:w-[32px]"
                                     src="/assets/images/onboarding-wizard/arrow-left.svg"
                                     alt="Left"
@@ -2029,7 +2030,7 @@ const OnboardingWizard = () => {
                                                             );
                                                         }}
                                                     >
-                                                        <img
+                                                        <Image
                                                             className="w-[48px] lg:w-[60px]"
                                                             src={`/assets/images/onboarding-wizard/${item.toLowerCase()}.svg`}
                                                             alt={item}
@@ -2344,7 +2345,7 @@ const OnboardingWizard = () => {
                                                             }
                                                         }}
                                                     >
-                                                        <img
+                                                        <Image
                                                             className="w-[15px]"
                                                             src={`/assets/images/onboarding-wizard/${
                                                                 index === 0 &&
@@ -2661,7 +2662,7 @@ const OnboardingWizard = () => {
                                                                     }
                                                                 }}
                                                             >
-                                                                <img
+                                                                <Image
                                                                     className="w-[15px]"
                                                                     src={`/assets/images/onboarding-wizard/${
                                                                         index ===
@@ -2929,7 +2930,7 @@ const OnboardingWizard = () => {
                                                                 }
                                                             }}
                                                         >
-                                                            <img
+                                                            <Image
                                                                 className="w-[15px]"
                                                                 src={`/assets/images/onboarding-wizard/${
                                                                     index ===
@@ -3107,7 +3108,7 @@ const OnboardingWizard = () => {
                                                                                 : "bg-[#F7F9FC]"
                                                                         }`}
                                                                     >
-                                                                        <img
+                                                                        <Image
                                                                             className={`w-[14px] lg:w-[19px] transition duration-300 ${
                                                                                 form
                                                                                     .otherAssets[
@@ -3336,7 +3337,7 @@ const OnboardingWizard = () => {
                                                                                         }
                                                                                     }}
                                                                                 >
-                                                                                    <img
+                                                                                    <Image
                                                                                         className="w-[15px]"
                                                                                         src={`/assets/images/onboarding-wizard/${
                                                                                             index ===
@@ -3459,7 +3460,7 @@ const OnboardingWizard = () => {
                                                             : "bg-[#F7F9FC]"
                                                     }`}
                                                 >
-                                                    <img
+                                                    <Image
                                                         className={`w-[14px] lg:w-[19px] transition duration-300 ${
                                                             form
                                                                 .complexBenefits[
@@ -3704,7 +3705,7 @@ const OnboardingWizard = () => {
                                                             }
                                                         }}
                                                     >
-                                                        <img
+                                                        <Image
                                                             className="w-[15px]"
                                                             src={`/assets/images/onboarding-wizard/${
                                                                 index === 0 &&
@@ -3828,7 +3829,7 @@ const OnboardingWizard = () => {
                                                     setActivePage(16);
                                                 }}
                                             >
-                                                <img
+                                                <Image
                                                     className="w-[48px] lg:w-[60px]"
                                                     src={`/assets/images/onboarding-wizard/${item.toLowerCase()}.svg`}
                                                     alt={item}
@@ -3857,7 +3858,7 @@ const OnboardingWizard = () => {
                                                     setActivePage(17);
                                                 }}
                                             >
-                                                <img
+                                                <Image
                                                     className="w-[48px] lg:w-[60px]"
                                                     src={`/assets/images/onboarding-wizard/${item.name}.svg`}
                                                     alt={item.label}
@@ -3901,7 +3902,7 @@ const OnboardingWizard = () => {
                                                     });
                                                 }}
                                             >
-                                                <img
+                                                <Image
                                                     className="w-[28px] lg:w-[40px]"
                                                     src={`/assets/images/onboarding-wizard/expectations/${item.icon}.svg`}
                                                     alt={item.label}
@@ -3919,7 +3920,7 @@ const OnboardingWizard = () => {
                                                             : "lg:opacity-[0]"
                                                     }`}
                                                 >
-                                                    <img
+                                                    <Image
                                                         className={`w-[14px] lg:w-[19px] transition duration-300 ${
                                                             form
                                                                 .retirementExpectations[
@@ -4043,7 +4044,7 @@ const OnboardingWizard = () => {
                                                                                             );
                                                                                         }}
                                                                                     >
-                                                                                        <img
+                                                                                        <Image
                                                                                             className="w-[24px]"
                                                                                             src={`/assets/images/onboarding-wizard/${
                                                                                                 form
@@ -4095,7 +4096,7 @@ const OnboardingWizard = () => {
                                                                                                 );
                                                                                             }}
                                                                                         >
-                                                                                            <img
+                                                                                            <Image
                                                                                                 className="w-[24px]"
                                                                                                 src={`/assets/images/onboarding-wizard/${
                                                                                                     form
@@ -4256,7 +4257,7 @@ const OnboardingWizard = () => {
                                                     className="flex items-center justify-center gap-x-[8px] border-[1px] border-[#001F55] w-[154px] h-[60px] rounded-[60px]"
                                                     onClick={goBack}
                                                 >
-                                                    <img
+                                                    <Image
                                                         src="/assets/images/onboarding-wizard/arrow-left.svg"
                                                         alt="Back"
                                                         className="w-[24px]"
@@ -4277,7 +4278,7 @@ const OnboardingWizard = () => {
                                                         ? "Continue"
                                                         : "Finish"}
                                                 </span>
-                                                <img
+                                                <Image
                                                     src="/assets/images/onboarding-wizard/arrow-right.svg"
                                                     alt="Continue"
                                                     className="w-[24px]"
@@ -4293,7 +4294,7 @@ const OnboardingWizard = () => {
             {(activePage !== 14 || progressBreak) &&
                 activePage !== 17 &&
                 (activePage !== 18 || finalBreak) && (
-                    <img
+                    <Image
                         className={`absolute bottom-0 right-0 w-[240px] ${
                             endScreen && "w-[326px]"
                         } lg:w-[28%] lg:max-w-[404px] z-[1] transition-all duration-300`}

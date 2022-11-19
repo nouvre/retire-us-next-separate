@@ -15,6 +15,7 @@ import { ApplicationState } from "@/store";
 import Pencil from "@2fd/ant-design-icons/lib/Pencil";
 import CloseCircle from "@2fd/ant-design-icons/lib/CloseCircle";
 import { filename, fileExtension } from "../../../util/helpers";
+import Image from '@/components/common/Image';
 
 const { Dragger } = Upload;
 
@@ -127,7 +128,7 @@ const Documents: React.FC = () => {
                         className="w-full flex gap-5 items-center md:justify-center"
                         id="file_upload_container"
                     >
-                        <img
+                        <Image
                             src="/assets/images/upload.svg"
                             alt="Upload"
                             className="w-8 h-8"
@@ -176,7 +177,7 @@ const Documents: React.FC = () => {
                                                 );
                                         }}
                                     >
-                                        <img
+                                        <Image
                                             src="/assets/images/document.svg"
                                             alt="document"
                                         />

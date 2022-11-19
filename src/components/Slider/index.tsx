@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CircularAnimationProgress from "./CircularAnimationProgress";
-import Img from "../Image";
 import useHorzCarousel from "../../hooks/useHorzCarousel";
+import Image from '@/components/common/Image';
 
 type SliderType = {
     pretitle: string;
@@ -153,7 +153,7 @@ const CustomSlider = ({ items }: { items: Array<SliderType> }) => {
     return (
         <div className="w-full relative overflow-hidden">
             <div className="flex justify-center items-center gap-10">
-                <Img
+                <Image
                     className="hidden sm:block z-10 cursor-pointer"
                     src="/assets/images/button-arrow-left.svg"
                     alt="help 10"
@@ -163,7 +163,7 @@ const CustomSlider = ({ items }: { items: Array<SliderType> }) => {
                     btnEnable={option.btnEnable}
                     onResize={(height) => setCircleHeight(height)}
                 />
-                <Img
+                <Image
                     className="hidden sm:block z-10 cursor-pointer"
                     src="/assets/images/button-arrow-right.svg"
                     alt="help 10"
@@ -171,12 +171,12 @@ const CustomSlider = ({ items }: { items: Array<SliderType> }) => {
                 />
             </div>
             <div className="w-full flex sm:hidden gap-5 justify-center mt-[24px]">
-                <Img
+                <Image
                     src="/assets/images/button-arrow-left.svg"
                     alt="help 10"
                     onClick={() => handlePrev()}
                 />
-                <Img
+                <Image
                     src="/assets/images/button-arrow-right.svg"
                     alt="help 10"
                     onClick={() => handleNext()}
@@ -238,7 +238,7 @@ const CustomSlider = ({ items }: { items: Array<SliderType> }) => {
                                         className="text-base md:text-lg text-[#001F55] flex items-center gap-3"
                                     >
                                         {item.cta.text}
-                                        <Img
+                                        <Image
                                             src="/assets/images/ico-external-link.svg"
                                             alt="Ico-external-link"
                                         />

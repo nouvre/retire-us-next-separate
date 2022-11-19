@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FillButtonLink, OutlineButtonLink } from "@/components/Buttons/WhiteButtons";
-import Img from "@/components/Image";
+import Image from '@/components/common/Image';
 
 interface PlansProps {
     title: string;
@@ -93,7 +93,7 @@ const Plans = ({ title, text, plans, cta }: PlansProps) => {
                                     }}
                                 >
                                     {plan.attributes.title}
-                                    <Img
+                                    <Image
                                         style={{
                                             transform:
                                                 planTab === index
@@ -116,7 +116,7 @@ const Plans = ({ title, text, plans, cta }: PlansProps) => {
                                     className="plan-inner relative duration-[0.5s] overflow-hidden bg-[#fff] lg:rounded-bl-[2px] lg:rounded-br-[2px] px-[24px]"
                                 >
                                     <div className="flex items-center my-[16px] lg:my-[24px] text-[20px] leading-[24px] lg:text-[23px] lg:leading-[28px] font-bold font-Lato bg-plan-texture bg-clip-text text-transparent">
-                                        <Img
+                                        <Image
                                             className="w-[40px] mr-[12px] lg:hidden"
                                             src="/assets/images/plans/price.svg"
                                         />

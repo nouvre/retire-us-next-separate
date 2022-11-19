@@ -1,6 +1,6 @@
 import React from "react";
-import Img from "../Image";
 import { getImage } from "../../util/cms";
+import Image from '@/components/common/Image';
 
 const Featured = ({ title, elements }: any) => {
     return (
@@ -24,7 +24,7 @@ const Featured = ({ title, elements }: any) => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <Img
+                                <Image
                                     src={getImage(item.attributes.image)}
                                     alt={item.attributes.name}
                                     className="h-[40px] lg:h-[56px] mx-auto"

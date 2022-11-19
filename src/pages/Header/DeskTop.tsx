@@ -9,8 +9,8 @@ import {
 import { cx } from "../../util/helpers";
 import { ApplicationState } from "@/store/index";
 // import { useHistory } from "react-router-dom";
-import Img from "@/components/Image";
 import { navigation } from "../../constants/variables";
+import Image from '@/components/common/Image';
 
 interface HeaderProps {
     token: string | null;
@@ -44,13 +44,13 @@ const DeskTop: React.FC<HeaderProps> = ({
         >
             <Link href={"/"}>
                 {!isBlueVersion ? (
-                    <Img
+                    <Image
                         className="w-[184px]"
                         src="assets/images/logo-white.svg"
                         alt="Logo White"
                     />
                 ) : (
-                    <Img
+                    <Image
                         className="w-[184px]"
                         src="assets/images/logo-blue.svg"
                         alt="Logo Blue"

@@ -8,6 +8,7 @@ import { OutlineButton } from "../Buttons/WhiteButtons";
 import { selectPlan } from "@/store/auth/action";
 
 import { planFeatures } from "@/pages/Pricing/contents";
+import Image from '@/components/common/Image';
 import { TextNormal, TextGradient } from "@/components/Typographies";
 import { cx } from "../../util/helpers";
 
@@ -93,13 +94,13 @@ const SubscribePlanDisclosure = ({
                                                             {plan.features[pfk][
                                                                 section
                                                             ] === true ? (
-                                                                <img
+                                                                <<Image
                                                                     src="/assets/images/ico-success-circle.svg"
                                                                     alt="ico-success-circle"
                                                                     className="mx-auto"
                                                                 />
                                                             ) : (
-                                                                <img
+                                                                <<Image
                                                                     src="/assets/images/ico-danger-circle.svg"
                                                                     alt="ico-danger-circle"
                                                                     className="mx-auto"

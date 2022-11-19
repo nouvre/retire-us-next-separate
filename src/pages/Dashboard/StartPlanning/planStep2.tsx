@@ -9,6 +9,7 @@ import ArrowLeft from "@2fd/ant-design-icons/lib/ArrowLeft";
 
 import InputMask from "react-input-mask";
 import { addAttachment } from "@/store/auth/action";
+import Image from '@/components/common/Image';
 
 const formSchema = Yup.object().shape({    
     firstname2: Yup.string(),
@@ -195,7 +196,7 @@ const PlanStep2: React.FC<ComponentProps> = ({handlePrev, handleNext, hidden }) 
                                 />
                             )}
                         </InputMask>
-                        <img
+                        <Image
                             src="/assets/images/ico-calendar.svg"
                             alt="ico-calendar"
                         />

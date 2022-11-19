@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Menu from "@2fd/ant-design-icons/lib/Menu";
 import Account from "@2fd/ant-design-icons/lib/Account";
-import Img from "@/components/Image";
+import Image from '@/components/common/Image';
 
 interface HeaderProps {
     drawerOpen: () => void;
@@ -23,13 +23,13 @@ const Mobile: React.FC<HeaderProps> = ({
         <div className="flex md:flex lg:hidden w-full h-[60px] justify-center px-6 items-center">
             <Link href={"/"} className="h-6 flex flex-grow">
                 {!isBlueVersion ? (
-                    <Img
+                    <Image
                         className="w-[138px]"
                         src="assets/images/logo-white.svg"
                         alt="Logo White"
                     />
                 ) : (
-                    <Img
+                    <Image
                         className="w-[138px]"
                         src="/assets/images/logo-blue.svg"
                         alt="Logo Blue"

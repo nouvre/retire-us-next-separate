@@ -3,6 +3,7 @@ import { Disclosure } from "@headlessui/react";
 import { DarkButtonLink } from "../Buttons/DarkButtons";
 import ChevronUp from "@2fd/ant-design-icons/lib/ChevronUp";
 import { TextNormal, TextGradient } from "@/components/Typographies";
+import Image from '@/components/common/Image';
 
 type ServicesType = {
     title: string;
@@ -40,7 +41,7 @@ export const SubscribeDesktopPlanTab = ({
             <div className="flex justify-between pb-8 border-b border-[#DDE3F0]">
                 <div className="flex">
                     <div className="w-[80px]">
-                        <img
+                        <Image
                             src="/assets/images/ico-coin.svg"
                             className="w-full"
                             alt="ico-coin"
@@ -141,7 +142,7 @@ export const SubscribeMobilePlanTab = ({
                     <Disclosure.Panel className="px-6 pt-4 pb-10 bg-white">
                         <div className="flex flex-col gap-4">
                             <div className="flex items-center gap-3">
-                                <img
+                                <Image
                                     src="/assets/images/ico-coin.svg"
                                     className="w-10 h-10"
                                     alt="ico-coin"

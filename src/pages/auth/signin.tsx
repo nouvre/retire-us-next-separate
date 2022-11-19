@@ -12,6 +12,7 @@ import {
 import { ApplicationState } from "@/store/index";
 import Header from "../Header";
 import { useSession, signIn, signOut } from "next-auth/react"
+import Image from '@/components/common/Image';
 
 // import { Helmet } from "react-helmet";
 
@@ -111,7 +112,7 @@ const SignIn: React.FC = (props: any) => {
                                 type="button"
                             >
                                 <div className="flex items-center">
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-google.svg"
                                         alt="ico-google"
                                     />
@@ -119,7 +120,7 @@ const SignIn: React.FC = (props: any) => {
                                         Continue with Google
                                     </span>
                                 </div>
-                                <img
+                                <Image
                                     src="/assets/images/arrow-right-circle-orange.svg"
                                     width="24"
                                     alt="ico-arrow-right"
@@ -133,7 +134,7 @@ const SignIn: React.FC = (props: any) => {
                                 type="button"
                             >
                                 <div className="flex items-center">
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-facebook.svg"
                                         alt="ico-facebook"
                                     />
@@ -141,7 +142,7 @@ const SignIn: React.FC = (props: any) => {
                                         Continue with Facebook
                                     </span>
                                 </div>
-                                <img
+                                <Image
                                     src="/assets/images/arrow-right-circle-orange.svg"
                                     width="24"
                                     alt="ico-arrow-right"
@@ -219,7 +220,7 @@ const SignIn: React.FC = (props: any) => {
                                 }}
                             >
                                 Continue&nbsp;&nbsp;
-                                <img
+                                <Image
                                     src="/assets/images/dots-white-btn.svg"
                                     alt="dots"
                                     className="w-6 h-6"
@@ -239,17 +240,17 @@ const SignIn: React.FC = (props: any) => {
                     </Form>
                 </div>
 
-                <img
+                <Image
                     src="/assets/images/signup-texture.png"
                     alt="texture"
                     className="absolute left-0 bottom-0 hidden md:block z-[-1]"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute left-[5%] bottom-[50%] hidden md:block"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute right-[5%] top-[20%] hidden md:block"

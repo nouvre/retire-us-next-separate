@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { ApplicationState } from "@/store";
 import ChevronDown from "@2fd/ant-design-icons/lib/ChevronDown";
+import Image from '@/components/common/Image';
 
 interface IHeaderProps {
     title?: string | undefined;
@@ -24,7 +25,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
                         {/* <div className="text-base font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#4D7EF2] to-[#5FD4F4] px-2 md:px-4">
                             87%
                         </div> */}
-                        <img
+                        <Image
                             src="/assets/images/people-1.png"
                             className="w-[36px] h-[36px] md:w-[40px] md:h-[40px]"
                             alt="people-1"

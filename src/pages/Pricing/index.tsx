@@ -16,6 +16,7 @@ import AllSubscriptionsInclude from "@/components/AllSubscriptionsInclude";
 import PlansFeatures from "@/components/PlansFeatures";
 import { getImage, fetchAPI } from "../../util/cms";
 import { fallback } from "../fallback";
+import Image from '@/components/common/Image';
 
 const Pricing: React.FC = (props: any) => {
     const dispatch = useDispatch();
@@ -126,7 +127,7 @@ const Pricing: React.FC = (props: any) => {
                     <div className="md:w-full lg:max-w-[960px] xl:max-w-[1280px] px-6 mx-auto flex flex-col-reverse lg:flex-row justify-between relative py-[60px] md:py-[120px]">
                         <div className="self-center lg:self-end">
                             {pricing?.slider?.image && (
-                                <img
+                                <Image
                                     src={getImage(pricing.slider.image)}
                                     alt="Yoga People"
                                     className="bottom-0 left-0 max-w-[585px] w-full border-b-[3px] border-[#5EC4F7]"

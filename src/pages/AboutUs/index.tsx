@@ -13,7 +13,7 @@ import Banner from "@/components/Banner";
 import CopyImageBlock from "@/components/CopyImageBlock";
 import { getImage, fetchAPI } from "../../util/cms";
 import { fallback } from "../fallback";
-import Img from "@/components/Image";
+import Image from '@/components/common/Image';
 
 const AboutUs: React.FC = (props) => {
     const [aboutUs, setAboutUs] = useState<any>(null);
@@ -92,7 +92,7 @@ const AboutUs: React.FC = (props) => {
                     <div className="flex-1 flex justify-end pt-[64px] lg:pt-0">
                         <div className="lg:max-w-[500px]">
                             {aboutUs?.sourceBlock?.image && (
-                                <Img
+                                <Image
                                     src={getImage(aboutUs.sourceBlock.image)}
                                     alt="people-mockup"
                                     className="w-full mb-8"
@@ -113,7 +113,7 @@ const AboutUs: React.FC = (props) => {
                                     className="font-bold text-base leading-6 md:text-[18px] md:leading-8 text-[#001F55] flex items-center md:pl-4"
                                 >
                                     {aboutUs.sourceBlock.cta.text}
-                                    <Img
+                                    <Image
                                         src="/assets/images/ico-external-link.svg"
                                         alt="Ico-external-link"
                                         className="ml-2"
@@ -129,7 +129,7 @@ const AboutUs: React.FC = (props) => {
                 <SectionContainer className="flex flex-col-reverse lg:flex-row items-center justify-between">
                     <div className="w-full lg:w-[45%] lg:self-end relative">
                         {aboutUs?.imageCopyBlock?.image && (
-                            <Img
+                            <Image
                                 src={getImage(aboutUs.imageCopyBlock.image)}
                                 alt="Bank"
                                 className="bottom-0 left-0 lg:max-w-[100%] w-full"
@@ -165,7 +165,7 @@ const AboutUs: React.FC = (props) => {
                                 />
                                 {aboutUs?.quoteBlock?.quoteAuthor && (
                                     <div className="flex items-center gap-5">
-                                        <Img
+                                        <Image
                                             src={getImage(
                                                 aboutUs.quoteBlock.quoteAuthor
                                                     .photo
@@ -189,7 +189,7 @@ const AboutUs: React.FC = (props) => {
                                         </div>
                                     </div>
                                 )}
-                                <Img
+                                <Image
                                     src="/assets/images/ico-quote.svg"
                                     alt="ico-quote"
                                     className="absolute top-[-40px] left-0 z-[-1]"
@@ -221,7 +221,7 @@ const AboutUs: React.FC = (props) => {
                                 />
                                 {aboutUs?.quoteBlock?.quoteAuthor && (
                                     <div className="flex items-center gap-5">
-                                        <Img
+                                        <Image
                                             src={getImage(
                                                 aboutUs.quoteBlock.quoteAuthor
                                                     .photo
@@ -245,7 +245,7 @@ const AboutUs: React.FC = (props) => {
                                         </div>
                                     </div>
                                 )}
-                                <Img
+                                <Image
                                     src="/assets/images/ico-quote.svg"
                                     alt="ico-quote"
                                     className="absolute top-[-40px] left-[-15px] z-[-1]"
@@ -266,7 +266,7 @@ const AboutUs: React.FC = (props) => {
                                         key={`differences_${index}`}
                                     >
                                         <div className="w-[19%] md:w-full mb-8">
-                                            <Img
+                                            <Image
                                                 src={getImage(item.icon)}
                                                 alt={item.icon}
                                                 className="w-full md:w-[100px]"

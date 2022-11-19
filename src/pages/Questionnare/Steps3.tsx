@@ -4,6 +4,7 @@ import ArrowRight from "@2fd/ant-design-icons/lib/ArrowRight";
 import Progress from "@/components/Questionnare/Progress";
 import { Answer } from "@/store/questions/types";
 import { cx } from "../../util/helpers";
+import Image from '@/components/common/Image';
 
 interface ComponentProps {
     data: any;
@@ -127,7 +128,7 @@ const Steps3: React.FC<ComponentProps> = (props) => {
                     </div>
 
                     <div className="relative h-[148px] overflow-hidden mx-[-40px] sm:mx-0">
-                        <img
+                        <Image
                             src="/assets/images/quiz-birth-curve-line.svg"
                             alt=""
                             className="w-full absolute left-0 bottom-0"
@@ -168,7 +169,7 @@ const Steps3: React.FC<ComponentProps> = (props) => {
                             onClick={() => handleRetireAge(true)}
                             className="cursor-pointer mx-2"
                         >
-                            <img
+                            <Image
                                 src="/assets/images/arrow-left-circle-orange-lg.svg"
                                 className=""
                             />
@@ -177,7 +178,7 @@ const Steps3: React.FC<ComponentProps> = (props) => {
                             onClick={() => handleRetireAge(false)}
                             className="cursor-pointer mx-2"
                         >
-                            <img
+                            <Image
                                 src="/assets/images/arrow-right-circle-orange-lg.svg"
                                 className=""
                             />

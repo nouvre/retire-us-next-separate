@@ -7,13 +7,13 @@ import {
     TextGradient,
     TextTitleLg,
 } from "@/components/Typographies";
-import Img from "@/components/Image";
 import Featured from "@/components/Featured";
 import Plans from "@/components/Plans";
 import Steps from "@/components/Steps";
 import CopyImageBlock from "@/components/CopyImageBlock";
 import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/pages/fallback";
+import Image from '@/components/common/Image';
 
 const Home: React.FC = (props) => {
     const [homepage, setHomepage] = useState<any>(null);
@@ -83,27 +83,27 @@ const Home: React.FC = (props) => {
                                 </FillButtonLink>
                             )}
                             <div className="hidden lg:flex text-[16px] text-white leading-[24px] align-center justify-start">
-                                <Img
+                                <Image
                                     src="/assets/images/ico-info.svg"
                                     alt="Icon Info"
                                     className="mr-2"
                                 />
                                 {homepage?.hero?.info}
                             </div>
-                            <Img
+                            <Image
                                 src="/assets/images/ico-ellipse.svg"
                                 alt="ico-ellipse"
                                 className="absolute right-[50%] md:right-0 bottom-[20%] hidden md:block"
                             />
                         </div>
                         {homepage?.hero?.image && (
-                            <Img
+                            <Image
                                 src={getImage(homepage.hero.image)}
                                 alt="Hero People"
                                 className="static md:absolute right-[80px] 2xl:right-[240px] bottom-[0] sm:w-[356px] lg:w-[570px] xl:w-[848px]"
                             />
                         )}
-                        <Img
+                        <Image
                             src="/assets/images/ico-ellipse.svg"
                             alt="ico-ellipse"
                             className="absolute right-[5%] top-[20%] hidden md:block"
@@ -127,7 +127,7 @@ const Home: React.FC = (props) => {
                                         className="max-w-[350px] text-center mx-auto"
                                     >
                                         <div className="flex justify-center">
-                                            <Img
+                                            <Image
                                                 src={`assets/images/chart-${item.percent}.svg`}
                                                 alt={`Chart ${item.percent}`}
                                                 className="h-[114px]"
@@ -143,7 +143,7 @@ const Home: React.FC = (props) => {
                                                 className="flex align-center justify-center text-[#001F55] text-[18px] leading-[30px] font-bold"
                                             >
                                                 {item.cta.text}&nbsp;&nbsp;
-                                                <Img
+                                                <Image
                                                     src="/assets/images/ico-external-link.svg"
                                                     alt="Ico-external-link"
                                                 />
@@ -182,7 +182,7 @@ const Home: React.FC = (props) => {
                                 </FillButtonLink>
                             )}
                             <div className="flex text-white text-[14px] md:text-[16px] leading-[16px] md:leading-[24px] align-center justify-start mt-[36px] md:mt-[76px]">
-                                <Img
+                                <Image
                                     src="/assets/images/ico-info.svg"
                                     alt="Icon Info"
                                     className="mr-2"
@@ -192,7 +192,7 @@ const Home: React.FC = (props) => {
                         </div>
                         <div className="flex justify-center place-items-end">
                             {homepage?.copyImageBlock?.image && (
-                                <Img
+                                <Image
                                     src={getImage(
                                         homepage.copyImageBlock.image
                                     )}
@@ -225,7 +225,7 @@ const Home: React.FC = (props) => {
                                         className="flex items-start font-Lato"
                                         key={`four_icons_${index}`}
                                     >
-                                        <Img
+                                        <Image
                                             src={getImage(item.icon)}
                                             alt="Bullet logo"
                                             className="w-[30px] md:w-[60px]"

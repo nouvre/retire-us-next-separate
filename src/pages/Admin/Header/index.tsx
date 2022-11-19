@@ -6,6 +6,7 @@ import { FillButton } from "@/components/Buttons/WhiteButtons";
 import { cx } from "../../../util/helpers";
 import { Menu, Dropdown } from "antd";
 import ChevronDown from "@2fd/ant-design-icons/lib/ChevronDown";
+import Image from '@/components/common/Image';
 
 const Header: React.FC = (props: any) => {
     const dispatch = useDispatch();
@@ -77,7 +78,7 @@ const Header: React.FC = (props: any) => {
         >
             <div className="w-full max-w-[1448px] px-6 py-4 h-[86px] flex justify-between items-center m-auto box-border">
                 <Link href={"/"}>
-                    <img src="../assets/images/logo-blue.svg" alt="Logo Blue" />
+                    <Image src="../assets/images/logo-blue.svg" alt="Logo Blue" />
                 </Link>
                 <div className="h-10 flex items-center text-sm md:text-base lg:text-lg text-[#001F55] gap-10">
                     <Link

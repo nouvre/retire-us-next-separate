@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Scrollbars } from "react-custom-scrollbars";
 import { ApplicationState } from "@/store";
+import Image from '@/components/common/Image';
 
 const IdInfo: React.FC = (props: any) => {
     const selectedUser = useSelector(
@@ -90,7 +91,7 @@ const IdInfo: React.FC = (props: any) => {
                                 }}
                             >
                                 <div className="flex items-center gap-4" >
-                                    <img
+                                    <Image
                                         src="../assets/images/document.svg"
                                         alt="document"
                                     />
@@ -110,7 +111,7 @@ const IdInfo: React.FC = (props: any) => {
                                 }}
                             >
                                 <div className="flex items-center gap-4" >
-                                    <img
+                                    <Image
                                         src="../assets/images/document.svg"
                                         alt="document"
                                     />
@@ -130,7 +131,7 @@ const IdInfo: React.FC = (props: any) => {
                                 }}
                             >
                                 <div className="flex items-center gap-4" >
-                                    <img
+                                    <Image
                                         src="../assets/images/document.svg"
                                         alt="document"
                                     />
@@ -157,14 +158,14 @@ const IdInfo: React.FC = (props: any) => {
                                     setModalActive(false);
                                 }}
                             >
-                                <img
+                                <Image
                                     src="../assets/images/ico-close.svg"
                                     className="w-full"
                                     alt="ico-close"
                                 />
                             </div>
                             <div className="flex justify-center items-center h-full w-full">
-                                <img src={fileUrl} alt="document image" className="max-w-full w-auto max-h-full h-auto"/>
+                                <Image src={fileUrl} alt="document image" className="max-w-full w-auto max-h-full h-auto"/>
                             </div>
                         </div>
                     </div>

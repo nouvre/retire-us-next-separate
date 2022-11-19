@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 import { Helmet } from "react-helmet";
-import Img from "@/components/Image";
 import Steps from "@/components/Steps";
 import Plannings from "@/components/Plannings";
 import Strategies from "@/components/Strategies";
@@ -11,6 +10,7 @@ import CopyImageBlock from "@/components/CopyImageBlock";
 import { SectionContainer } from "@/components/common/Wrappers";
 import { getImage, fetchAPI } from "../../util/cms";
 import { fallback } from "../fallback";
+import Image from '@/components/common/Image';
 
 const PlanningProcess: React.FC = (props) => {
     const [planning, setPlanning] = useState<any>(null);
@@ -90,20 +90,20 @@ const PlanningProcess: React.FC = (props) => {
                                     __html: planning?.hero?.text,
                                 }}
                             />
-                            <Img
+                            <Image
                                 src="/assets/images/ico-ellipse.svg"
                                 alt="ico-ellipse"
                                 className="absolute right-[50%] md:right-0 bottom-[40%] hidden md:block"
                             />
                         </div>
                         {planning?.hero?.image && (
-                            <Img
+                            <Image
                                 src={getImage(planning.hero.image)}
                                 alt="Hero People"
                                 className="static lg:absolute right-[80px] 2xl:right-[240px] bottom-[0] w-[350px] lg:w-[500px] xl:w-[606px]"
                             />
                         )}
-                        <Img
+                        <Image
                             src="/assets/images/ico-ellipse.svg"
                             alt="ico-ellipse"
                             className="absolute right-[5%] top-[20%] hidden md:block"
@@ -125,7 +125,7 @@ const PlanningProcess: React.FC = (props) => {
                             {planning?.stages?.description}
                         </div>
                         {planning?.stages?.image && (
-                            <Img
+                            <Image
                                 src={getImage(planning.stages.image)}
                                 alt="Cycle"
                                 className="w-full max-w-[422px] my-[40px] mx-auto"
@@ -167,7 +167,7 @@ const PlanningProcess: React.FC = (props) => {
                             {planning?.analysis?.subtitle}
                         </div>
                         {planning?.analysis?.image && (
-                            <Img
+                            <Image
                                 src={getImage(planning.analysis.image)}
                                 alt="Cycle"
                                 className="w-full max-w-[540px] my-[40px] mx-auto"

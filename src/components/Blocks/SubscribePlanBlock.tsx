@@ -11,6 +11,7 @@ import { selectPlan } from "@/store/auth/action";
 import CheckCircle from "@2fd/ant-design-icons/lib/CheckCircle";
 import CloseCircle from "@2fd/ant-design-icons/lib/CloseCircle";
 import { Tooltip } from "antd";
+import Image from '@/components/common/Image';
 
 type RecommendedType = {
     standard: boolean;
@@ -522,7 +523,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
                                 color="#FFFFFF"
                                 overlayClassName="feature-tooltip"
                             >
-                                <img
+                                <Image
                                     src="/assets/images/ico-info-gray.svg"
                                     alt="ico-info-gray"
                                     className="w-5 h-5 cursor-pointer"
@@ -574,7 +575,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
                                 color="#FFFFFF"
                                 overlayClassName="feature-tooltip"
                             >
-                                <img
+                                <Image
                                     src="/assets/images/ico-info-gray.svg"
                                     alt="ico-info-gray"
                                     className="w-5 h-5 cursor-pointer"
@@ -627,7 +628,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
                                 color="#FFFFFF"
                                 overlayClassName="feature-tooltip"
                             >
-                                <img
+                                <Image
                                     src="/assets/images/ico-info-gray.svg"
                                     alt="ico-info-gray"
                                     className="w-5 h-5 cursor-pointer"
@@ -682,7 +683,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
                                 color="#FFFFFF"
                                 overlayClassName="feature-tooltip"
                             >
-                                <img
+                                <Image
                                     src="/assets/images/ico-info-gray.svg"
                                     alt="ico-info-gray"
                                     className="w-5 h-5 cursor-pointer"
@@ -735,7 +736,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
                                 color="#FFFFFF"
                                 overlayClassName="feature-tooltip"
                             >
-                                <img
+                                <Image
                                     src="/assets/images/ico-info-gray.svg"
                                     alt="ico-info-gray"
                                     className="w-5 h-5 cursor-pointer"

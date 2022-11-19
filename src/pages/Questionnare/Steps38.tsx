@@ -7,6 +7,7 @@ import { isDesktop } from "react-device-detect";
 import useButtonMouseMove from "../../hooks/useButtonMouseMove";
 import moment from "moment";
 import { cx } from "../../util/helpers";
+import Image from '@/components/common/Image';
 
 interface ComponentProps {
     data: Answer;
@@ -136,12 +137,12 @@ const Steps38: React.FC<ComponentProps> = (props) => {
                         </div>
                         <div className="ml-auto w-[24px] md:w-[32px]">
                             {isSelected("retirementReallyAcomplishYes") ? (
-                                <img
+                                <Image
                                     src="/assets/images/ico-checkbox-selected.svg"
                                     className="w-full"
                                 />
                             ) : (
-                                <img
+                                <Image
                                     src="/assets/images/ico-checkbox.svg"
                                     className="w-full"
                                 />
@@ -187,12 +188,12 @@ const Steps38: React.FC<ComponentProps> = (props) => {
                             </div>
                             <div className="ml-auto w-[24px] md:w-[32px]">
                                 {isSelected("retirementReallyAcomplishNo") ? (
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-checkbox-selected.svg"
                                         className="w-full"
                                     />
                                 ) : (
-                                    <img
+                                    <Image
                                         src="/assets/images/ico-checkbox.svg"
                                         className="w-full"
                                     />

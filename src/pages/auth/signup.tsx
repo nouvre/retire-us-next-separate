@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { gotoProfileStep, register } from "@/store/auth/action";
 import { ApplicationState } from "@/store/index";
 import Header from "../Header";
+import Image from '@/components/common/Image';
 
 interface locationStateProps {
     plan_id: number;
@@ -164,7 +165,7 @@ const SignUp: React.FC = (props: any) => {
                                 }}
                             >
                                 Continue&nbsp;&nbsp;
-                                <img
+                                <Image
                                     src="/assets/images/dots-white-btn.svg"
                                     alt="dots"
                                     className="w-6 h-6"
@@ -183,17 +184,17 @@ const SignUp: React.FC = (props: any) => {
                     </Form>
                 </div>
 
-                <img
+                <Image
                     src="/assets/images/signup-texture.png"
                     alt="texture"
                     className="absolute left-0 bottom-0 hidden md:block z-[-1]"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute left-[5%] bottom-[50%] hidden md:block"
                 />
-                <img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute right-[5%] top-[20%] hidden md:block"
