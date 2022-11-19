@@ -1,7 +1,7 @@
 import React from 'react'
-import Image, { ImageProps } from 'next/image'
+import Image, { ImageProps as NextImageProps } from 'next/image'
 
-const CustomImage: React.FC<ImageProps> = (props) => {
+const NextImage: React.FC<NextImageProps> = (props) => {
   const myLoader = (props: any) => {
     return props.src
   }
@@ -17,4 +17,4 @@ const CustomImage: React.FC<ImageProps> = (props) => {
   )
 }
 
-export default CustomImage
+export default NextImage
