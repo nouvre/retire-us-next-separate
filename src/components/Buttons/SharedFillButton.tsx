@@ -1,5 +1,5 @@
 import React from "react";
-import { cls } from "../../util/helpers";
+import { cls } from "@/util/helpers";
 
 interface ButtonFillTypes {
     children: React.ReactNode;

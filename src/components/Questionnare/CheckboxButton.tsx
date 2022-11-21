@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { isDesktop } from "react-device-detect";
-import useButtonMouseMove from "../../hooks/useButtonMouseMove";
-import { cx } from "../../util/helpers";
+import useButtonMouseMove from "@/hooks/useButtonMouseMove";
+import { cx } from "@/util/helpers";
 import Image from '@/components/common/Image';
 
 interface CheckboxButtonProps {

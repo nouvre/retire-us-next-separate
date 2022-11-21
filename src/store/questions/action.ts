@@ -3,7 +3,7 @@ import { ActionCreator, Action, Dispatch } from "redux";
 import { ApplicationState } from "../index";
 import { Answer, QuestionActionTypes } from "./types";
 import { AuthActionTypes } from "../auth/types";
-import axios from "../../util/api";
+import axios from "@/util/api";
 
 export type AppThunk = ActionCreator<
     ThunkAction<void, ApplicationState, null, Action<string>>

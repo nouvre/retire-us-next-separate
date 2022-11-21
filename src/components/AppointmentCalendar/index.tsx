@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Calendar from "react-calendar";
-import { ApplicationState } from "@/store";
+import { ApplicationState } from "@/store/index";
 import AppointmentModal from "./AppointmentModal";
 // import moment, { duration, Moment } from "moment";
 import moment, { Moment } from "moment-timezone";

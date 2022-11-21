@@ -11,6 +11,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
       {...props}
       loader={myLoader}
       className={props.className || ''}
+      unoptimized
       width={-1}
       height={-1}
     />

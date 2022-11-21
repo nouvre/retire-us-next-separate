@@ -1,5 +1,5 @@
 import React from "react";
-import { cx } from "../../util/helpers";
+import { cx } from "@/util/helpers";
 
 interface ITypographyProps extends React.AllHTMLAttributes<HTMLElement> {
     children?: React.ReactNode;

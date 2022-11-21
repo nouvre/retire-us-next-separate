@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Helmet } from "react-helmet";
 import Select from "react-select";
 import { Spin, Space } from "antd";
-import Header from "../Header";
-import Footer from "../Footer";
-import { Post, blog } from "../../constants/variables";
-import { convertDate } from "../../util/helpers";
+import Header from "@/components/Pages/Header";
+import Footer from "@/components/Pages/Footer";
+import { Post, blog } from "@/constants/variables";
+import { convertDate } from "@/util/helpers";
 import RelatedPosts from "@/components/RelatedPosts";
 import BlogError from "@/components/BlogError";
-import { fetchAPI } from "../../util/cms";
-import { fallback } from "../fallback";
+import { fetchAPI } from "@/util/cms";
+import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 
 const Blog: React.FC = (props) => {

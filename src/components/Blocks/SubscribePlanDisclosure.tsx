@@ -10,7 +10,7 @@ import { selectPlan } from "@/store/auth/action";
 import { planFeatures } from "@/pages/Pricing/contents";
 import Image from '@/components/common/Image';
 import { TextNormal, TextGradient } from "@/components/Typographies";
-import { cx } from "../../util/helpers";
+import { cx } from "@/util/helpers";
 
 interface ISubscribePlanDisclosureProps {
     plan: any;

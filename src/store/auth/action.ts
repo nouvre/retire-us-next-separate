@@ -4,7 +4,7 @@ import { ThunkAction } from "redux-thunk";
 import { ActionCreator, Action, Dispatch } from "redux";
 import { ApplicationState } from "../index";
 import { Toast } from "@/components/common/notification";
-import axios from "../../util/api";
+import axios from "@/util/api";
 import { CommonActionTypes } from "../common/types";
 
 export type AppThunk = ActionCreator<

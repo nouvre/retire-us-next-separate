@@ -5,7 +5,7 @@ import { Answer } from "@/store/questions/types";
 // import SubscribePlanCardHeader from "../Card/SubscribePlan/Header";
 // import SubscribePlanCardBody from "../Card/SubscribePlan/Body";
 // import SubscribePlanCardFooter from "../Card/SubscribePlan/Footer";
-import { ApplicationState } from "@/store";
+import { ApplicationState } from "@/store/index";
 import { OutlineButton, OutlineButtonLink } from "../Buttons/WhiteButtons";
 import { selectPlan } from "@/store/auth/action";
 import CheckCircle from "@2fd/ant-design-icons/lib/CheckCircle";

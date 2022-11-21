@@ -1,6 +1,6 @@
 import React from "react";
 import { FillButtonLink } from "../Buttons/WhiteButtons";
-import { getImage } from "../../util/cms";
+import { getImage } from "@/util/cms";
 import Image from '@/components/common/Image';
 
 interface CopyImageBlockProps {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { isDesktop } from "react-device-detect";
-import useButtonMouseMove from "../../hooks/useButtonMouseMove";
+import useButtonMouseMove from "@/hooks/useButtonMouseMove";
 import Image from '@/components/common/Image';
-import { cx } from "../../util/helpers";
+import { cx } from "@/util/helpers";
 
 interface IconButtonProps {
     isSelected: boolean;

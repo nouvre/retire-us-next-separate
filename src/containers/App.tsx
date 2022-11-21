@@ -9,6 +9,7 @@ import ProfileCompleteStep from '../constants/routes'
 import axios from '../util/api'
 import { Toast } from '@/components/common/notification'
 import { setLoadDashboard, verifyIdentify } from '@/store/auth/action'
+import { useRouter } from "next/router";
 
 const RestrictedRoute = ({ component: Component, token, ...rest }: any) => (
   <Route
@@ -61,6 +62,7 @@ const OnboardingWizard = lazy(() => import('@/pages/OnboardingWizard'))
 // End Dynamic Page Import
 
 const App: React.FC = (props: any) => {
+    const router = useRouter();
   const user = useSelector((state: ApplicationState) => state.auth.user)
   const token = useSelector((state: ApplicationState) => state.auth.token)
   const loadDashboard = useSelector(
@@ -79,11 +81,11 @@ const App: React.FC = (props: any) => {
         user.current_plan &&
         process.env.NODE_ENV === 'production'
       ) {
-        props.history.push('/2fa-verify')
+        router.push('/2fa-verify')
       } else {
         if (props.location.search.slice(0, 13) == '?success=true') {
           dispatch(verifyIdentify())
-          props.history.push('/dashboard')
+          router.push('/dashboard')
         } else {
           if (props.location.search.slice(0, 14) == '?success=false') {
             Toast(
@@ -91,7 +93,7 @@ const App: React.FC = (props: any) => {
               'Please check your information and retry.',
               'danger',
             )
-            props.history.push('/verify')
+            router.push('/verify')
           } else if (user.isSignUpProcess) {
             if (props.location.pathname.slice(1, 15) !== 'reset-password') {
               if (
@@ -100,7 +102,7 @@ const App: React.FC = (props: any) => {
                   '/disclosure',
                 ) < user.profile_complete_step
               ) {
-                props.history.push('/disclosure')
+                router.push('/disclosure')
               } else {
                 if (
                   ProfileCompleteStep[user.authenticate_type][
@@ -108,7 +110,7 @@ const App: React.FC = (props: any) => {
                   ] == '/dashboard'
                 ) {
                   if (!loadDashboard) {
-                    props.history.push(
+                    router.push(
                       ProfileCompleteStep[user.authenticate_type][
                         user.profile_complete_step
                       ],
@@ -117,7 +119,7 @@ const App: React.FC = (props: any) => {
                   }
                 } else {
                   // if(!user.disclosure_agreements && ProfileCompleteStep[user.authenticate_type].indexOf("/disclosure"))
-                  props.history.push(
+                  router.push(
                     ProfileCompleteStep[user.authenticate_type][
                       user.profile_complete_step
                     ],

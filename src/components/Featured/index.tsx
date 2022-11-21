@@ -1,5 +1,5 @@
 import React from "react";
-import { getImage } from "../../util/cms";
+import { getImage } from "@/util/cms";
 import Image from '@/components/common/Image';
 
 const Featured = ({ title, elements }: any) => {

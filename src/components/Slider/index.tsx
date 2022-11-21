@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CircularAnimationProgress from "./CircularAnimationProgress";
-import useHorzCarousel from "../../hooks/useHorzCarousel";
+import useHorzCarousel from "@/hooks/useHorzCarousel";
 import Image from '@/components/common/Image';
 
 type SliderType = {

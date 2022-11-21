@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Header from "@/pages/Header";
+import Header from "@/components/Pages/Header";
 import Image from '@/components/common/Image';
 
 

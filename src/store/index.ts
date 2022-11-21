@@ -8,13 +8,31 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+import { AuthState } from "./auth/types";
+import { PlanState } from "./plan/types";
 import { authReducer } from "./auth/reducer";
 import { planReducer } from "./plan/reducer";
 import { questionReducer } from "./questions/reducer";
-import { plaidReducer } from "./banking/plaid/reducer";
-import { yodleeReducer } from "./banking/yodlee/reducer";
-import { settingReducer } from "./setting/reducer";
 import { commonReducer } from "./common/reducer";
+import { QuestionState } from "./questions/types";
+import { plaidReducer } from "./banking/plaid/reducer";
+import { PlaidState } from "./banking/plaid/types";
+import { yodleeReducer } from "./banking/yodlee/reducer";
+import { YodleeState } from "./banking/yodlee/types";
+import { settingReducer } from "./setting/reducer";
+import { SettingState } from "./setting/types";
+import { CommonState } from "./common/types";
+import thunkMiddleware from "redux-thunk";
+
+export interface ApplicationState {
+  auth: AuthState;
+  plans: PlanState;
+  questions: QuestionState;
+  bank_plaid: PlaidState;
+  bank_yodlee: YodleeState;
+  settings: SettingState;
+  common: CommonState;
+}
 
 const persistConfig = {
   key: "root",
@@ -38,7 +56,7 @@ function initStore(initialState: any) {
   return createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware())
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
   );
 }
 

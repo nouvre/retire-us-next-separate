@@ -1,4 +1,4 @@
-import { ApplicationState } from "@/store";
+import { ApplicationState } from "@/store/index";
 
 export const getPlaidAccounts = (state: ApplicationState) => {
     return state.bank_plaid.savedAccounts.sort((a, b) => {
