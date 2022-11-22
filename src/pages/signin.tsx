@@ -9,11 +9,18 @@ import {
     googleLogin,
     facebookLogin,
 } from "@/store/auth/action";
+import {
+    GoogleLogin,
+    GoogleLoginResponse,
+    GoogleLoginResponseOffline,
+} from "react-google-login";
+import FacebookLogin from "react-facebook-login";
 import { ApplicationState } from "@/store/index";
 import Header from "@/components/Pages/Header";
-import { useSession, signIn, signOut } from "next-auth/react"
+// import { useSession, signIn, signOut } from "next-auth/react"
 import Image from '@/components/common/Image';
 import { useRouter } from "next/router";
+import ProfileCompleteStep from '@/constants/routes'
 
 // import { Helmet } from "react-helmet";
 
@@ -29,15 +36,14 @@ interface FormData {
 
 const SignIn: React.FC = (props: any) => {
     const router = useRouter();
-    const { data: session } = useSession();
+    // const { data: session } = useSession();
     const [form] = Form.useForm();
     const dispatch = useDispatch();
     const user = useSelector((state: ApplicationState) => state.auth.user);
     const pending = useSelector(
         (state: ApplicationState) => state.common.pending
     );
-    // const authTypeState: locationStateProps =
-    //     location.state as locationStateProps;
+    const authTypeState = router.query;
 
     const pattern =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/])[A-Za-z\d@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/]{8,}$/g;
@@ -46,31 +52,42 @@ const SignIn: React.FC = (props: any) => {
 
     useEffect(() => {
         if (user) {
-            if (user.role === "admin") router.push("/dashboard");
-            else dispatch(gotoProfileStep());
+            if (user.role === "admin") props.history.push("/dashboard");
+            else {
+                router.push(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step]);
+                // dispatch(gotoProfileStep());
+            }
         }
     }, [user]);
 
-    useEffect(() => {
-        console.log(session)
-    }, [session]);
-
-    const handleSubmit = async () => {
-        form.validateFields().then(async (data: FormData) => {
-            // dispatch(login(data.email, data.password));
-            const getLoginStatus = await signIn("credentials", {
-                redirect: false,
-                email: data.email, password: data.password
-            })
-            console.log(getLoginStatus)
-        });
-        // if (!pending)
+    const handleSubmit = (): void => {
+        if (!pending)
+            form.validateFields().then((data: FormData) => {
+                dispatch(login(data.email, data.password));
+            });
     };
 
+    const handleGoogleLogin = (
+        response: GoogleLoginResponse | GoogleLoginResponseOffline | any
+    ): void => {
+        const payload = getLoginPayload();
+        if (response.code) {
+            dispatch(googleLogin(response.code, payload));
+        } else {
+            dispatch(googleLogin(response.tokenId, payload));
+        }
+    };
+
+    const handleFacebookLogin = (result: any): void => {
+        if (result?.accessToken) {
+            const payload = getLoginPayload();
+            dispatch(facebookLogin(result.accessToken, payload));
+        }
+    };
 
     const handleChange = async () => {
-        // const ret = await hasAccount(form.getFieldsValue(["email"]));
-        // setAddRule(ret["data"].result);
+        const ret = await hasAccount(form.getFieldsValue(["email"]));
+        setAddRule(ret["data"].result);
     };
 
     const handleKeyUp = (e) => {
@@ -79,6 +96,21 @@ const SignIn: React.FC = (props: any) => {
         }
     };
 
+    const getLoginPayload = (): any => {
+        let payload = {};
+        if (authTypeState?.auth_type) {
+            payload = {
+                authenticate_type: 2,
+                plan_id: authTypeState.plan_id,
+            };
+        } else {
+            payload = {
+                authenticate_type: 1,
+            };
+        }
+
+        return payload;
+    };
 
     return (
         <>
@@ -107,48 +139,69 @@ const SignIn: React.FC = (props: any) => {
                         requiredMark={false}
                     >
                         <Form.Item aria-hidden="true">
-                            <button
-                                onClick={() => signIn('google')}
-                                className="w-full bg-white px-6 py-4 rounded-xl shadow-[0px_4px_32px_rgba(24,54,98,0.04)] flex items-center justify-between hover:bg-[#fbfcfd]"
-                                type="button"
-                            >
-                                <div className="flex items-center">
-                                    <Image
-                                        src="/assets/images/ico-google.svg"
-                                        alt="ico-google"
-                                    />
-                                    <span className="text-base text-[#001F55] font-Lato pl-6">
-                                        Continue with Google
-                                    </span>
-                                </div>
-                                <Image
-                                    src="/assets/images/arrow-right-circle-orange.svg"
-                                    width="24"
-                                    alt="ico-arrow-right"
-                                />
-                            </button>
+                            <GoogleLogin
+                                clientId={
+                                    process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string
+                                }
+                                buttonText="LOGIN WITH GOOGLE"
+                                onSuccess={(e) => handleGoogleLogin(e)}
+                                cookiePolicy={"single_host_origin"}
+                                className={"w-100 gg-btn"}
+                                render={(renderProps) => (
+                                    <button
+                                        onClick={renderProps.onClick}
+                                        className="w-full bg-white px-6 py-4 rounded-xl shadow-[0px_4px_32px_rgba(24,54,98,0.04)] flex items-center justify-between hover:bg-[#fbfcfd]"
+                                        type="button"
+                                    >
+                                        <div className="flex items-center">
+                                            <Image
+                                                src="assets/images/ico-google.svg"
+                                                alt="ico-google"
+                                            />
+                                            <span className="text-base text-[#001F55] font-Lato pl-6">
+                                                Continue with Google
+                                            </span>
+                                        </div>
+                                        <Image
+                                            src="assets/images/arrow-right-circle-orange.svg"
+                                            width="24"
+                                            alt="ico-arrow-right"
+                                        />
+                                    </button>
+                                )}
+                            />
                         </Form.Item>
                         <Form.Item aria-hidden="true">
-                            <button
-                                onClick={() => signIn('facebook')}
-                                className="w-full bg-white px-6 py-4 rounded-xl shadow-[0px_4px_32px_rgba(24,54,98,0.04)] flex items-center justify-between hover:bg-[#fbfcfd]"
-                                type="button"
-                            >
-                                <div className="flex items-center">
+                            <FacebookLogin
+                                appId={
+                                    process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID as string
+                                }
+                                fields="name,email,picture"
+                                callback={(e) => handleFacebookLogin(e)}
+                                onFailure={(e) => {
+                                    console.log(e);
+                                }}
+                                size={"small"}
+                                buttonStyle={{
+                                    width: "100%",
+                                    textAlign: "left",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    backgroundColor: "white",
+                                    boxShadow:
+                                        "0px 4px 32px rgba(24, 54, 98, 0.04)",
+                                    border: 0,
+                                    borderRadius: 12,
+                                }}
+                                textButton={"Continue with Facebook"}
+                                icon={
                                     <Image
-                                        src="/assets/images/ico-facebook.svg"
+                                        src="assets/images/ico-facebook.svg"
                                         alt="ico-facebook"
                                     />
-                                    <span className="text-base text-[#001F55] font-Lato pl-6">
-                                        Continue with Facebook
-                                    </span>
-                                </div>
-                                <Image
-                                    src="/assets/images/arrow-right-circle-orange.svg"
-                                    width="24"
-                                    alt="ico-arrow-right"
-                                />
-                            </button>
+                                }
+                                cssClass="auth-facebook"
+                            />
                         </Form.Item>
 
                         <Divider plain className="auth-divider">

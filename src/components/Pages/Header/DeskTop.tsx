@@ -104,11 +104,10 @@ const DeskTop: React.FC<HeaderProps> = ({
                     />
                 ) : (
                     <OutlineButtonLink
-                        href="/auth/signin"
+                        href="/signin"
                         btnText="Login"
                         icon={<span>&#183;&#183;</span>}
                         blue={isBlueVersion}
-                        as={"/signin"}
                     />
                 )}
             </div>

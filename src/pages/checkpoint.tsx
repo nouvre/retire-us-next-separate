@@ -47,6 +47,7 @@ const Questionnare: React.FC = () => {
     );
     const token = useSelector((state: ApplicationState) => state.auth.token);
     const user = useSelector((state: ApplicationState) => state.auth.user);
+    const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
     const questionStep6Answers =
         questionAnswers[questionOrder[step6OrderIndex]].answers;
 
@@ -62,8 +63,9 @@ const Questionnare: React.FC = () => {
                 );
             else dispatch(getQuestionnare());
         } else {
-            const iUserId = localStorage.getItem("intro_user_id");
-            if (!iUserId) router.push("/intro");
+            console.log(intro_user)
+            // const iUserId = localStorage.getItem("intro_user_id");
+            if (intro_user) router.push("/intro");
         }
     }, [token]);
 

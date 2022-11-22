@@ -176,7 +176,7 @@ const SignUp: React.FC = (props: any) => {
                             <span>Already have account?</span>
                             <Link
                                 className="text-[#001F55] font-bold rounded-full px-6 py-4 hover:bg-[#e3e7ef]"
-                                href="auth/signin"
+                                href="/signin"
                             >
                                 Login&nbsp;&nbsp;&#183;&#183;
                             </Link>

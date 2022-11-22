@@ -24,7 +24,6 @@ export const OutlineButtonLink = ({
     params,
     as,
 }: OutlineButtonLinkProps) => {
-    console.log(href)
     return (
         <Link
             href={{ pathname: href, query: { ...params } }}

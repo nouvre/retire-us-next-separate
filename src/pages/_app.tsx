@@ -1,10 +1,15 @@
 import '../../styles/app.scss'
+import "react-notifications-component/dist/theme.css";
 
 import { Provider } from 'react-redux'
 import { useStore } from '@/store/index'
 import { persistStore } from "redux-persist";
+// import { PersistGate } from 'redux-persist/integration/react';
 import StripeElements from "@/containers/StripeElements";
-import { SessionProvider } from "next-auth/react"
+// import { SessionProvider } from "next-auth/react"
+import { ReactNotifications } from "react-notifications-component";
+
+// const PersistGateServer = (props) => props.children
 
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
@@ -14,15 +19,14 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
   });
 
   return (
-    <SessionProvider session={session}>
-      <StripeElements>
-        <Provider store={store}>
-          {/* <PersistGate loading={<div>loading...</div>} persistor={persistor}> */}
-          <Component {...pageProps} />
-          {/* </PersistGate> */}
-        </Provider>
-      </StripeElements>
-    </SessionProvider>
+    <StripeElements>
+      <Provider store={store}>
+        {/* <SessionProvider session={session}> */}
+        <ReactNotifications />
+        <Component {...pageProps} />
+        {/* </SessionProvider> */}
+      </Provider>
+    </StripeElements>
   )
 }
 
