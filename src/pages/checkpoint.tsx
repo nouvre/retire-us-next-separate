@@ -52,6 +52,7 @@ const Questionnare: React.FC = () => {
         questionAnswers[questionOrder[step6OrderIndex]].answers;
 
     const dispatch = useDispatch();
+    console.log(user)
 
     useEffect(() => {
         if (token) {

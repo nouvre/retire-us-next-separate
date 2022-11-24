@@ -33,7 +33,7 @@ const Header: React.FC = (props: any) => {
       <Menu.Item>
         <Link
           href={{
-            pathname: `/users`,
+            pathname: `/admin/users`,
             query: { user_type: 'registered' },
           }}
           className="no-underline"
@@ -55,7 +55,7 @@ const Header: React.FC = (props: any) => {
       <Menu.Item>
         <Link
           href={{
-            pathname: `/users`,
+            pathname: `/admin/users`,
             query: { user_type: 'intro' },
           }}
           className="no-underline"
@@ -78,10 +78,10 @@ const Header: React.FC = (props: any) => {
     >
       <div className="w-full max-w-[1448px] px-6 py-4 h-[86px] flex justify-between items-center m-auto box-border">
         <Link href={'/'}>
-          <Image src="../assets/images/logo-blue.svg" alt="Logo Blue" />
+          <Image src="/assets/images/logo-blue.svg" alt="Logo Blue" />
         </Link>
         <div className="h-10 flex items-center text-sm md:text-base lg:text-lg text-[#001F55] gap-10">
-          <Link href={`/dashboard`} className="no-underline">
+          <Link href={`/admin/dashboard`} className="no-underline">
             Dashboard
           </Link>
           <Dropdown overlay={userMenu}>
@@ -92,10 +92,10 @@ const Header: React.FC = (props: any) => {
               Users <ChevronDown />
             </a>
           </Dropdown>
-          <Link href={`/stripe`} className="no-underline">
+          <Link href={`/admin/stripe`} className="no-underline">
             Plan settings
           </Link>
-          <Link href={`/data-collection`} className="no-underline">
+          <Link href={`/admin/data-collection`} className="no-underline">
             Data Collection
           </Link>
         </div>

@@ -22,7 +22,7 @@ const SignUp: React.FC = (props: any) => {
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/])[A-Za-z\d@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/]{8,}$/g;
 
     useEffect(() => {
-        if (token) dispatch(gotoProfileStep());
+        if (token) { dispatch(gotoProfileStep()); router.push('/checkpoint') }
     }, [token]);
 
     const dispatch = useDispatch();

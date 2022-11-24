@@ -92,7 +92,7 @@ const IdInfo: React.FC = (props: any) => {
                             >
                                 <div className="flex items-center gap-4" >
                                     <Image
-                                        src="../assets/images/document.svg"
+                                        src="/assets/images/document.svg"
                                         alt="document"
                                     />
                                     <span
@@ -112,7 +112,7 @@ const IdInfo: React.FC = (props: any) => {
                             >
                                 <div className="flex items-center gap-4" >
                                     <Image
-                                        src="../assets/images/document.svg"
+                                        src="/assets/images/document.svg"
                                         alt="document"
                                     />
                                     <span
@@ -132,7 +132,7 @@ const IdInfo: React.FC = (props: any) => {
                             >
                                 <div className="flex items-center gap-4" >
                                     <Image
-                                        src="../assets/images/document.svg"
+                                        src="/assets/images/document.svg"
                                         alt="document"
                                     />
                                     <span
@@ -159,7 +159,7 @@ const IdInfo: React.FC = (props: any) => {
                                 }}
                             >
                                 <Image
-                                    src="../assets/images/ico-close.svg"
+                                    src="/assets/images/ico-close.svg"
                                     className="w-full"
                                     alt="ico-close"
                                 />

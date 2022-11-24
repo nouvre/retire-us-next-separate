@@ -46,11 +46,11 @@ const Header: React.FC<ComponentProps> = ({
     }, []);
 
     const gotoDashboard = () => {
-        // if (user?.role == "admin") {
-        //     router.push("/dashboard");
-        // } else {
-        //     dispatch(gotoProfileStep());
-        // }
+        if (user?.role == "admin") {
+            router.push("/admin/dashboard");
+        } else {
+            dispatch(gotoProfileStep());
+        }
     };
 
     return (

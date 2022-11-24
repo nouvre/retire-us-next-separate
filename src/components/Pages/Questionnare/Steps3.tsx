@@ -172,6 +172,7 @@ const Steps3: React.FC<ComponentProps> = (props) => {
                             <Image
                                 src="/assets/images/arrow-left-circle-orange-lg.svg"
                                 className=""
+                                alt="arrow_img"
                             />
                         </div>
                         <div
@@ -181,6 +182,7 @@ const Steps3: React.FC<ComponentProps> = (props) => {
                             <Image
                                 src="/assets/images/arrow-right-circle-orange-lg.svg"
                                 className=""
+                                alt="arrow_img"
                             />
                         </div>
                     </div>

@@ -46,6 +46,7 @@ const OptionButton: React.FC<OptionButtonProps> = ({
             <Image
                 src="/assets/images/arrow-right-circle-orange.svg"
                 className="ml-auto w-[24px] md:w-[32px]"
+                alt="option_button"
             />
         </div>
     );

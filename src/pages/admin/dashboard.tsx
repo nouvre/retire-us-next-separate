@@ -1,4 +1,4 @@
-import React, { useEffect, useState, PureComponent } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Link from 'next/link'
 import { getAnalyticData } from '@/store/setting/action'
@@ -7,7 +7,6 @@ import {
   LineChart,
   BarChart,
   Bar,
-  Cell,
   Line,
   XAxis,
   YAxis,
@@ -23,6 +22,7 @@ import AdminLayout from '@/layouts/AdminLayout'
 moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0')
 
 const Dashboard: React.FC = () => {
+  console.log('erer')
   const dispatch = useDispatch()
   const [data, setData] = useState<Array<any> | null>(null)
   const [planData, setPlanData] = useState<Array<any> | null>(null)
@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
   )
 
   useEffect(() => {
-    dispatch(getAnalyticData())
+      dispatch(getAnalyticData())
   }, [])
 
   useEffect(() => {

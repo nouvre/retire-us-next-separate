@@ -52,7 +52,7 @@ const SignIn: React.FC = (props: any) => {
 
     useEffect(() => {
         if (user) {
-            if (user.role === "admin") props.history.push("/dashboard");
+            if (user.role === "admin") router.push("/admin/dashboard");
             else {
                 router.push(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step]);
                 // dispatch(gotoProfileStep());
@@ -227,8 +227,7 @@ const SignIn: React.FC = (props: any) => {
                         <div className="relative">
                             <Link
                                 className="absolute top-0 right-0 text-[14px] md:text-[16px] text-[#001F55]"
-                                href="/auth/forgot-password"
-                                as="/forgot-password"
+                                href="/forgot-password"
                             >
                                 Forgot Password?
                             </Link>
@@ -285,8 +284,7 @@ const SignIn: React.FC = (props: any) => {
                             <span>Don't have an account?</span>
                             <Link
                                 className="text-[#001F55] font-bold rounded-full px-6 py-4 hover:bg-[#e3e7ef]"
-                                href="/auth/signup"
-                                as="/signup"
+                                href="/signup"
                             >
                                 Sign Up&nbsp;&nbsp;&#183;&#183;
                             </Link>

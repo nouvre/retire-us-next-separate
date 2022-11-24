@@ -140,6 +140,7 @@ const Princing: React.FC = (props: any) => {
     }, []);
 
     useEffect(() => {
+        console.log(selectedPlan)
         if (!selectedPlan) {
             if (current_plan) {
                 router.push("/");

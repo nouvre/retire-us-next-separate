@@ -42,7 +42,7 @@ const IconButton: React.FC<IconButtonProps> = ({
                 clickHandler();
             }}
         >
-            <Image src={`assets/images/${icon}`} className="" />
+            <Image src={`assets/images/${icon}`} className="" alt="icon_button" />
             <div className="text-[16px] md:text-[20px] text-[#000714] text-center md:mt-[30px]">
                 {buttonText}
             </div>

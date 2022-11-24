@@ -89,7 +89,7 @@ const RegisteredUser: React.FC = () => {
             dataIndex: "",
             render: (text: string, row: User) => (
                 <div className="w-full h-full flex justify-evenly items-center">
-                    <Link href={`user/${row.id}`}>
+                    <Link href={`users/${row.id}`}>
                         <button className="w-8 h-8 rounded-full bg-[#87cf68] text-white text-lg flex justify-center items-center">
                             <AccountIcon />
                         </button>

@@ -30,13 +30,13 @@ const DeskTop: React.FC<HeaderProps> = ({
     const user = useSelector((state: ApplicationState) => state.auth.user);
     const isBlueVersion = !opacity || (scroll > 60 && blueOnScroll);
 
-    // const gotoDashboard = () => {
-    //     if (user?.role == "admin") {
-    //         // router("/dashboard");
-    //     } else {
-    //         dispatch(gotoProfileStep());
-    //     }
-    // };
+    const gotoDashboard = () => {
+        if (user?.role == "admin") {
+            router.push("/admin/dashboard");
+        } else {
+            dispatch(gotoProfileStep());
+        }
+    };
 
     return (
         <div
@@ -67,9 +67,8 @@ const DeskTop: React.FC<HeaderProps> = ({
                     <Link
                         key={`navigation_${index}`}
                         href={item.link}
-                        className={`no-underline ${
-                            isBlueVersion ? "" : "hover:text-[#001F55]"
-                        }`}
+                        className={`no-underline ${isBlueVersion ? "" : "hover:text-[#001F55]"
+                            }`}
                     >
                         {item.text}
                     </Link>
@@ -77,10 +76,10 @@ const DeskTop: React.FC<HeaderProps> = ({
                 {
                     token && (
                         <div
-                            // /*to="/dashboard"*/ onClick={() => gotoDashboard()}
-                            className={`no-underline cursor-pointer ${
-                                isBlueVersion ? "" : "hover:text-[#001F55]"
-                            }`}
+                            /*to="/dashboard"*/
+                            className={`no-underline cursor-pointer ${isBlueVersion ? "" : "hover:text-[#001F55]"
+                                }`}
+                            onClick={() => gotoDashboard()}
                         >
                             Dashboard
                         </div>

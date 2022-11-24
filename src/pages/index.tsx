@@ -135,7 +135,7 @@ const Home: React.FC<ComponentProps> = ({ homepage }) => {
                       <a
                         href={item.cta.link}
                         target={'_blank'}
-                        className="flex align-center justify-center text-[#001F55] text-[18px] leading-[30px] font-bold"
+                        className="flex align-center justify-center text-[#001F55] text-[18px] leading-[30px] font-bold" rel="noreferrer"
                       >
                         {item.cta.text}&nbsp;&nbsp;
                         <Image

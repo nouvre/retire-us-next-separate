@@ -48,11 +48,13 @@ const CheckboxButton: React.FC<CheckboxButtonProps> = ({
                     <Image
                         src="/assets/images/ico-checkbox-selected.svg"
                         className="w-full"
+                        alt="check_button"
                     />
                 ) : (
                     <Image
                         src="/assets/images/ico-checkbox.svg"
                         className="w-full"
+                        alt="check_button"
                     />
                 )}
             </div>

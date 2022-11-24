@@ -8,6 +8,7 @@ import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import logger from "redux-logger";
 
 import { authReducer } from "./auth/reducer";
 import { planReducer } from "./plan/reducer";
@@ -30,7 +31,8 @@ import { auth as authMiddleware } from "./auth/middleware";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "plans", "questions"],
+  whitelist: ["auth", "plans", "questions", "settings"],
+  timeout: null,
 };
 
 let store: any;
@@ -49,7 +51,9 @@ function initStore(initialState: any) {
   return createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(thunkMiddleware, authMiddleware))
+    composeWithDevTools(
+      applyMiddleware(thunkMiddleware, authMiddleware, logger)
+    )
   );
 }
 

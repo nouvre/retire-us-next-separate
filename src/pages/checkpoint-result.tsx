@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "@/store/index";
 import { getQuestionnare } from "@/store/questions/action";
 import Header from "@/components/Pages/Header";
-import CheckPointResults from "@/pages/checkpoint-result";
+import CheckPointResults from "@/components/Questionnare/CheckPointResults";
 import { Answer } from "@/store/questions/types";
 import { questionOrder } from "@/constants/variables";
 import { useQuestionnaire } from "@/util/func";

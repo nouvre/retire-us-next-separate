@@ -6,6 +6,7 @@ import { ApplicationState } from "../index";
 import { Toast } from "@/components/common/notification";
 import axios from "../../util/api";
 import { CommonActionTypes } from "../common/types";
+import { PURGE } from "redux-persist";
 
 export type AppThunk = ActionCreator<
   ThunkAction<void, ApplicationState, null, Action<string>>
@@ -70,10 +71,10 @@ export const register = (userInfo: RegisterData) => {
   return async (dispatch: Dispatch) => {
     return await axios
       .post("auth/register", userInfo)
-      .then(() => {
+      .then((data) => {
         return dispatch({
           type: AuthActionTypes.REGISTER,
-          payload: true,
+          payload: data,
         });
       })
       .catch((e) => {
@@ -128,7 +129,12 @@ export const signOut: AppThunk = () => {
       .post("auth/logout")
       .then(({ data }) => {
         return dispatch({
-          type: AuthActionTypes.LOGOUT,
+          type: PURGE,
+          key: "root",
+          result: () => {
+            location.href = "/signin";
+            return null;
+          },
         });
       })
       .catch((e) => {
