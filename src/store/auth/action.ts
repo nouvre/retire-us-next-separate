@@ -71,10 +71,10 @@ export const register = (userInfo: RegisterData) => {
   return async (dispatch: Dispatch) => {
     return await axios
       .post("auth/register", userInfo)
-      .then((data) => {
+      .then((e) => {
         return dispatch({
           type: AuthActionTypes.REGISTER,
-          payload: data,
+          payload: e.data,
         });
       })
       .catch((e) => {

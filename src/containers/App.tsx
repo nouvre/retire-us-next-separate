@@ -33,7 +33,7 @@ const PageLoader = () => (
 const Home = lazy(() => import('@/pages/Home'))
 const OurServices = lazy(() => import('@/pages/OurServices'))
 const AboutUs = lazy(() => import('@/pages/AboutUs'))
-const Blog = lazy(() => import('@/pages/Blog'))
+const Blog = lazy(() => import('@/pages/blog'))
 const Post = lazy(() => import('@/pages/Post'))
 const Intro = lazy(() => import('@/pages/Intro'))
 const Pricing = lazy(() => import('@/pages/Pricing'))

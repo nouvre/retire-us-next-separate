@@ -92,7 +92,7 @@ const NextRoute = ({ router, persistor, children }) => {
 	// 	console.log(persistor.getState())
 	// }, [bootstrapped]);
 	console.log("u===============>", user)
-	return user ? children : children;
+	return children;
 };
 
 export default NextRoute;
