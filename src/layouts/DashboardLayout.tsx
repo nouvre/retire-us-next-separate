@@ -5,7 +5,11 @@ import MobileSidebar from '@/components/Pages/Dashboard/Sidebar/MobileSidebar'
 import { useDispatch } from 'react-redux'
 import { getUserDataCollection } from '../store/auth/action'
 
-const DashboardLayout: React.FC = (props: any) => {
+interface ComponentProps {
+  children: React.ReactNode
+}
+
+const DashboardLayout: React.FC<ComponentProps> = (props: any) => {
   const dispatch = useDispatch()
 
   useEffect(() => {

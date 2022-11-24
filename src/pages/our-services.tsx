@@ -16,7 +16,7 @@ import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 
-const OurServices: React.FC = ({ ourServices }) => {
+const OurServices: React.FC = ({ ourServices }: any) => {
 	const [topLabel, setTopLabel] = useState<any>(null);
 
 	useEffect(() => {

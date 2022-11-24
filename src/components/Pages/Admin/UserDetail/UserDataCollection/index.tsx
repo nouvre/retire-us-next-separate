@@ -1,23 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { get_file } from "../../../..//util/s3getfile";
-import { ApplicationState } from "@/store/index";
+import { get_file } from "@/util/s3getfile";
 
 const UserDataCollection: React.FC = () => {
-    // const documents = useSelector(
-    //     (state: ApplicationState) =>
-    //         state.settings.selectedUser?.userCollectionData
-    // );
+	// const documents = useSelector(
+	//     (state: ApplicationState) =>
+	//         state.settings.selectedUser?.userCollectionData
+	// );
 
-    const downloadOrPreview = async (url) => {
-        let dataUrl = await get_file(url);
-        document.getElementById("download_btn")?.setAttribute("href", dataUrl);
-        document.getElementById("download_btn")?.click();
-    };
+	const downloadOrPreview = async (url) => {
+		let dataUrl = await get_file(url);
+		document.getElementById("download_btn")?.setAttribute("href", dataUrl);
+		document.getElementById("download_btn")?.click();
+	};
 
-    return (
-        <div className="w-full h-full overflow-y-scroll">
-            {/* {documents &&
+	return (
+		<div className="w-full h-full overflow-y-scroll">
+			{/* {documents &&
                 documents.map((document, index) => (
                     <div
                         className={`w-full py-3 px-2 my-3 border rounded-md ${
@@ -43,9 +41,9 @@ const UserDataCollection: React.FC = () => {
                         </div>
                     </div>
                 ))} */}
-            <a href="" target="_blank" id="download_btn" className="hidden"></a>
-        </div>
-    );
+			{/* <a href="#" target="_blank" id="download_btn" className="hidden"></a> */}
+		</div>
+	);
 };
 
 export default UserDataCollection;

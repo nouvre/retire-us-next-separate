@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from "react-number-format";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import InputMask from "react-input-mask";
@@ -183,11 +183,11 @@ const RollOver: React.FC = () => {
             beneficiaries.map((e) => {
                 let isEmpty = true;
                 Object.keys(e).map((key) => {
-                    if(e[key] != "") {
+                    if (e[key] != "") {
                         isEmpty = false;
                     }
                 })
-                if(!isEmpty) {
+                if (!isEmpty) {
                     tempBeneficiaries.push(e);
                 }
             })
@@ -596,7 +596,7 @@ const RollOver: React.FC = () => {
                             >
                                 Net Worth
                             </label>
-                            <NumberFormat
+                            <NumericFormat
                                 thousandSeparator={true}
                                 prefix="$"
                                 placeholder="$0.00"
@@ -619,7 +619,7 @@ const RollOver: React.FC = () => {
                             >
                                 Liquid Net Worth
                             </label>
-                            <NumberFormat
+                            <NumericFormat
                                 thousandSeparator={true}
                                 prefix="$"
                                 id="liquidNetWorth"
@@ -646,7 +646,7 @@ const RollOver: React.FC = () => {
                             >
                                 Estimated Annual Income
                             </label>
-                            <NumberFormat
+                            <NumericFormat
                                 thousandSeparator={true}
                                 prefix="$"
                                 placeholder="$0.00"
@@ -674,7 +674,7 @@ const RollOver: React.FC = () => {
                             >
                                 Federal Tax Bracket
                             </label>
-                            <NumberFormat
+                            <NumericFormat
                                 thousandSeparator={true}
                                 suffix="%"
                                 placeholder="0%"
@@ -728,7 +728,7 @@ const RollOver: React.FC = () => {
                         >
                             Total Investment Assets
                         </label>
-                        <NumberFormat
+                        <NumericFormat
                             thousandSeparator={true}
                             className="w-full rounded-sm h-10 border border-solid border-[#b3bdc1] bg-[#87c4eb1c] outline-none px-2"
                             {...formik.getFieldProps("totalInvestmentAssets")}

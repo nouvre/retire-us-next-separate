@@ -6,12 +6,12 @@ import {
     GoogleLoginResponseOffline,
 } from "react-google-login";
 import FacebookLogin from "react-facebook-login";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { gotoProfileStep } from "@/store/auth/action";
 import { login, googleLogin, facebookLogin } from "@/store/auth/action";
-import { ApplicationState } from "@/store";
+import { ApplicationState } from "@/store/index";
 import Header from "../Header";
 import { Helmet } from "react-helmet";
 import Image from '@/components/common/Image';
@@ -41,9 +41,7 @@ const SingleSignOn: React.FC = () => {
         (state: ApplicationState) => state.auth.intro_user
     );
 
-    const location = useLocation();
-    const authTypeState: locationStateProps =
-        location.state as locationStateProps;
+    const authTypeState = router.query
 
     useEffect(() => {
         if (user) {

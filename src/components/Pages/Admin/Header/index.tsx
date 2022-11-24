@@ -85,12 +85,12 @@ const Header: React.FC = (props: any) => {
             Dashboard
           </Link>
           <Dropdown overlay={userMenu}>
-            <a
+            <div
               className="ant-dropdown-link flex items-center gap-2"
-              onClick={(e) => e.preventDefault()}
+              // onClick={(e) => e.preventDefault()}
             >
               Users <ChevronDown />
-            </a>
+            </div>
           </Dropdown>
           <Link href={`/admin/stripe`} className="no-underline">
             Plan settings

@@ -233,7 +233,7 @@ const MobileSidebar: React.FC = (props: any) => {
                     </div>
                 </div>
 
-                <Image src="/assets/images/bg-retire-leaf.svg" className="w-full absolute left-0 bottom-0 z-[-1]" />
+                <Image src="/assets/images/bg-retire-leaf.svg" className="w-full absolute left-0 bottom-0 z-[-1]" alt="leaf"/>
             </div>
         </div>
     );

@@ -61,12 +61,12 @@ const SideBar: React.FC = (props: any) => {
                     />
                 </Link>
                 <div className="w-full flex flex-col gap-2">
-                    <NavItem href={`dashboard`} icon="dashboard-icon">
+                    <NavItem to={`dashboard`} icon="dashboard-icon">
                         <span className="text-lg text-[#FFFFFF] hidden lg:block">
                             Dashboard
                         </span>
                     </NavItem>                    
-                    <NavItem href={`documents`} icon="document-icon">
+                    <NavItem to={`documents`} icon="document-icon">
                         <div className="hidden lg:flex items-center gap-2">
                             <span className="text-lg text-[#FFFFFF]">
                                 Documents
@@ -78,14 +78,14 @@ const SideBar: React.FC = (props: any) => {
                             )}
                         </div>
                     </NavItem>
-                    <NavItem href={`support`} icon="wrench-icon">
+                    <NavItem to={`support`} icon="wrench-icon">
                         <span className="text-lg text-[#FFFFFF] hidden lg:block">
                             Support
                         </span>
                     </NavItem>
 
                     {/* <Link href={`contact-us`} className={`w-full flex items-center justify-center lg:justify-start p-[10px] lg:px-5 lg:py-4 gap-3 rounded-xl ${router.pathname === '/contact-us' ? 'bg-white bg-opacity-20' : ''} `}>
-                        <Image src={'assets/images/dashboard-icon.svg'} alt="Dashboard Icon" className="w-5 h-5" />
+                        <Image src={'/assets/images/dashboard-icon.svg'} alt="Dashboard Icon" className="w-5 h-5" />
                         <span className="text-lg text-[#FFFFFF] hidden lg:block">Contact Us</span>
                     </Link> */}
                     {/* <Link

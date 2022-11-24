@@ -8,7 +8,7 @@ import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 
-const GetStarted: React.FC = ({ getStarted }) => {
+const GetStarted: React.FC = ({ getStarted }: any) => {
     const [topLabel, setTopLabel] = useState<any>(null);
 
     useEffect(() => {

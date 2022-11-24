@@ -26,7 +26,7 @@ const TopLabel = ({ text, cta, background, handleClose }) => {
                 onClick={handleClose}
             >
                 <Image
-                    src="assets/images/close.svg"
+                    src="/assets/images/close.svg"
                     className="w-[24px]"
                     alt="Close"
                 />

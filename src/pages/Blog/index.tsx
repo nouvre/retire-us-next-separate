@@ -12,7 +12,7 @@ import { fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 
-const Blog: React.FC = ({ content }) => {
+const Blog: React.FC = ({ content }: any) => {
 	const hero = content.blog.hero;
 	const [allPosts, setAllPosts] = useState<Post[] | null>(content.posts);
 	const [loading, setLoading] = useState<boolean>(true);

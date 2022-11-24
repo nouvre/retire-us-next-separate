@@ -1,12 +1,9 @@
 import { Reducer } from "redux";
+import { QuestionState, Answer, QuestionActionTypes } from "./types";
 
-import { QuestionState, QuestionActionTypes } from "./types";
-
-const step = 0;
-const answers = {};
 const initialState: QuestionState = {
-  answers: answers,
-  step: step,
+  answers: {} as Answer,
+  step: 0,
 };
 
 const reducer: Reducer<QuestionState> = (state = initialState, action) => {

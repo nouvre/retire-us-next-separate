@@ -25,7 +25,7 @@ const Mobile: React.FC<HeaderProps> = ({
                 {!isBlueVersion ? (
                     <Image
                         className="w-[138px]"
-                        src="assets/images/logo-white.svg"
+                        src="/assets/images/logo-white.svg"
                         alt="Logo White"
                     />
                 ) : (

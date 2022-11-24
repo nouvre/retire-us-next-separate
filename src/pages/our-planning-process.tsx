@@ -12,7 +12,7 @@ import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 
-const PlanningProcess: React.FC = ({ planning }) => {
+const PlanningProcess: React.FC = ({ planning }: any) => {
 	const [topLabel, setTopLabel] = useState<any>(null);
 
 	useEffect(() => {

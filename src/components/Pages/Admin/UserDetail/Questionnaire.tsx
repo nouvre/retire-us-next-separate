@@ -224,11 +224,11 @@ const Questionnaire: React.FC = () => {
             .tz("America/New_York")
             .format("MM-DD-YYYY");
         const checkpointDate = moment
-                .utc(selectedUser?.answers[selectedUser.answers.length - 1].updated_at)
-                .tz("America/New_York")
-                .format("MM-DD-YYYY");
+            .utc(selectedUser?.answers[selectedUser.answers.length - 1].updated_at)
+            .tz("America/New_York")
+            .format("MM-DD-YYYY");
 
-        let aData = new Array();
+        let aData: any = [];
         aData.push({ title: "name", answer: selectedUser?.name });
         aData.push({ title: "email", answer: selectedUser?.email });
         aData.push({ title: "phone number", answer: selectedUser?.phone_number });

@@ -6,7 +6,7 @@ import {
 } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { persistReducer } from "redux-persist";
+import { persistReducer, PersistState } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
 
@@ -28,7 +28,7 @@ import { CommonState } from "./common/types";
 //middleware
 import { auth as authMiddleware } from "./auth/middleware";
 
-const persistConfig = {
+const persistConfig: any = {
   key: "root",
   storage,
   whitelist: ["auth", "plans", "questions", "settings"],
@@ -92,4 +92,5 @@ export interface ApplicationState {
   bank_yodlee: YodleeState;
   settings: SettingState;
   common: CommonState;
+  _persist: PersistState;
 }

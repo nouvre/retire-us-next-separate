@@ -116,7 +116,7 @@ const planningColumns = [
 ];
 
 interface ComponentProps {
-    userId: string;
+    userId: string | string[] | undefined;
 }
 
 const Planning: React.FC<ComponentProps> = ({ userId }) => {

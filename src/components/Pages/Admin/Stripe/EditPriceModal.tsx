@@ -5,8 +5,8 @@ import Plus from "@2fd/ant-design-icons/lib/Plus";
 import Minus from "@2fd/ant-design-icons/lib/Minus";
 import { Toast } from "@/components/common/notification";
 import { Plan, Plan_feature, UpdatePriceData } from "@/store/plan/types";
-import { Icon } from ".";
 import Image from '@/components/common/Image';
+import { Icon } from "@/pages/admin/stripe";
 
 interface ComponentProps {
     visible: boolean;

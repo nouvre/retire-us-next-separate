@@ -19,7 +19,7 @@ import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 import { useRouter } from "next/router";
 
-const Pricing: React.FC = ({ pricing }) => {
+const Pricing: React.FC = ({ pricing }: any) => {
 	const [topLabel, setTopLabel] = useState<any>(null);
 
 	useEffect(() => {

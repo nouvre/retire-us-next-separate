@@ -1,7 +1,7 @@
 import { AuthActionTypes } from "./types";
 import { SettingActionTypes } from "../setting/types";
 import { ThunkAction } from "redux-thunk";
-import { ActionCreator, Action, Dispatch } from "redux";
+import { ActionCreator, Action, Dispatch, AnyAction } from "redux";
 import { ApplicationState } from "../index";
 import { Toast } from "@/components/common/notification";
 import axios from "../../util/api";
@@ -9,7 +9,7 @@ import { CommonActionTypes } from "../common/types";
 import { PURGE } from "redux-persist";
 
 export type AppThunk = ActionCreator<
-  ThunkAction<void, ApplicationState, null, Action<string>>
+  ThunkAction<void, ApplicationState, unknown, AnyAction>
 >;
 
 interface RegisterData {
@@ -67,7 +67,7 @@ export const hasAccount = async (email: string) => {
   }
 };
 
-export const register = (userInfo: RegisterData) => {
+export const register: AppThunk = (userInfo: RegisterData) => {
   return async (dispatch: Dispatch) => {
     return await axios
       .post("auth/register", userInfo)
@@ -755,7 +755,7 @@ export const enrollMeet: AppThunk = () => {
       });
   };
 };
-export const whealthConciergeMeet = () => {
+export const whealthConciergeMeet: AppThunk = () => {
   return async (dispatch: Dispatch) => {
     return await axios
       .post("auth/whealthconcierge-meet")

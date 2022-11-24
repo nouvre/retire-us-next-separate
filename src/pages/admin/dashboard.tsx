@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
   )
 
   useEffect(() => {
-      dispatch(getAnalyticData())
+    dispatch(getAnalyticData())
   }, [])
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Dashboard: React.FC = () => {
     let tempData: Array<any> = []
 
     for (let i = 0; i < userCountPerWeek.length; i++) {
-      let name: string = ''
+      let name = ''
       switch (i) {
         case 0:
           name = 'This week'
@@ -79,7 +79,7 @@ const Dashboard: React.FC = () => {
     let tempData: Array<any> = []
 
     for (let i = 0; i < subscriberCountPerPlan.length; i++) {
-      let name: string = ''
+      let name = ''
       switch (i) {
         case 0:
           name = 'Resilient Retirement'
@@ -147,7 +147,7 @@ const Dashboard: React.FC = () => {
   function CustomTooltip(props: any) {
     const { active, label, payload } = props
     if (active) {
-      let title: string = ''
+      let title = ''
       switch (label) {
         case 'Resilient Retirement':
           title = 'Resilient Retirement'

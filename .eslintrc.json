@@ -7,6 +7,7 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "react/prop-types": "off",
     "@typescript-eslint/no-var-requires": "off",
@@ -25,8 +26,11 @@
     "react-hooks/exhaustive-deps": "off",
     "no-unsafe-optional-chaining": "off",
     "jsx-a11y/alt-text": "off",
-    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/click-events-have-key-events": "off",
-    "jsx-a11y/media-has-caption": "off"
+    "jsx-a11y/media-has-caption": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/mouse-events-have-key-events": "off"
   }
 }

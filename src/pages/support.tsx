@@ -114,11 +114,11 @@ const Support: React.FC = (props: any) => {
                       className="flex items-center py-[6px] md:py-[10px]"
                       key={ql.title}
                     >
-                      <Image src="/assets/images/ico-document-blue.svg" />
+                      <Image src="/assets/images/ico-document-blue.svg" alt="document"/>
                       <a
                         href={ql.link}
                         className="text-[16px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-br from-[#4D7EF2] to-[#5FD4F4] ml-[16px] border-b-gradient"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         {ql.title}
                       </a>

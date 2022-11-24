@@ -5,7 +5,7 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions = {
+export const authOptions: any = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -37,7 +37,7 @@ export const authOptions = {
             if (error.response.status !== 422) throw error;
 
             // setErrors(error.response.data.errors);
-          });   
+          });
         console.log(user);
         if (user) return user;
         else return null;

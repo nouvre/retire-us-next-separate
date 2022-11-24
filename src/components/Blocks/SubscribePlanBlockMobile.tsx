@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Answer } from "@/store/questions/types";
 import SubscribePlanDisclosure from "./SubscribePlanDisclosure";
-import { planSummaries } from "@/pages/Pricing/contents";
+import { planSummaries } from "@/components/Pages/Pricing/contents";
 
 type RecommendedType = {
     standard: boolean;

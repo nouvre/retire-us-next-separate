@@ -15,7 +15,7 @@ import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 
-const AboutUs: React.FC = ({ aboutUs }) => {
+const AboutUs: React.FC = ({ aboutUs }: any) => {
     // const [aboutUs, setAboutUs] = useState<any>(null);
     const [topLabel, setTopLabel] = useState<any>(null);
 

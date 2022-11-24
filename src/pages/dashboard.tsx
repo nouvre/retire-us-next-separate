@@ -212,7 +212,7 @@ const Main = () => {
                         strokeDashoffset={
                           1444 -
                           (1444 * user.cur_retirement_value) /
-                            user.retirement_goal
+                          user.retirement_goal
                         }
                         style={{
                           transform: 'rotate(-90deg)',
@@ -249,12 +249,11 @@ const Main = () => {
                       />
                     </div>
                     <div
-                      className={`${
-                        goalHover ? 'hidden' : 'flex'
-                      } cursor-pointer absolute top-0 left-0 w-full h-full flex-col gap-4 justify-center items-center bg-[#0950B6] bg-opacity-20 backdrop-blur-xl rounded-[12px] z-10 p-4`}
-                      // onClick={() =>
-                      //     handleCompletePlanningReview()
-                      // }
+                      className={`${goalHover ? 'hidden' : 'flex'
+                        } cursor-pointer absolute top-0 left-0 w-full h-full flex-col gap-4 justify-center items-center bg-[#0950B6] bg-opacity-20 backdrop-blur-xl rounded-[12px] z-10 p-4`}
+                    // onClick={() =>
+                    //     handleCompletePlanningReview()
+                    // }
                     >
                       <Image src="/assets/images/lock-white.svg" alt="lock" />
                       {/* <div className="text-white text-sm md:text-base text-center">
@@ -359,17 +358,17 @@ const Main = () => {
                           onClick={() => handleClick(todo)}
                         >
                           {todo.completed === 'E' ||
-                          (todo.id === 1 &&
-                            (user.profile || user.todos[0].completed == 'E')) ||
-                          (todo.id === 2 &&
-                            (user.profile || user.todos[0].completed == 'E') &&
-                            user.whealth_concierge_meet) ||
-                          (todo.id === 3 &&
-                            (user.profile || user.todos[0].completed == 'E') &&
-                            user.rep_id &&
-                            (user.whealth_concierge_meet ||
-                              user.todos[1].completed === 'E')) ||
-                          (todo.id === 5 && user.id_verified) ? (
+                            (todo.id === 1 &&
+                              (user.profile || user.todos[0].completed == 'E')) ||
+                            (todo.id === 2 &&
+                              (user.profile || user.todos[0].completed == 'E') &&
+                              user.whealth_concierge_meet) ||
+                            (todo.id === 3 &&
+                              (user.profile || user.todos[0].completed == 'E') &&
+                              user.rep_id &&
+                              (user.whealth_concierge_meet ||
+                                user.todos[1].completed === 'E')) ||
+                            (todo.id === 5 && user.id_verified) ? (
                             <input
                               type="checkbox"
                               className="w-4 h-4 form-checkbox bg-[#00BB7A] text-[#00BB7A] rounded-full"
@@ -377,8 +376,7 @@ const Main = () => {
                             />
                           ) : (
                             <div
-                              className={`w-4 h-4 border ${
-                                todo.completed === 'E' ||
+                              className={`w-4 h-4 border ${todo.completed === 'E' ||
                                 todo.id === 1 ||
                                 (todo.id === 2 &&
                                   (user.profile ||
@@ -394,9 +392,9 @@ const Main = () => {
                                 (todo.id === 6 &&
                                   (user.todos[3].completed == 'E' ||
                                     user.advisor_meet))
-                                  ? 'border-[#00BB7A]'
-                                  : 'border-gray-400'
-                              } rounded-full flex items-center justify-center`}
+                                ? 'border-[#00BB7A]'
+                                : 'border-gray-400'
+                                } rounded-full flex items-center justify-center`}
                               style={{
                                 flexBasis: '1rem',
                                 flexGrow: 0,
@@ -405,8 +403,7 @@ const Main = () => {
                             ></div>
                           )}
                           <span
-                            className={`text-[16px] md:text-[18px] ${
-                              todo.completed === 'E' ||
+                            className={`text-[16px] md:text-[18px] ${todo.completed === 'E' ||
                               todo.id === 1 ||
                               (todo.id === 2 &&
                                 (user.profile ||
@@ -422,9 +419,9 @@ const Main = () => {
                               (todo.id === 6 &&
                                 (user.todos[3].completed == 'E' ||
                                   user.advisor_meet))
-                                ? 'text-[#434A59]'
-                                : 'text-gray-400'
-                            }`}
+                              ? 'text-[#434A59]'
+                              : 'text-gray-400'
+                              }`}
                           >
                             {todo.name}
                           </span>
@@ -447,11 +444,10 @@ const Main = () => {
                           }
                         >
                           <input
-                            className={`w-4 h-4 form-checkbox ${
-                              dynamicTodo.ischecked
-                                ? 'text-[#00BB7A]'
-                                : 'border border-gray-400'
-                            } rounded-full`}
+                            className={`w-4 h-4 form-checkbox ${dynamicTodo.ischecked
+                              ? 'text-[#00BB7A]'
+                              : 'border border-gray-400'
+                              } rounded-full`}
                             type="checkbox"
                             checked={dynamicTodo.ischecked}
                           />
@@ -504,7 +500,7 @@ const Main = () => {
                 </div>
                 <div className="col-span-1">
                   <Image
-                    src={user?.rep?.avatar}
+                    src={`${user?.rep?.avatar}`}
                     className="w-full rounded-full border border-[#DDE3F0] max-w-[200px] ml-auto"
                     alt="Planner"
                   />
@@ -517,9 +513,8 @@ const Main = () => {
                   onMouseOut={() => setScheduleHover(true)}
                 >
                   <div
-                    className={`${
-                      scheduleHover ? 'block' : 'hidden'
-                    } w-full h-full bg-[#ffffffcc] rounded-[20px] backdrop-blur-xl flex justify-center items-center `}
+                    className={`${scheduleHover ? 'block' : 'hidden'
+                      } w-full h-full bg-[#ffffffcc] rounded-[20px] backdrop-blur-xl flex justify-center items-center `}
                   >
                     <Image
                       className="w-[88px] h-[88px]"
@@ -528,9 +523,8 @@ const Main = () => {
                     />
                   </div>
                   <div
-                    className={`${
-                      scheduleHover ? 'hidden' : 'block'
-                    } cursor-pointer w-full h-full flex flex-col gap-2 justify-center items-center bg-[#ffffffcc] bg-opacity-20 backdrop-blur-2xl rounded-[12px] relative`}
+                    className={`${scheduleHover ? 'hidden' : 'block'
+                      } cursor-pointer w-full h-full flex flex-col gap-2 justify-center items-center bg-[#ffffffcc] bg-opacity-20 backdrop-blur-2xl rounded-[12px] relative`}
                     onClick={() => router.push('/start-planning')}
                   >
                     <Image
@@ -549,16 +543,15 @@ const Main = () => {
                 </div>
               )}
               {(user?.profile || user?.todos[0].completed == 'E') &&
-              !user.rep ? (
+                !user.rep ? (
                 <div
                   className="w-full h-full absolute top-0"
                   onMouseOver={() => setScheduleHover(false)}
                   onMouseOut={() => setScheduleHover(true)}
                 >
                   <div
-                    className={`${
-                      scheduleHover ? 'block' : 'hidden'
-                    } w-full h-full bg-[#ffffffcc] rounded-[20px] backdrop-blur-xl flex justify-center items-center `}
+                    className={`${scheduleHover ? 'block' : 'hidden'
+                      } w-full h-full bg-[#ffffffcc] rounded-[20px] backdrop-blur-xl flex justify-center items-center `}
                   >
                     <Image
                       className="w-[88px] h-[88px]"
@@ -567,9 +560,8 @@ const Main = () => {
                     />
                   </div>
                   <div
-                    className={`${
-                      scheduleHover ? 'hidden' : 'block'
-                    } cursor-pointer w-full h-full flex flex-col gap-2 justify-center items-center bg-[#ffffffcc] bg-opacity-20 backdrop-blur-2xl rounded-[12px] relative`}
+                    className={`${scheduleHover ? 'hidden' : 'block'
+                      } cursor-pointer w-full h-full flex flex-col gap-2 justify-center items-center bg-[#ffffffcc] bg-opacity-20 backdrop-blur-2xl rounded-[12px] relative`}
                   >
                     <Image
                       className="w-[88px] h-[88px]"

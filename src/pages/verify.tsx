@@ -35,6 +35,7 @@ const IDVerify: React.FC = () => {
             src={url ? url : ''}
             frameBorder="0"
             className="verifyIFrame w-full"
+            title="verify"
           ></iframe>
         </div>
       </div>

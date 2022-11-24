@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import File from "@/components/common/File";
 import { useDispatch, useSelector } from "react-redux";
 import { getOnboardingUserDetail } from "@/store/setting/action";
 import { ApplicationState } from "@/store/index";
-import { get_file } from "../../..//util/s3getfile";
 import { User } from "@/store/setting/types";
 
 const OnboardingWrapper: React.FC = (props: any) => {

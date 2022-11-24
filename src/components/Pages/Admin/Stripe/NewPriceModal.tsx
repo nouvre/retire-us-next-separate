@@ -5,7 +5,7 @@ import Minus from "@2fd/ant-design-icons/lib/Minus";
 import { AddPriceData, Plan_feature } from "@/store/plan/types";
 import axios from "@/util/api";
 import { Toast } from "@/components/common/notification";
-import { Icon } from ".";
+import { Icon } from "@/pages/admin/stripe";
 import Image from '@/components/common/Image';
 
 interface ComponentProps {
@@ -121,11 +121,10 @@ const NewPriceModal: React.FC<ComponentProps> = ({
                         {icons.map((icon: Icon, index) => (
                             <Image
                                 src={icon.icon_url}
-                                className={`h-auto cursor-pointer ${
-                                    icon.icon === selectedIcon
+                                className={`h-auto cursor-pointer ${icon.icon === selectedIcon
                                         ? "border border-gray-300 rounded-md"
                                         : ""
-                                }`}
+                                    }`}
                                 onClick={() => setSelectedIcon(icon.icon)}
                                 alt=""
                                 key={index}
@@ -163,7 +162,7 @@ const NewPriceModal: React.FC<ComponentProps> = ({
                                         {label[feature.type]}
                                     </div>
                                 ) : features[index - 1].type !=
-                                  features[index].type ? (
+                                    features[index].type ? (
                                     <div className="w-full mt-2">
                                         {label[feature.type]}
                                     </div>

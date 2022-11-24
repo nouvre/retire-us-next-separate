@@ -168,25 +168,22 @@ const SignatureWrapper: React.FC = (props: any) => {
             </button>
           </div>
           <div
-            className={`w-full flex md:items-center mb-5 text-lg font-base ${
-              download ? '' : 'text-gray-300'
-            }`}
+            className={`w-full flex md:items-center mb-5 text-lg font-base ${download ? '' : 'text-gray-300'
+              }`}
             onClick={() => {
               reviewDoc()
             }}
           >
             <input
               type="checkbox"
-              className={`w-[32px] h-[32px] mr-[20px] form-checkbox bg-[#F7F9FC] text-[#0A2C75] border ${
-                download ? 'border-[#181717]' : 'border-[#DDE3F0]'
-              } rounded-[8px]`}
+              className={`w-[32px] h-[32px] mr-[20px] form-checkbox bg-[#F7F9FC] text-[#0A2C75] border ${download ? 'border-[#181717]' : 'border-[#DDE3F0]'
+                } rounded-[8px]`}
               checked={reviewStatus}
               disabled={!download}
             />
             <span
-              className={`cursor-pointer text-[16px] md:text-[20px] text-[#000714] font-Lato ${
-                download ? 'opacity-100' : 'opacity-30'
-              }`}
+              className={`cursor-pointer text-[16px] md:text-[20px] text-[#000714] font-Lato ${download ? 'opacity-100' : 'opacity-30'
+                }`}
             >
               I have downloaded and reviewed the disclosures.
             </span>
@@ -201,27 +198,24 @@ const SignatureWrapper: React.FC = (props: any) => {
             )}
           </div>
           <div
-            className={`w-full flex items-center mb-5 text-lg font-lg ${
-              reviewStatus && readFlag ? '' : 'text-gray-300'
-            }`}
+            className={`w-full flex items-center mb-5 text-lg font-lg ${reviewStatus && readFlag ? '' : 'text-gray-300'
+              }`}
             onClick={() => {
               agreeTerms()
             }}
           >
             <input
               type="checkbox"
-              className={`w-[32px] h-[32px] mr-[20px] form-checkbox bg-[#F7F9FC] text-[#0A2C75] border ${
-                reviewStatus && readFlag
-                  ? 'border-[#181717]'
-                  : 'border-[#DDE3F0]'
-              } rounded-[8px]`}
+              className={`w-[32px] h-[32px] mr-[20px] form-checkbox bg-[#F7F9FC] text-[#0A2C75] border ${reviewStatus && readFlag
+                ? 'border-[#181717]'
+                : 'border-[#DDE3F0]'
+                } rounded-[8px]`}
               checked={agreeStatus && readFlag}
               disabled={!(reviewStatus && readFlag)}
             />
             <span
-              className={`cursor-pointer text-[16px] md:text-[20px] text-[#000714] font-Lato ${
-                reviewStatus && readFlag ? 'opacity-100' : 'opacity-30'
-              }`}
+              className={`cursor-pointer text-[16px] md:text-[20px] text-[#000714] font-Lato ${reviewStatus && readFlag ? 'opacity-100' : 'opacity-30'
+                }`}
             >
               I agree to the terms and conditions
             </span>
@@ -241,6 +235,7 @@ const SignatureWrapper: React.FC = (props: any) => {
                 src={signatureImage}
                 className="w-full mt-1"
                 onClick={() => setvisible(true)}
+                alt="signature"
               />
             ) : (
               <div
@@ -248,9 +243,8 @@ const SignatureWrapper: React.FC = (props: any) => {
                 onClick={() => agreeStatus && setvisible(true)}
               >
                 <div
-                  className={`w-full max-w-[80px] px-[24px] py-[14px] rounded-[12px] text-center bg-white shadow-[0px_4px_32px_rgba(24,54,98,0.04)] ${
-                    agreeStatus ? 'cursor-pointer' : 'cursor-not-allowed'
-                  }`}
+                  className={`w-full max-w-[80px] px-[24px] py-[14px] rounded-[12px] text-center bg-white shadow-[0px_4px_32px_rgba(24,54,98,0.04)] ${agreeStatus ? 'cursor-pointer' : 'cursor-not-allowed'
+                    }`}
                 >
                   <Image
                     src="/assets/images/ico-download-blue.svg"
@@ -298,6 +292,7 @@ const SignatureWrapper: React.FC = (props: any) => {
         id="docdown"
         className="hidden"
         download="disclosure.pdf"
+        dangerouslySetInnerHTML={{ __html: 'foo' }}
       ></a>
 
       <Image

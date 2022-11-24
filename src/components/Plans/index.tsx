@@ -102,6 +102,7 @@ const Plans = ({ title, text, plans, cta }: PlansProps) => {
                                         }}
                                         className="w-[13.5px] duration-[0.5s] lg:hidden"
                                         src="/assets/images/plans/arrow.svg"
+                                        alt="arrow"
                                     />
                                 </div>
                                 <div
@@ -119,6 +120,7 @@ const Plans = ({ title, text, plans, cta }: PlansProps) => {
                                         <Image
                                             className="w-[40px] mr-[12px] lg:hidden"
                                             src="/assets/images/plans/price.svg"
+                                            alt="price"
                                         />
                                         {plan.attributes.price}
                                     </div>

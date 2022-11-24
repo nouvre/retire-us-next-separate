@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "@/store/index";
-import { getQuestionnare } from "@/store/questions/action";
 import Header from "../Header";
 import SubscribePlanBlock from "@/components/Blocks/SubscribePlanBlock";
 import SubscribePlanBlockMobile from "@/components/Blocks/SubscribePlanBlockMobile";
 import { Answer } from "@/store/questions/types";
 import { TextNormal } from "@/components/Typographies";
-import ProfileCompleteStep from "../../constants/routes";
-import { questionOrder } from "../../constants/variables";
 import Image from '@/components/common/Image';
 import { useRouter } from "next/router";
 

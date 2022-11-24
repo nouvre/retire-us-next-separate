@@ -11,19 +11,19 @@ import { updateBankingAccessToken } from "@/store/auth/action";
 const Banking: React.FC = () => {
   const dispatch = useDispatch();
 
-  const PlaidBackend = useSelector((state:ApplicationState) => state.bank_plaid.backend);
-  const PlaidLinkToken = useSelector((state:ApplicationState) => state.bank_plaid.linkToken);
-  const PlaidTokens = useSelector((state:ApplicationState) => state.bank_plaid.tokens);
-  const PlaidAccounts = useSelector((state:ApplicationState) => state.bank_plaid.accounts);
+  const PlaidBackend = useSelector((state: ApplicationState) => state.bank_plaid.backend);
+  const PlaidLinkToken = useSelector((state: ApplicationState) => state.bank_plaid.linkToken);
+  const PlaidTokens = useSelector((state: ApplicationState) => state.bank_plaid.tokens);
+  const PlaidAccounts = useSelector((state: ApplicationState) => state.bank_plaid.accounts);
 
-  const YodleeBackend = useSelector((state:ApplicationState) => state.bank_yodlee.backend);
-  const YodleeLinkToken = useSelector((state:ApplicationState) => state.bank_yodlee.linkToken);
-  const YodleeTokens = useSelector((state:ApplicationState) => state.bank_yodlee.tokens);
-  const YodleeAccounts = useSelector((state:ApplicationState) => state.bank_yodlee.accounts);
+  const YodleeBackend = useSelector((state: ApplicationState) => state.bank_yodlee.backend);
+  const YodleeLinkToken = useSelector((state: ApplicationState) => state.bank_yodlee.linkToken);
+  const YodleeTokens = useSelector((state: ApplicationState) => state.bank_yodlee.tokens);
+  const YodleeAccounts = useSelector((state: ApplicationState) => state.bank_yodlee.accounts);
 
   const [visible, setVisible] = React.useState(false);
 
-  const showModal = (flag:boolean = true) => {
+  const showModal = (flag = true) => {
     setVisible(flag);
   };
 
@@ -77,9 +77,9 @@ const Banking: React.FC = () => {
               {PlaidBackend && YodleeBackend ? "Loading..." : "Launch Link"}
             </button>
           ) : (<>
-                {PlaidLinkToken ? <PlaidButton /> : <></>}
-                {YodleeLinkToken ? <YodleeButton showModal={showModal} /> : <></>}
-              </>
+            {PlaidLinkToken ? <PlaidButton /> : <></>}
+            {YodleeLinkToken ? <YodleeButton showModal={showModal} /> : <></>}
+          </>
           )}
           {PlaidBackend && YodleeBackend &&
             <div className="w-full p-4 bg-[#d9edf6] border border-[#bae9ff] text-[#1388b7] text-lg rounded-lg mb-5">
@@ -87,7 +87,7 @@ const Banking: React.FC = () => {
             </div>
           }
           <div className="w-full flex justify-end">
-            {PlaidAccounts.length > 0  || YodleeAccounts.length > 0 ?
+            {PlaidAccounts.length > 0 || YodleeAccounts.length > 0 ?
               <button
                 className="h-11 flex justify-center items-center font-semibold text-lg text-white bg-[#0A2C75] hover:bg-[#133FA4] px-6 mb-5"
                 onClick={() => {

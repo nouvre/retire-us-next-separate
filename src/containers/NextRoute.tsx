@@ -6,8 +6,6 @@ import { ApplicationState } from '@/store/index';
 import { setLoadDashboard, verifyIdentify } from '@/store/auth/action';
 import { Toast } from '@/components/common/notification';
 
-const SSR_PAGES = ["/", "/our", "/about-us", "/blog", "/contact-us", "/404"]
-
 const PageLoader = () => (
 	<div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
 		<Space size="middle">

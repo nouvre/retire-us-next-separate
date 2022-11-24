@@ -11,11 +11,11 @@ interface DarkButtonLinkProps {
     params?: RouterParamsProps;
     src: string;
     btnText: string;
-};
+}
 interface DarkArrowButtonProps {
     href: string;
     btnText: string;
-};
+}
 
 
 export const DarkButtonLink = ({ href, params, src, btnText }: DarkButtonLinkProps) => {

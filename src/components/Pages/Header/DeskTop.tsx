@@ -46,13 +46,13 @@ const DeskTop: React.FC<HeaderProps> = ({
                 {!isBlueVersion ? (
                     <Image
                         className="w-[184px]"
-                        src="assets/images/logo-white.svg"
+                        src="/assets/images/logo-white.svg"
                         alt="Logo White"
                     />
                 ) : (
                     <Image
                         className="w-[184px]"
-                        src="assets/images/logo-blue.svg"
+                        src="/assets/images/logo-blue.svg"
                         alt="Logo Blue"
                     />
                 )}

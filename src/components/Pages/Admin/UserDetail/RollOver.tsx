@@ -3,7 +3,7 @@ import File from "@/components/common/File";
 import { useDispatch, useSelector } from "react-redux";
 import { getRolloverUserDetail } from "@/store/setting/action";
 import { ApplicationState } from "@/store/index";
-import { get_file } from "../../..//util/s3getfile";
+import { get_file } from "@/util/s3getfile";
 
 const RolloverWrapper: React.FC = (props: any) => {
     const documentKeys = ["document"];

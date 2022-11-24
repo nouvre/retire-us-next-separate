@@ -1,7 +1,11 @@
 import React from 'react'
 import Header from '@/components/Pages/Admin/Header'
 
-const AdminLayout: React.FC = (props: any) => {
+interface ComponentProps {
+  children: React.ReactNode
+}
+
+const AdminLayout: React.FC<ComponentProps> = (props: any) => {
   return (
     <div className="w-full min-h-screen flex bg-no-repeat bg-centre object-cover font-Lato">
       {/* <SideBar {...props} /> */}

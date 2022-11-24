@@ -155,7 +155,7 @@ const SignIn: React.FC = (props: any) => {
                                     >
                                         <div className="flex items-center">
                                             <Image
-                                                src="assets/images/ico-google.svg"
+                                                src="/assets/images/ico-google.svg"
                                                 alt="ico-google"
                                             />
                                             <span className="text-base text-[#001F55] font-Lato pl-6">
@@ -163,7 +163,7 @@ const SignIn: React.FC = (props: any) => {
                                             </span>
                                         </div>
                                         <Image
-                                            src="assets/images/arrow-right-circle-orange.svg"
+                                            src="/assets/images/arrow-right-circle-orange.svg"
                                             width="24"
                                             alt="ico-arrow-right"
                                         />
@@ -196,7 +196,7 @@ const SignIn: React.FC = (props: any) => {
                                 textButton={"Continue with Facebook"}
                                 icon={
                                     <Image
-                                        src="assets/images/ico-facebook.svg"
+                                        src="/assets/images/ico-facebook.svg"
                                         alt="ico-facebook"
                                     />
                                 }
