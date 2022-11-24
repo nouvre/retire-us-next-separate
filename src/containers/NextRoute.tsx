@@ -1,16 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Spin, Space } from 'antd'
 import routes from "@/constants/routes";
 import { ApplicationState } from '@/store/index';
 import { setLoadDashboard, verifyIdentify } from '@/store/auth/action';
 import { Toast } from '@/components/common/notification';
 
+const SSR_PAGES = ["/", "/our", "/about-us", "/blog", "/contact-us", "/404"]
+
+const PageLoader = () => (
+	<div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+		<Space size="middle">
+			<Spin size="large" />
+		</Space>
+	</div>
+)
+
 const NextRoute = ({ router, persistor, children }) => {
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const user = useSelector((state: ApplicationState) => state.auth.user);
-	// const loadDashboard = useSelector(
-	// 	(state: ApplicationState) => state.auth.loadDashboard,
-	// );
+	const rehydrated = useSelector((state: ApplicationState) => state._persist.rehydrated);
+	const loadDashboard = useSelector(
+		(state: ApplicationState) => state.auth.loadDashboard,
+	);
 
 	// useEffect(() => {
 	// 	if (user && user.role === 'user') {
@@ -69,6 +81,7 @@ const NextRoute = ({ router, persistor, children }) => {
 	// 		}
 	// 	}
 	// }, [user])
+	console.log("=-===========>", children)
 
 	// useEffect(() => {
 	// 	const handleInvalidToken = (e: any) => {
@@ -84,15 +97,10 @@ const NextRoute = ({ router, persistor, children }) => {
 	// 	}
 	// }, [])
 
-	// const { bootstrapped } = persistor.getState();
-	// // // if (!bootstrapped) {
-	// // // 	persistor.
-	// // // }
-	// useEffect(() => {
-	// 	console.log(persistor.getState())
-	// }, [bootstrapped]);
-	console.log("u===============>", user)
-	return children;
+	if (rehydrated || children.props.ssr)
+		return children;
+	else
+		return <PageLoader />
 };
 
 export default NextRoute;

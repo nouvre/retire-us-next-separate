@@ -8,21 +8,15 @@ import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 
-const GetStarted: React.FC = (props) => {
-    const [getStarted, setGetStarted] = useState<any>(null);
+const GetStarted: React.FC = ({ getStarted }) => {
     const [topLabel, setTopLabel] = useState<any>(null);
 
     useEffect(() => {
         async function getCmsData() {
-            const response = await fetchAPI("/get-started");
-            const content = response?.data?.attributes ?? fallback.getStarted;
-
-            setGetStarted(content);
-
             const topLabel = sessionStorage.getItem("topLabel");
 
             if (topLabel !== "off") {
-                setTopLabel(content.topLabel);
+                setTopLabel(getStarted.topLabel);
                 sessionStorage.setItem("topLabel", "on");
             }
         }
@@ -59,7 +53,6 @@ const GetStarted: React.FC = (props) => {
 
             <Header
                 opacity={true}
-                {...props}
                 bgOnScroll="bg-white"
                 blueOnScroll={true}
                 topLabel={topLabel}
@@ -68,9 +61,8 @@ const GetStarted: React.FC = (props) => {
 
             {getStarted?.hero && (
                 <div
-                    className={`w-full bg-about-us-texture bg-cover bg-center bg-no-repeat ${
-                        topLabel && "mt-[150px] lg:mt-[78px]"
-                    }`}
+                    className={`w-full bg-about-us-texture bg-cover bg-center bg-no-repeat ${topLabel && "mt-[150px] lg:mt-[78px]"
+                        }`}
                 >
                     <div className="w-full lg:max-w-[1024px] xl:max-w-[1440px] px-6 mx-auto">
                         <div className="w-full md:max-w-[820px] pt-[100px] md:pt-[200px] pb-[60px] md:pb-[120px] mx-auto text-center">
@@ -181,3 +173,15 @@ const GetStarted: React.FC = (props) => {
 };
 
 export default GetStarted;
+
+export async function getServerSideProps(context) {
+    const response = await fetchAPI("/get-started");
+    const content = response?.data?.attributes ?? fallback.getStarted;
+
+    return {
+        props: {
+            getStarted: content,
+            ssr: true,
+        },
+    }
+}

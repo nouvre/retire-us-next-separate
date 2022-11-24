@@ -15,21 +15,18 @@ import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
 
-const AboutUs: React.FC = (props) => {
-    const [aboutUs, setAboutUs] = useState<any>(null);
+const AboutUs: React.FC = ({ aboutUs }) => {
+    // const [aboutUs, setAboutUs] = useState<any>(null);
     const [topLabel, setTopLabel] = useState<any>(null);
 
     useEffect(() => {
         async function getCmsData() {
-            const response = await fetchAPI("/about");
-            const content = response?.data?.attributes ?? fallback.aboutUs;
 
-            setAboutUs(content);
 
             const topLabel = sessionStorage.getItem("topLabel");
 
             if (topLabel !== "off") {
-                setTopLabel(content.topLabel);
+                setTopLabel(aboutUs.topLabel);
                 sessionStorage.setItem("topLabel", "on");
             }
         }
@@ -46,7 +43,6 @@ const AboutUs: React.FC = (props) => {
         <div className="w-full h-screen">
             <Header
                 opacity={true}
-                {...props}
                 bgOnScroll="bg-white"
                 blueOnScroll={true}
                 topLabel={topLabel}
@@ -55,9 +51,8 @@ const AboutUs: React.FC = (props) => {
 
             {aboutUs?.hero && (
                 <div
-                    className={`relative w-full bg-about-us-texture bg-cover bg-center bg-no-repeat px-6 ${
-                        topLabel && "mt-[150px] lg:mt-[78px]"
-                    }`}
+                    className={`relative w-full bg-about-us-texture bg-cover bg-center bg-no-repeat px-6 ${topLabel && "mt-[150px] lg:mt-[78px]"
+                        }`}
                 >
                     <div className="w-full lg:max-w-[960px] xl:max-w-[1280px] mx-auto relative">
                         <div className="w-full max-w-[820px] pt-[100px] md:pt-[200px] pb-[60px] md:pb-[120px] mx-auto text-center">
@@ -335,3 +330,16 @@ const AboutUs: React.FC = (props) => {
 };
 
 export default AboutUs;
+
+
+export async function getServerSideProps(context) {
+    const response = await fetchAPI("/about");
+    const content = response?.data?.attributes ?? fallback.aboutUs;
+
+    return {
+        props: {
+            aboutUs: content,
+            ssr: true,
+        },
+    }
+}

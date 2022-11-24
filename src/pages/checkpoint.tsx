@@ -64,9 +64,9 @@ const Questionnare: React.FC = () => {
                 );
             else dispatch(getQuestionnare());
         } else {
-            console.log(intro_user)
+            // console.log(intro_user)
             // const iUserId = localStorage.getItem("intro_user_id");
-            if (intro_user) router.push("/intro");
+            if (!intro_user) router.push("/intro");
         }
     }, [token]);
 

@@ -51,9 +51,8 @@ const Home: React.FC<ComponentProps> = ({ homepage }) => {
 
       {homepage?.hero && (
         <div
-          className={`relative w-full bg-hero-texture-mobile lg:bg-hero-texture bg-cover bg-bottom bg-no-repeat px-6 lg:px-[0] ${
-            topLabel && 'mt-[150px] lg:mt-[78px]'
-          }`}
+          className={`relative w-full bg-hero-texture-mobile lg:bg-hero-texture bg-cover bg-bottom bg-no-repeat px-6 lg:px-[0] ${topLabel && 'mt-[150px] lg:mt-[78px]'
+            }`}
         >
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 lg:max-w-[960px] xl:max-w-[1280px] mx-auto pt-[100px] lg:pt-[160px] lg:pb-[80px]">
             <div className="relative">
@@ -311,6 +310,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       homepage: content,
+      ssr: true,
     },
   }
 }
