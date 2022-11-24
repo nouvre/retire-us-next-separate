@@ -1631,3 +1631,5 @@ const PrivacyPolicy: React.FC = () => {
 };
 
 export default PrivacyPolicy;
+
+PrivacyPolicy.displayName = "PrivacyPolicy";

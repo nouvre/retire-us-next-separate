@@ -312,3 +312,5 @@ const SignIn: React.FC = (props: any) => {
     );
 };
 export default SignIn;
+
+SignIn.displayName = "SignIn";

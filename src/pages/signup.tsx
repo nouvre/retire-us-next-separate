@@ -204,3 +204,5 @@ const SignUp: React.FC = (props: any) => {
     );
 };
 export default SignUp;
+
+SignUp.displayName = "SignUp";

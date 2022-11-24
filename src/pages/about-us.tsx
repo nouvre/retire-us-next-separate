@@ -331,6 +331,8 @@ const AboutUs: React.FC = ({ aboutUs }: any) => {
 
 export default AboutUs;
 
+AboutUs.displayName = "AboutUS"
+
 
 export async function getServerSideProps(context) {
     const response = await fetchAPI("/about");

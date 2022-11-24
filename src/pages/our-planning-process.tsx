@@ -268,6 +268,8 @@ const PlanningProcess: React.FC = ({ planning }: any) => {
 
 export default PlanningProcess;
 
+PlanningProcess.displayName = "Planning";
+
 export async function getServerSideProps(context) {
 	const response = await fetchAPI("/planning");
 	const content = response?.data?.attributes ?? fallback.planning;

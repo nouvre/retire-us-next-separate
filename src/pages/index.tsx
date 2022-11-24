@@ -301,7 +301,9 @@ const Home: React.FC<ComponentProps> = ({ homepage }) => {
   )
 }
 
-export default React.memo(Home)
+export default Home;
+
+Home.displayName = "Home";
 
 export async function getServerSideProps(context) {
   const response = await fetchAPI('/homepage')

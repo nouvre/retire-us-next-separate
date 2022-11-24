@@ -1,17 +1,15 @@
 import '../../styles/app.scss'
 import "react-notifications-component/dist/theme.css";
 
-import { useState } from 'react'
+import Head from 'next/head';
 import { Provider } from 'react-redux'
 import { useStore } from '@/store/index'
-import { persistStore, REHYDRATE } from "redux-persist";
-import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from "redux-persist";
 import NextRoute from "@/containers/NextRoute";
 import StripeElements from "@/containers/StripeElements";
-// import { SessionProvider } from "next-auth/react"
 import { ReactNotifications } from "react-notifications-component";
+import { HEAD_DATA } from "@/constants/variables";
 
-// const PersistGateServer = (props) => props.children
 
 
 export default function App({ Component, pageProps: { session, ...pageProps }, router }) {
@@ -19,21 +17,31 @@ export default function App({ Component, pageProps: { session, ...pageProps }, r
   const persistor = persistStore(store, {}, function () {
     persistor.persist()
   });
-  // return (<div></div>)
+
+  const data = (HEAD_DATA.find((item) => item.name === Component.displayName))?.data;
 
   return (
-    <StripeElements>
-      <Provider store={store}>
-        {/* <SessionProvider session={session}> */}
-        {/* <ReactNotifications /> */}
-        {/* <PersistGate loading={"loading"} persistor={persistor}> */}
-        <NextRoute router={router} persistor={persistor}>
-          <Component {...pageProps} />
-        </NextRoute>
-        {/* </PersistGate> */}
-        {/* </SessionProvider> */}
-      </Provider>
-    </StripeElements>
+    <>
+      <Head>
+        {data?.title &&
+          <title>{data?.title}</title>
+        }
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"></meta>
+        {data?.meta.map((item, _index) => <meta key={_index} name={item.name} content={item.content}></meta>)}
+        {data?.link &&
+          <link rel="canonical" href={`${data.link}`} ></link>
+        }
+      </Head>
+      <StripeElements>
+        <Provider store={store}>
+          <ReactNotifications />
+          <NextRoute router={router} persistor={persistor}>
+            <Component {...pageProps} />
+          </NextRoute>
+        </Provider>
+      </StripeElements>
+    </>
   )
 }
 

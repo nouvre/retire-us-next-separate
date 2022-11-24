@@ -174,6 +174,8 @@ const GetStarted: React.FC = ({ getStarted }: any) => {
 
 export default GetStarted;
 
+GetStarted.displayName = "GetStarted";
+
 export async function getServerSideProps(context) {
     const response = await fetchAPI("/get-started");
     const content = response?.data?.attributes ?? fallback.getStarted;

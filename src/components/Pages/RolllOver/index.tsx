@@ -751,7 +751,7 @@ const RollOver: React.FC = () => {
                             Investment Assets - Notes
                         </label>
                         <textarea
-                            className="w-full rounded-sm h-10 border border-solid border-[#b3bdc1] bg-[#87c4eb1c] outline-none px-2 h-24 py-2"
+                            className="w-full rounded-sm border border-solid border-[#b3bdc1] bg-[#87c4eb1c] outline-none px-2 h-24 py-2"
                             id="investmentAssetsNotes"
                             {...formik.getFieldProps("investmentAssetsNotes")}
                         ></textarea>

@@ -346,6 +346,8 @@ const OurServices: React.FC = ({ ourServices }: any) => {
 
 export default OurServices;
 
+OurServices.displayName = "OurServices";
+
 export async function getServerSideProps(context) {
 	const response = await fetchAPI("/our-service");
 	const content = response?.data?.attributes ?? fallback.ourServices;

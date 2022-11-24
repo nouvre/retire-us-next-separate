@@ -79,7 +79,6 @@ const NextRoute = ({ router, persistor, children }) => {
 	// 		}
 	// 	}
 	// }, [user])
-	console.log("=-===========>", children)
 
 	// useEffect(() => {
 	// 	const handleInvalidToken = (e: any) => {

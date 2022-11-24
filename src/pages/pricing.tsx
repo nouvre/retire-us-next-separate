@@ -191,6 +191,8 @@ const Pricing: React.FC = ({ pricing }: any) => {
 
 export default Pricing;
 
+Pricing.displayName = "Pricing";
+
 export async function getServerSideProps(context) {
 	const response = await fetchAPI("/pricing");
 	const content = response?.data?.attributes ?? fallback.pricing;

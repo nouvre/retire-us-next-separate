@@ -485,6 +485,7 @@ const Blog: React.FC = ({ content }: any) => {
 
 export default Blog;
 
+Blog.displayName = "Blog";
 
 export async function getServerSideProps(context) {
 	const [blog, posts] = await Promise.all([
