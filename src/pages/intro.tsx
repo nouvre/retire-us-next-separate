@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ApplicationState } from "@/store/index";
 import Header from "@/components/Pages/Header";
@@ -16,6 +16,7 @@ declare global {
 const Intro = () => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const ref = useRef<HTMLDivElement>(null)
     const isFetching = useSelector(
         (state: ApplicationState) => state.auth.isFetching
     );
@@ -54,7 +55,7 @@ const Intro = () => {
     }, [isFetching]);
 
     return (
-        <div className="w-full h-screen bg-[#EEF1F8]">
+        <div className="w-full h-screen bg-[#EEF1F8]" ref={ref} style={{ visibility: "hidden" }}>
             <Header opacity={false} />
             <div className="w-full flex flex-col items-center justify-center pt-[146px] px-5">
                 <div className="w-full max-w-[840px] relative">
@@ -62,6 +63,7 @@ const Intro = () => {
                         src="/assets/images/welcome-bg.svg"
                         alt=""
                         className="w-full hidden sm:block"
+                        onLoad={() => { if (ref.current) ref.current.style.visibility = "visible" }}
                     />
                     <Image
                         src="/assets/images/welcome-bg-mobile.svg"

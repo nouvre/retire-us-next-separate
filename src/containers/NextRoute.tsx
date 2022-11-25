@@ -14,7 +14,7 @@ const PageLoader = () => (
 	</div>
 )
 
-const NextRoute = ({ router, persistor, children }) => {
+const NextRoute = ({ router, children }) => {
 	const dispatch = useDispatch();
 	const user = useSelector((state: ApplicationState) => state.auth.user);
 	const rehydrated = useSelector((state: ApplicationState) => state._persist.rehydrated);

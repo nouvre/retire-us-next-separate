@@ -14,7 +14,7 @@ const Confetti: React.FC<ComponentProps> = (props) => {
 
     useEffect(() => {
         setTimeout(() => {
-            setIsExploding(false);
+            // setIsExploding(false);
             props.handleNext({ ...submitData });
         }, 2000)
     }, [])

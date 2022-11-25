@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Helmet } from "react-helmet";
 import Select from "react-select";
 import Header from "@/components/Pages/Header";
 import Footer from "@/components/Pages/Footer";
@@ -87,12 +86,6 @@ const Blog: React.FC = ({ content }: any) => {
 				setTopLabel(content.blog.topLabel);
 				sessionStorage.setItem("topLabel", "on");
 			}
-
-			// if (content.posts) {
-			// 	setAllPosts(content.posts);
-			// } else {
-			// 	setError(true);
-			// }
 		}
 
 		getCmsData();
@@ -161,24 +154,6 @@ const Blog: React.FC = ({ content }: any) => {
 
 	return (
 		<div className="w-full bg-[#F7F9FC]">
-			<Helmet
-				title="Everything you need to know about Financial Freedom - RetireUS"
-				htmlAttributes={{ lang: "en" }}
-				meta={[
-					{
-						name: "description",
-						content:
-							"Expert insight and advice from industry leaders to help you navigate your path towards retirement.",
-					},
-					{
-						name: "keywords",
-						content:
-							"Financial Planning, Retirement Planning, Financial Planning and Analysis, Certified Financial Planner, Financial Advisor, Tax Planning, Investment",
-					},
-				]}
-				link={[{ rel: "canonical", href: "https://retire.us/blog" }]}
-			/>
-
 			<Header
 				opacity={true}
 				bgOnScroll="bg-white"

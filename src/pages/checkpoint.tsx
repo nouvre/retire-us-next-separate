@@ -59,7 +59,7 @@ const Questionnare: React.FC = () => {
             if (user?.profile_complete_step && step >= questionOrder.length)
                 router.replace(
                     ProfileCompleteStep[user.authenticate_type][
-                        user.profile_complete_step
+                    user.profile_complete_step
                     ]
                 );
             else dispatch(getQuestionnare());
@@ -89,14 +89,14 @@ const Questionnare: React.FC = () => {
     }, []);
 
     const handleNext = (data: Answer, step: number) => {
-        setTimeout(() => {
+        setTimeout(async () => {
             if (token && user) {
                 if (step >= questionOrder.length) {
-                    dispatch(updateQuestionnare(data, step, true));
-                    dispatch(finishQuestionnare());
+                    await dispatch(updateQuestionnare(data, step, true));
+                    await dispatch(finishQuestionnare());
                     router.replace(
                         ProfileCompleteStep[user.authenticate_type][
-                            user.profile_complete_step + 1
+                        user.profile_complete_step + 1
                         ]
                     );
                 } else {

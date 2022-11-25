@@ -13,16 +13,12 @@ import logger from "redux-logger";
 import { authReducer } from "./auth/reducer";
 import { planReducer } from "./plan/reducer";
 import { questionReducer } from "./questions/reducer";
-import { plaidReducer } from "./banking/plaid/reducer";
-import { yodleeReducer } from "./banking/yodlee/reducer";
 import { settingReducer } from "./setting/reducer";
 import { commonReducer } from "./common/reducer";
 //types
 import { AuthState } from "./auth/types";
 import { PlanState } from "./plan/types";
 import { QuestionState } from "./questions/types";
-import { PlaidState } from "./banking/plaid/types";
-import { YodleeState } from "./banking/yodlee/types";
 import { SettingState } from "./setting/types";
 import { CommonState } from "./common/types";
 //middleware
@@ -40,8 +36,6 @@ const reducers = combineReducers({
   auth: authReducer,
   plans: planReducer,
   questions: questionReducer,
-  bank_plaid: plaidReducer,
-  bank_yodlee: yodleeReducer,
   settings: settingReducer,
   common: commonReducer,
 });
@@ -88,8 +82,6 @@ export interface ApplicationState {
   auth: AuthState;
   plans: PlanState;
   questions: QuestionState;
-  bank_plaid: PlaidState;
-  bank_yodlee: YodleeState;
   settings: SettingState;
   common: CommonState;
   _persist: PersistState;

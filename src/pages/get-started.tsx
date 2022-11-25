@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "@/components/Pages/Header";
 import Footer from "@/components/Pages/Footer";
-import { Helmet } from "react-helmet";
 import Featured from "@/components/Featured";
 import { FillButtonLink } from "@/components/Buttons/WhiteButtons";
 import { getImage, fetchAPI } from "@/util/cms";
@@ -31,26 +30,6 @@ const GetStarted: React.FC = ({ getStarted }: any) => {
 
     return (
         <div className="w-full h-screen">
-            <Helmet
-                title="Start with our Free & Secure Retirement Checkpoint Tool"
-                htmlAttributes={{ lang: "en" }}
-                meta={[
-                    {
-                        name: "description",
-                        content:
-                            "Looking for clarity on your finances? Take RetireUS's Retirement Checkpoint Quiz, and receive a free and personalized retirement planning report in 4 minutes.",
-                    },
-                    {
-                        name: "keywords",
-                        content:
-                            "Financial Planning Tool, Retirement Planning, Financial Consulting, Certified Financial Planner, CFP",
-                    },
-                ]}
-                link={[
-                    { rel: "canonical", href: "https://retire.us/get-started" },
-                ]}
-            />
-
             <Header
                 opacity={true}
                 bgOnScroll="bg-white"

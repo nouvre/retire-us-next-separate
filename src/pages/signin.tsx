@@ -22,8 +22,6 @@ import Image from '@/components/common/Image';
 import { useRouter } from "next/router";
 import ProfileCompleteStep from '@/constants/routes'
 
-// import { Helmet } from "react-helmet";
-
 interface locationStateProps {
     plan_id: number;
     auth_type: boolean;
@@ -115,17 +113,6 @@ const SignIn: React.FC = (props: any) => {
     return (
         <>
             <Header opacity={false} />
-            {/* <Helmet
-                title="Login to RetireUS - Retirement and Financial Planning"
-                htmlAttributes={{ lang: "en" }}
-                meta={[
-                    {
-                        name: `description`,
-                        content:
-                            "Login to your RetireUS account. Retirement and financial planning. Trusted and Certified Financial Planners at your fingertips.",
-                    },
-                ]}
-            /> */}
             <div className="w-full min-h-[100vh] container-auth relative flex flex-col">
                 <div className="w-full max-w-[448px] mx-auto px-[24px] pt-[90px] pb-[24px] md:pt-[125px]">
                     <h1 className="text-center text-2xl md:text-4xl text-[#000714] font-bold pb-6">
@@ -163,8 +150,8 @@ const SignIn: React.FC = (props: any) => {
                                             </span>
                                         </div>
                                         <Image
+                                            className="w-6"
                                             src="/assets/images/arrow-right-circle-orange.svg"
-                                            width="24"
                                             alt="ico-arrow-right"
                                         />
                                     </button>

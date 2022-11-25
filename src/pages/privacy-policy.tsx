@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Header from "@/components/Pages/Header";
 import Footer from "@/components/Pages/Footer";
-import { Helmet } from "react-helmet";
 
 const PrivacyPolicy: React.FC = () => {
 	const [scrollTop, setScrollTop] = useState<number>(0);
@@ -25,21 +24,6 @@ const PrivacyPolicy: React.FC = () => {
 
 	return (
 		<div className="w-full bg-white">
-			<Helmet
-				title="Privacy Policy - RetireUS"
-				htmlAttributes={{ lang: "en" }}
-				meta={[
-					{
-						name: `description`,
-						content: "RetireUS Privacy Policy",
-					},
-					{
-						name: `keywords`,
-						content:
-							"Financial Planning Tool, Retirement Planning, Financial Consulting, Certified Financial Planner, CFP",
-					},
-				]}
-			/>
 			<Header opacity={false} bgOnScroll="bg-white" />
 
 			<div className="w-full lg:max-w-[1024px] xl:max-w-[1440px] bg-white mx-auto py-[150px] md:py-[200px] px-[20px] relative">

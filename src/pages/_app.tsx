@@ -36,7 +36,7 @@ export default function App({ Component, pageProps: { session, ...pageProps }, r
       <StripeElements>
         <Provider store={store}>
           <ReactNotifications />
-          <NextRoute router={router} persistor={persistor}>
+          <NextRoute router={router}>
             <Component {...pageProps} />
           </NextRoute>
         </Provider>

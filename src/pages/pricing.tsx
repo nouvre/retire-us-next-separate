@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Header from "@/components/Pages/Header";
 import Footer from "@/components/Pages/Footer";
 import Accordion from "@/components/Accordion";
 import { TextTitleLg, TextTitle } from "@/components/Typographies";
-import { selectPlan } from "@/store/auth/action";
-import { getPlans, storePlanToLocal } from "@/store/plan/action";
-import { ApplicationState } from "@/store/index";
-import { Plan } from "@/store/plan/types";
 import CarouselBanner from "@/components/Pages/Pricing/carousel";
 import { planFeatures, planSummaries, faqs } from "@/components/Pages/Pricing/contents";
-import { Helmet } from "react-helmet";
 import Banner from "@/components/Banner";
 import AllSubscriptionsInclude from "@/components/AllSubscriptionsInclude";
 import PlansFeatures from "@/components/PlansFeatures";
 import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
-import { useRouter } from "next/router";
 
 const Pricing: React.FC = ({ pricing }: any) => {
 	const [topLabel, setTopLabel] = useState<any>(null);
@@ -42,29 +35,6 @@ const Pricing: React.FC = ({ pricing }: any) => {
 
 	return (
 		<div className="w-full">
-			<Helmet
-				title="Invest in Your Financial Future for as Little as $10/week"
-				htmlAttributes={{ lang: "en" }}
-				meta={[
-					{
-						name: "description",
-						content:
-							"RetireUS makes expert financial advisors accessible to everyone. Choose a retirement plan that fits your goals with our subscription-based model.",
-					},
-					{
-						name: "keywords",
-						content:
-							"Retirement plan, financial advisor, Financial Planning Tool, Retirement Planning, Financial Consulting, Certified Financial Planner, CFP",
-					},
-				]}
-				link={[
-					{
-						rel: "canonical",
-						href: "https://retire.us/pricing",
-					},
-				]}
-			/>
-
 			<Header
 				opacity={true}
 				bgOnScroll="bg-white"

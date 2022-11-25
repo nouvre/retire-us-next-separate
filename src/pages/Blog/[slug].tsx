@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Helmet } from "react-helmet";
+import { useRouter } from "next/router";
 import { Spin, Space } from "antd";
 import Header from "@/components/Pages/Header";
 import Footer from "@/components/Pages/Footer";
@@ -12,7 +12,6 @@ import BlogError from "@/components/BlogError";
 import { fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
-import { useRouter } from "next/router";
 
 const Post: React.FC = (props) => {
     const router = useRouter()
@@ -83,7 +82,7 @@ const Post: React.FC = (props) => {
                     (item: Post) => {
                         if (
                             exactPost.attributes.category ===
-                                item.attributes.category &&
+                            item.attributes.category &&
                             exactPost.id !== item.id
                         ) {
                             return item;
@@ -137,28 +136,6 @@ const Post: React.FC = (props) => {
 
     return (
         <div className="w-full">
-            <Helmet
-                title={`${post?.attributes?.title} - RetireUS`}
-                htmlAttributes={{ lang: "en" }}
-                meta={[
-                    {
-                        name: "description",
-                        content: post?.attributes?.description,
-                    },
-                    {
-                        name: "keywords",
-                        content:
-                            "Financial Advisors, Financial Planning and Analysis, Financial Consulting Firm, Certified Financial Planner",
-                    },
-                ]}
-                link={[
-                    {
-                        rel: "canonical",
-                        href: `https://retire.us/blog/${slug}`,
-                    },
-                ]}
-            />
-
             <Header
                 opacity={false}
                 bgOnScroll="bg-white"
@@ -169,9 +146,8 @@ const Post: React.FC = (props) => {
             />
 
             <div
-                className={`bg-[#fff] pt-[80px] pb-[60px] lg:py-[120px] ${
-                    topLabel && "mt-[150px] lg:mt-[78px]"
-                }`}
+                className={`bg-[#fff] pt-[80px] pb-[60px] lg:py-[120px] ${topLabel && "mt-[150px] lg:mt-[78px]"
+                    }`}
             >
                 {loading && (
                     <div className="text-center">
@@ -212,40 +188,40 @@ const Post: React.FC = (props) => {
                                 <div className="flex justify-between md:justify-start items-center gap-x-[12px]">
                                     {post.attributes?.author?.data?.attributes
                                         ?.photo?.data?.attributes?.url && (
-                                        <div>
-                                            <Image
-                                                className="w-[48px]"
-                                                src={
-                                                    post.attributes.author.data
-                                                        .attributes.photo.data
-                                                        .attributes.url
-                                                }
-                                                alt={
-                                                    post.attributes.author.data
-                                                        .attributes.name
-                                                }
-                                            />
-                                        </div>
-                                    )}
+                                            <div>
+                                                <Image
+                                                    className="w-[48px]"
+                                                    src={
+                                                        post.attributes.author.data
+                                                            .attributes.photo.data
+                                                            .attributes.url
+                                                    }
+                                                    alt={
+                                                        post.attributes.author.data
+                                                            .attributes.name
+                                                    }
+                                                />
+                                            </div>
+                                        )}
                                     <div className="flex flex-col md:flex-row md:items-center gap-x-[12px] mr-[28px]">
                                         {post.attributes?.author?.data
                                             ?.attributes?.name && (
-                                            <div className="text-[16px] leading-[24px] lg:text-[18px] lg:leading-[30px] text-[#000714]">
-                                                {
-                                                    post.attributes.author.data
-                                                        .attributes.name
-                                                }
-                                            </div>
-                                        )}
+                                                <div className="text-[16px] leading-[24px] lg:text-[18px] lg:leading-[30px] text-[#000714]">
+                                                    {
+                                                        post.attributes.author.data
+                                                            .attributes.name
+                                                    }
+                                                </div>
+                                            )}
                                         {post.attributes?.author?.data
                                             ?.attributes?.role && (
-                                            <div className="text-[14px] leading-[16px] lg:text-[16px] lg:leading-[24px] text-[#A2ACBE]">
-                                                {
-                                                    post.attributes.author.data
-                                                        .attributes.role
-                                                }
-                                            </div>
-                                        )}
+                                                <div className="text-[14px] leading-[16px] lg:text-[16px] lg:leading-[24px] text-[#A2ACBE]">
+                                                    {
+                                                        post.attributes.author.data
+                                                            .attributes.role
+                                                    }
+                                                </div>
+                                            )}
                                     </div>
                                     <div
                                         style={{

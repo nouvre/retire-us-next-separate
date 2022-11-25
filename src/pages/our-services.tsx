@@ -8,7 +8,6 @@ import {
 	TextNormal,
 } from "@/components/Typographies";
 import { FillButtonLink } from "@/components/Buttons/WhiteButtons";
-import { Helmet } from "react-helmet";
 import Plans from "@/components/Plans";
 import Plannings from "@/components/Plannings";
 import Banner from "@/components/Banner";
@@ -38,29 +37,6 @@ const OurServices: React.FC = ({ ourServices }: any) => {
 
 	return (
 		<div className="w-full h-screen">
-			<Helmet
-				title="Subscription-Based Financial Planning Services - RetireUS"
-				htmlAttributes={{ lang: "en" }}
-				meta={[
-					{
-						name: "description",
-						content:
-							"Subscription-based services designed to meet your goals. Meet with a Certified Financial Planner and create a personalized plan for as little as $10/week.",
-					},
-					{
-						name: "keywords",
-						content:
-							"Financial Planning, Retirement Planning, Wealth Management, Financial Consultant, Virtual Financial Planning",
-					},
-				]}
-				link={[
-					{
-						rel: "canonical",
-						href: "https://retire.us/our-services",
-					},
-				]}
-			/>
-
 			<Header
 				opacity={true}
 				bgOnScroll="bg-white"

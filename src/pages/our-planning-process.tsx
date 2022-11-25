@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Header from "@/components/Pages/Header";
 import Footer from "@/components/Pages/Footer";
-import { Helmet } from "react-helmet";
 import Steps from "@/components/Steps";
 import Plannings from "@/components/Plannings";
 import Strategies from "@/components/Strategies";
@@ -35,29 +34,6 @@ const PlanningProcess: React.FC = ({ planning }: any) => {
 
 	return (
 		<div className="w-full h-screen">
-			<Helmet
-				title="Plan your Retirement from Anywhere in the World - Retire US"
-				htmlAttributes={{ lang: "en" }}
-				meta={[
-					{
-						name: "description",
-						content:
-							"RetireUS has reimagined the planning process, making it easier and more personalized than ever. Our simple yet effective approach makes financial planning easy.",
-					},
-					{
-						name: "keywords",
-						content:
-							"Financial Planning, Retirement Planning, Wealth Management Consultants, Financial Planning and Analysis, Certified Financial Planner, Financial Advisor",
-					},
-				]}
-				link={[
-					{
-						rel: "canonical",
-						href: "https://retire.us/our-planning-process",
-					},
-				]}
-			/>
-
 			<Header
 				opacity={true}
 				bgOnScroll="bg-white"
