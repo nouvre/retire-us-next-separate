@@ -33,12 +33,9 @@ const Recommendation = ({ allSubscriptions }) => {
 	const lazyLoadWrapperRef = useRef<HTMLDivElement>(null);
 	const dispatch = useDispatch();
 	const user = useSelector((state: ApplicationState) => state.auth.user);
-	const isFetching = useSelector(
-		(state: ApplicationState) => state.auth.isFetching
-	);
-	const answers: Answer = useSelector(
-		(state: ApplicationState) => state.questions.answers
-	);
+	const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
+	const isFetching = useSelector((state: ApplicationState) => state.auth.isFetching);
+	const answers: Answer = useSelector((state: ApplicationState) => state.questions.answers);
 
 	const [flagList, setFlagList] = useState<Array<RedFlag>>([]);
 	const [recommended, setRecommended] = useState<RecommendedType>({
@@ -295,7 +292,7 @@ const Recommendation = ({ allSubscriptions }) => {
 				<div className="d-flex w-full justify-center pt-12 pb-[100px]">
 					<div
 						className="max-w-[400px] mx-auto flex h-[60px] justify-center items-center rounded-[60px] bg-[#001F55] text-white text-[18px] font-bold cursor-pointer"
-						onClick={() => dispatch(selectPlan(0))}
+						onClick={() => dispatch(selectPlan(0, intro_user.id))}
 					>
 						Continue
 					</div>
@@ -315,7 +312,6 @@ export async function getServerSideProps(context) {
 	return {
 		props: {
 			allSubscriptions: content.plansComparison.allSubscriptions,
-			ssr: true,
 		},
 	}
 }

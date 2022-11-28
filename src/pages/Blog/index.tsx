@@ -475,7 +475,6 @@ export async function getServerSideProps(context) {
 	return {
 		props: {
 			content,
-			ssr: true,
 		},
 	}
 }

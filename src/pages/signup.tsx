@@ -8,31 +8,21 @@ import { ApplicationState } from "@/store/index";
 import Header from "@/components/Pages/Header";
 import Image from '@/components/common/Image';
 
-interface locationStateProps {
-    plan_id: number;
-    auth_type: boolean;
-}
-
-const SignUp: React.FC = (props: any) => {
+const SignUp: React.FC = () => {
     const router = useRouter();
-    const authTypeState = router.query;
     const [form] = Form.useForm();
-    const token = useSelector((state: ApplicationState) => state.auth.token);
+    const dispatch = useDispatch();
+
+    const user = useSelector((state: ApplicationState) => state.auth.user);
+    const pending = useSelector((state: ApplicationState) => state.common.pending);
+    const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
     const pattern =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/])[A-Za-z\d@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/]{8,}$/g;
+    const authTypeState = router.query;
 
     useEffect(() => {
-        if (token) { dispatch(gotoProfileStep()); router.push('/checkpoint') }
-    }, [token]);
-
-    const dispatch = useDispatch();
-    // const selectedPlan = useSelector((state: ApplicationState) => state.plans.selectedPlan);
-    const pending = useSelector(
-        (state: ApplicationState) => state.common.pending
-    );
-    const intro_user = useSelector(
-        (state: ApplicationState) => state.auth.intro_user
-    );
+        if (user) { dispatch(gotoProfileStep()); router.push('/checkpoint') }
+    }, [user]);
 
     const handleSubmit = (): void => {
         if (!pending)
@@ -57,10 +47,6 @@ const SignUp: React.FC = (props: any) => {
     const handleKeyUp = (e) => {
         if (e.keyCode === 13) handleSubmit();
     };
-
-    // if (token) {
-    //     return <Redirect href="/"></Redirect>;
-    // }
 
     return (
         <>

@@ -253,7 +253,6 @@ export async function getServerSideProps(context) {
 	return {
 		props: {
 			planning: content,
-			ssr: true,
 		},
 	}
 }

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Disclosure } from "@headlessui/react";
-import { Tooltip } from "antd";
 import ChevronUp from "@2fd/ant-design-icons/lib/ChevronUp";
-
+import { ApplicationState } from "@/store/index";
 import { OutlineButton } from "../Buttons/WhiteButtons";
 import { selectPlan } from "@/store/auth/action";
 
@@ -22,6 +21,7 @@ const SubscribePlanDisclosure = ({
 	defaultOpen,
 }: ISubscribePlanDisclosureProps) => {
 	const dispatch = useDispatch();
+	const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
 
 	return (
 		<>
@@ -117,7 +117,7 @@ const SubscribePlanDisclosure = ({
 								<OutlineButton
 									btnText="Choose Plan"
 									onClick={() =>
-										dispatch(selectPlan(plan?.id))
+										dispatch(selectPlan(plan?.id, intro_user.id))
 									}
 									icon={<span>&#183;&#183;</span>}
 									className="w-full justify-center"

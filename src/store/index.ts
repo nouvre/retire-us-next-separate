@@ -8,7 +8,6 @@ import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { persistReducer, PersistState } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import logger from "redux-logger";
 
 import { authReducer } from "./auth/reducer";
 import { planReducer } from "./plan/reducer";
@@ -46,7 +45,7 @@ function initStore(initialState: any) {
     persistedReducer,
     initialState,
     composeWithDevTools(
-      applyMiddleware(thunkMiddleware, authMiddleware, logger)
+      applyMiddleware(thunkMiddleware, authMiddleware)
     )
   );
 }

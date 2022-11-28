@@ -162,7 +162,6 @@ export async function getServerSideProps(context) {
     return {
         props: {
             getStarted: content,
-            ssr: true,
         },
     }
 }

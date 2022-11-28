@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, FunctionComponent } from 'react'
 import Header from '@/components/Pages/Header'
 import Footer from '@/components/Pages/Footer'
 import { FillButtonLink } from '@/components/Buttons/WhiteButtons'
@@ -16,7 +16,7 @@ import { fallback } from '@/constants/fallback'
 import Image from '@/components/common/Image'
 
 interface ComponentProps {
-  homepage: any
+  homepage: any,
 }
 
 const Home: React.FC<ComponentProps> = ({ homepage }) => {
@@ -312,7 +312,6 @@ export async function getServerSideProps(context) {
   return {
     props: {
       homepage: content,
-      ssr: true,
     },
   }
 }

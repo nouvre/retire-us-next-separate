@@ -175,11 +175,9 @@ export const updateDisclosure: AppThunk = (param) => {
       });
   };
 };
-export const selectPlan: AppThunk = (plan_id) => {
+export const selectPlan: AppThunk = (plan_id, iUserId) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: CommonActionTypes.FETCH_START });
-    const iUserId = 0;
-
     if (iUserId)
       return await axios
         .post(`intro/${iUserId}/plan`, { plan_id })

@@ -52,6 +52,7 @@ const SignIn: React.FC = (props: any) => {
         if (user) {
             if (user.role === "admin") router.push("/admin/dashboard");
             else {
+                console.log('=============>', ProfileCompleteStep[user.authenticate_type][user.profile_complete_step])
                 router.push(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step]);
                 // dispatch(gotoProfileStep());
             }

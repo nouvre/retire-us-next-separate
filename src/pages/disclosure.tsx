@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { ApplicationState } from '@/store/index'
-import {
-  updateDisclosure,
-  updateUser,
-  updateProfileStep,
-} from '@/store/auth/action'
+import { updateDisclosure, updateUser, updateProfileStep } from '@/store/auth/action'
 import Header from '@/components/Pages/Header'
 import Signature from '@/components/Pages/Disclosure/Signature'
 import TermsAndConditions from '@/components/common/TermsAndConditions'
 import { StateCheckbox } from '@/components/Checkbox/StateCheckbox'
-import { downloadFile } from '@/util/helpers'
-import { isMobile, isChrome } from 'react-device-detect'
 import Image from '@/components/common/Image'
-import { useRouter } from 'next/router'
+import axios from "@/util/api";
 
 declare global {
   interface Window {
@@ -52,53 +47,29 @@ const SignatureWrapper: React.FC = (props: any) => {
 
   useEffect(() => {
     if (user) {
-      if (
-        !user.selected_plan?.plan_id &&
-        user.disclosure_agreements &&
-        user.disclosure_agreements.disclosure_pdf_link
-      ) {
+      if (!user.selected_plan?.plan_id && user.disclosure_agreements && user.disclosure_agreements.disclosure_pdf_link) {
         dispatch(updateProfileStep('back'))
         router.push('/checkpoint-result')
       }
-      // if(user.disclosure_agreements?.download_status && user.disclosure_agreements?.agree_status && user.disclosure_agreements?.signature_status){
-      //     router.push('/');
-      // }
       setSignatureImage(user.disclosure_agreements?.signature_image)
     }
   }, [user])
 
   const downloadDoc = async () => {
-    const save = document.createElement('a')
-    await dispatch(updateDisclosure({ type: 'download_status' }))
     setDownload(true)
 
-    if (typeof save.download !== 'undefined') {
-      if (isMobile && isChrome) {
-        save.href = 'storage/pdf/disclosure.pdf'
-        save.target = '_blank'
-        save.download = 'disclosure'
-        save.dispatchEvent(new MouseEvent('click'))
-      } else {
-        fetch('/storage/pdf/disclosure.pdf', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/pdf',
-          },
-        })
-          .then((response) => response.blob())
-          .then((blob) => {
-            // Create blob link to download
-            const disclosureBlob = new Blob([blob])
-            downloadFile(disclosureBlob, 'disclosure.pdf', 'application/pdf')
-          })
-      }
-    } else {
-      window.location.href = 'storage/pdf/disclosure.pdf' // so that it opens new tab for IE11
-    }
-    // if (ref1.current) {
-    //     await dispatch(updateDisclosure({ type: "download_status" }));
-    //     ref1.current.click();
-    // }
+    axios.get("download", {
+      responseType: 'blob',
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'disclosure.pdf'); //or any other extension
+      document.body.appendChild(link);
+      link.click();
+    });
+
+    await dispatch(updateDisclosure({ type: 'download_status' }))
   }
 
   const reviewDoc = async () => {

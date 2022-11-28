@@ -170,7 +170,6 @@ export async function getServerSideProps(context) {
 	return {
 		props: {
 			pricing: content,
-			ssr: true,
 		},
 	}
 }

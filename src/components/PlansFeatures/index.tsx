@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Tooltip } from "antd";
 import { TextNormal, TextGradient } from "../Typographies";
 import { OutlineButton, OutlineButtonLink } from "../Buttons/WhiteButtons";
 import { selectPlan } from "@/store/auth/action";
 import Image from '@/components/common/Image';
+import { ApplicationState } from "@/store/index";
 
 interface PlansFeaturesProps {
 	features: any;
@@ -21,6 +22,7 @@ const PlansFeatures = ({
 	const [plansHeight, setPlansHeight] = useState<string[]>([]);
 
 	const dispatch = useDispatch();
+	const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
 
 	useEffect(() => {
 		if (features && summaries) {
@@ -369,7 +371,7 @@ const PlansFeatures = ({
 									btnText="Choose Plan"
 									className="m-auto"
 									onClick={() =>
-										dispatch(selectPlan(summary.id))
+										dispatch(selectPlan(summary.id, intro_user.id))
 									}
 									icon={<span>&#183;&#183;</span>}
 									blue={true}

@@ -23,23 +23,20 @@ export const getQuestionnare: AppThunk = () => {
 export const updateQuestionnare: AppThunk = (
   data: Answer,
   step: number,
-  isLoggedIn: boolean,
+  iUserId: number,
   is_done?: boolean
 ) => {
   return async (dispatch: Dispatch) => {
-    const iUserId = 0;
-
-    if (isLoggedIn) {
+    console.log(iUserId)
+    if (!iUserId) {
       axios.post("auth/update-questionnaire", { ...data, step: step });
     } else {
-      if (iUserId) {
-        axios.post(`intro/${iUserId}/answer`, {
-          ...data,
-          step,
-          is_done,
-        });
-        dispatch({ type: AuthActionTypes.REQUEST_DONE });
-      }
+      axios.post(`intro/${iUserId}/answer`, {
+        ...data,
+        step,
+        is_done,
+      });
+      dispatch({ type: AuthActionTypes.REQUEST_DONE });
     }
     return dispatch({
       type: QuestionActionTypes.UPDATE_QUESTION,
