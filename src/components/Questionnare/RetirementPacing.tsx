@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Answer } from "@/store/questions/types";
 import { Checkpoint } from "@/store/setting/types";
 import TimeLine from "./TimeLine";
-import useRetirementPacing from "../../hooks/useRetirementPacing";
+import useRetirementPacing from "@/hooks/useRetirementPacing";
 import { updateCheckPointResult } from "@/store/setting/action";
 
 interface ComponentProps {

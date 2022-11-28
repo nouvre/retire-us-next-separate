@@ -4,22 +4,30 @@ import {
   applyMiddleware,
   combineReducers,
 } from "redux";
+import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { persistReducer } from "redux-persist";
+import { persistReducer, PersistState } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import { authReducer } from "./auth/reducer";
 import { planReducer } from "./plan/reducer";
 import { questionReducer } from "./questions/reducer";
-import { plaidReducer } from "./banking/plaid/reducer";
-import { yodleeReducer } from "./banking/yodlee/reducer";
 import { settingReducer } from "./setting/reducer";
 import { commonReducer } from "./common/reducer";
+//types
+import { AuthState } from "./auth/types";
+import { PlanState } from "./plan/types";
+import { QuestionState } from "./questions/types";
+import { SettingState } from "./setting/types";
+import { CommonState } from "./common/types";
+//middleware
+import { auth as authMiddleware } from "./auth/middleware";
 
-const persistConfig = {
+const persistConfig: any = {
   key: "root",
   storage,
-  whitelist: ["auth", "plans", "questions"]
+  whitelist: ["auth", "plans", "questions", "settings"],
+  timeout: null,
 };
 
 let store: any;
@@ -27,8 +35,6 @@ const reducers = combineReducers({
   auth: authReducer,
   plans: planReducer,
   questions: questionReducer,
-  bank_plaid: plaidReducer,
-  bank_yodlee: yodleeReducer,
   settings: settingReducer,
   common: commonReducer,
 });
@@ -38,7 +44,9 @@ function initStore(initialState: any) {
   return createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware())
+    composeWithDevTools(
+      applyMiddleware(thunkMiddleware, authMiddleware)
+    )
   );
 }
 
@@ -67,4 +75,13 @@ export const initializeStore = (preloadedState: any) => {
 export function useStore(initialState: any) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   return store;
+}
+
+export interface ApplicationState {
+  auth: AuthState;
+  plans: PlanState;
+  questions: QuestionState;
+  settings: SettingState;
+  common: CommonState;
+  _persist: PersistState;
 }

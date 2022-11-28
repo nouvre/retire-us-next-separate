@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { isDesktop } from "react-device-detect";
-import useButtonMouseMove from "../../hooks/useButtonMouseMove";
-import { cx } from "../../util/helpers";
+import useButtonMouseMove from "@/hooks/useButtonMouseMove";
+import Image from '@/components/common/Image';
+import { cx } from "@/util/helpers";
 
 interface IconButtonProps {
     isSelected: boolean;
@@ -41,7 +42,7 @@ const IconButton: React.FC<IconButtonProps> = ({
                 clickHandler();
             }}
         >
-            <img src={`assets/images/${icon}`} className="" />
+            <Image src={`assets/images/${icon}`} className="" alt="icon_button" />
             <div className="text-[16px] md:text-[20px] text-[#000714] text-center md:mt-[30px]">
                 {buttonText}
             </div>

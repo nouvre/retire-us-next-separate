@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { cx } from "../../util/helpers";
+import { cx } from "@/util/helpers";
+import Image from '@/components/common/Image';
 
 interface OutlineButtonLinkProps extends React.AllHTMLAttributes<HTMLElement> {
     href: string;
@@ -23,7 +24,6 @@ export const OutlineButtonLink = ({
     params,
     as,
 }: OutlineButtonLinkProps) => {
-    console.log(href)
     return (
         <Link
             href={{ pathname: href, query: { ...params } }}
@@ -39,7 +39,7 @@ export const OutlineButtonLink = ({
         >
             <div className="flex items-center gap-4">
                 {btnText}
-                {src && <img src={src} alt="" className="w-6 h-6" />}
+                {src && <Image src={src} alt="" className="w-6 h-6" />}
                 {icon}
             </div>
         </Link>

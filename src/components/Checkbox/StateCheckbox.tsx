@@ -98,7 +98,7 @@ export const StateCheckbox = ({ onChange }: { onChange: (e) => void }) => {
                     as={Fragment}
                     leave="transition ease-in duration-100"
                     leaveFrom="opacity-100"
-                    leavehref="opacity-0"
+                    leaveTo="opacity-0"
                     afterLeave={() => setQuery('')}
                 >
                     <Combobox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white border border-gray-300 rounded-md shadow-lg max-h-60 focus:outline-none sm:text-sm">

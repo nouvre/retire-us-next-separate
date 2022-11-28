@@ -1,17 +1,10 @@
 import { Reducer } from "redux";
 import { Toast } from "@/components/common/notification";
-
 import { AuthState, AuthActionTypes } from "./types";
 
-// const user =
-//   typeof window !== "undefined" && localStorage.getItem("user")
-//     ? localStorage.getItem("user")
-//     : null;
-// localStorage.getItem("user") || null;
-// const user = localStorage.getItem("user");
 const initialState: AuthState = {
   user: null,
-  token: '',
+  token: "",
   loadDashboard: false,
   answers: [],
   missingDataNum: 0,
@@ -24,8 +17,8 @@ const initialState: AuthState = {
 
 const reducer: Reducer<AuthState> = (state = initialState, action) => {
   switch (action.type) {
-    case AuthActionTypes.EMAIL_LOGIN:
     case AuthActionTypes.REGISTER:
+    case AuthActionTypes.EMAIL_LOGIN:
     case AuthActionTypes.FACEBOOK_LOGIN:
     case AuthActionTypes.GOOGLE_LOGIN:
     case AuthActionTypes.UPDATE_DISCLOSURE:
@@ -40,13 +33,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     case AuthActionTypes.ADVISOR_MEET:
     case AuthActionTypes.CHOOSE_PLAN_AGAIN:
     case AuthActionTypes.UPDATE_COLLECTION_DATA: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       ...action.payload.user,
-    //       passTwoFactor: state.user ? state.user.passTwoFactor : false,
-    //     })
-    //   );
       return {
         ...state,
         token: action.payload.access_token,
@@ -56,15 +42,10 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         },
       };
     }
+    // case AuthActionTypes.REGISTER: {
+    // }
     case AuthActionTypes.GET_USER:
     case AuthActionTypes.UPDATE_PROFILE_STEP: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       ...action.payload.user,
-    //       passTwoFactor: state.user ? state.user.passTwoFactor : false,
-    //     })
-    //   );
       return {
         ...state,
         user: {
@@ -74,10 +55,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
       };
     }
     case AuthActionTypes.GOTO_PROFILE_STEP: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({ ...state.user, isSignUpProcess: true })
-    //   );
       return {
         ...state,
         user: { ...state.user, isSignUpProcess: true },
@@ -109,15 +86,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
 
     case AuthActionTypes.CONFIRM_CODE: {
       const { phone_number, phone_number_verified_at } = action.payload;
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       ...state.user,
-    //       phone_number,
-    //       phone_number_verified_at,
-    //     })
-    //   );
-
       return {
         ...state,
         isFetching: false,
@@ -130,14 +98,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     }
 
     case AuthActionTypes.TWO_FACTOR_REQUEST: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       ...state.user,
-    //       twoFactorSent: true,
-    //     })
-    //   );
-
       return {
         ...state,
         isFetching: false,
@@ -149,14 +109,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     }
 
     case AuthActionTypes.TWO_FACTOR_RESEND: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       ...state.user,
-    //       twoFactorSent: true,
-    //     })
-    //   );
-
       return {
         ...state,
         isFetching: false,
@@ -168,24 +120,12 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     }
 
     case AuthActionTypes.TWO_FACTOR_VERFIY: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       ...state.user,
-    //       passTwoFactor: true,
-    //       twoFactorSent: false,
-    //       profile_complete_step: action.payload.profile_complete_step,
-    //       default_two_factor_method: action.two_factor_method,
-    //     })
-    //   );
-
       return {
         ...state,
         isFetching: false,
         user: {
           ...state.user,
           passTwoFactor: true,
-          twoFactorSent: false,
           profile_complete_step: action.payload.profile_complete_step,
           default_two_factor_method: action.two_factor_method,
         },
@@ -225,15 +165,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     }
 
     case AuthActionTypes.UPDATE_USER_PROFILE: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       ...state.user,
-    //       profile: action.payload.profile,
-    //       todos: action.payload.todos,
-    //     })
-    //   );
-
       return {
         ...state,
         user: {
@@ -245,19 +176,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     }
 
     case AuthActionTypes.ADD_DOCUMENT_PROFILE: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       ...state.user,
-    //       profile: {
-    //         ...state.user?.profile,
-    //         [action.payload.key]: action.payload.profile[action.payload.key],
-    //       },
-    //     })
-    //   );
-      console.log({
-        [action.payload.key]: action.payload.profile[action.payload.key],
-      });
       return {
         ...state,
         user: {
@@ -271,11 +189,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     }
 
     case AuthActionTypes.UPDATE_TODOLIST: {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({ ...state.user, todos: action.payload.todos })
-    //   );
-
       return {
         ...state,
         user: {
@@ -324,7 +237,7 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     }
 
     default: {
-      return { ...state };
+      return state;
     }
   }
 };

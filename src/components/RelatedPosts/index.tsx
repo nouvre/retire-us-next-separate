@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import { convertDate } from "../../util/helpers";
+import { convertDate } from "@/util/helpers";
 import { Post } from "../../constants/variables";
 
 interface ComponentProps {

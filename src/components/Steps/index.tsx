@@ -1,8 +1,8 @@
 import React from "react";
-import Img from "../Image";
 import { TextNormal, TextGradient, TextTitleLg } from "../Typographies";
 import { FillButtonLink } from "../Buttons/WhiteButtons";
-import { getImage } from "../../util/cms";
+import { getImage } from "@/util/cms";
+import Image from '@/components/common/Image';
 
 interface StepsProps {
     title?: string;
@@ -84,7 +84,7 @@ const Steps = ({
                             )}
                             {item.img?.data && (
                                 <div className="w-[100px]">
-                                    <Img
+                                    <Image
                                         src={getImage(item.img)}
                                         alt="ico-track"
                                         className="w-full"
@@ -104,7 +104,7 @@ const Steps = ({
                                 />
                             </div>
                             {withArrows && index < steps.length - 1 && (
-                                <Img
+                                <Image
                                     src="/assets/images/ico-arrow-circle-down.svg"
                                     alt="Ico Arrow Down"
                                     className="absolute w-[48px] lg:w-[64px] bottom-[-30px] lg:bottom-[-40px] right-[10px] lg:right-[40px] z-[100]"
@@ -131,12 +131,12 @@ const Steps = ({
 
             {!reversed && (
                 <>
-                    <Img
+                    <Image
                         src="/assets/images/ico-union.svg"
                         alt="Planning"
                         className="w-full max-w-[300px] absolute left-0 top-[40%] z-[-1]"
                     />
-                    <Img
+                    <Image
                         src="/assets/images/ico-ellipse.svg"
                         alt="ico-ellipse"
                         className="absolute left-[15%] top-[60%] z-[-1] hidden md:block"
@@ -145,7 +145,7 @@ const Steps = ({
             )}
 
             {reversed && (
-                <Img
+                <Image
                     src="/assets/images/ico-ellipse.svg"
                     alt="ico-ellipse"
                     className="absolute right-[15%] top-[60%] z-[-1] hidden md:block"
@@ -153,7 +153,7 @@ const Steps = ({
             )}
 
             {branding && (
-                <Img
+                <Image
                     src="/assets/images/home/ongoing-support.svg"
                     alt="ico-ellipse"
                     className="absolute right-[0] top-[40%] z-[-1] hidden md:block"

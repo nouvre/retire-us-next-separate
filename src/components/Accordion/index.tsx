@@ -2,6 +2,7 @@ import React from "react";
 import { Disclosure } from "@headlessui/react";
 
 import { TextSubitle, TextNormal } from "@/components/Typographies";
+import Image from '@/components/common/Image';
 
 interface IAccordionContent {
     category: string;
@@ -26,13 +27,13 @@ const Accordion = ({ contents }: IAccordionProps) => {
                                     </TextSubitle>
                                     <div className="w-8 md:w-12 ml-1">
                                         {open ? (
-                                            <img
+                                            <Image
                                                 src="/assets/images/ico-minus-circle-blue.svg"
                                                 alt="ico-minus-circle-blue"
                                                 className="w-full"
                                             />
                                         ) : (
-                                            <img
+                                            <Image
                                                 src="/assets/images/ico-plus-circle-orange.svg"
                                                 alt="ico-plus-circle-orange"
                                                 className="w-full"
@@ -52,7 +53,7 @@ const Accordion = ({ contents }: IAccordionProps) => {
                                                         <Disclosure.Button className="flex justify-between items-center w-full px-6 pt-4 pb-3 md:px-0 md:py-5 text-left focus:outline-none">
                                                             <div className="flex items-center justify-between w-full">
                                                                 <div className="flex items-start gap-6 md:gap-[60px]">
-                                                                    <img
+                                                                    <Image
                                                                         src="/assets/images/ico-double-dot-blue.svg"
                                                                         className="mt-3"
                                                                         alt="ico-double-dot-blue"
@@ -63,13 +64,13 @@ const Accordion = ({ contents }: IAccordionProps) => {
                                                                 </div>
                                                                 <div className="w-3 mx-2 md:mx-4">
                                                                     {open ? (
-                                                                        <img
+                                                                        <Image
                                                                             src="/assets/images/ico-caret-up.svg"
                                                                             alt="ico-caret-up"
                                                                             className="w-full"
                                                                         />
                                                                     ) : (
-                                                                        <img
+                                                                        <Image
                                                                             src="/assets/images/ico-caret-down.svg"
                                                                             alt="ico-caret-down"
                                                                             className="w-full"

@@ -8,6 +8,7 @@ import { Form, Input, Button } from "antd";
 import axios from "axios";
 import { Toast } from "../common/notification";
 import { whealthConciergeMeet } from "@/store/auth/action";
+import Image from '@/components/common/Image';
 interface ComponentProps{
     tsp: number,
     tz: string,
@@ -72,7 +73,7 @@ const ConfirmModal: React.FC<ComponentProps> = ({tsp,tz,duration,slug,hs_version
                         onClose();
                     }}
                 >
-                    <img
+                    <Image
                         src="/assets/images/ico-close.svg"
                         className="w-full"
                         alt="ico-close"

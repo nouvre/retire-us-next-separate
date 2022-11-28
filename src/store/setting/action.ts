@@ -67,6 +67,7 @@ export const getUsers: AppThunk = () => {
 
 export const getAnalyticData: AppThunk = () => {
     return async (dispatch: Dispatch) => {
+        console.log(JSON.stringify(axios.defaults.headers.common["Authorization"]))
         return await axios.post("/get-analytic-data").then(({ data }) => {
             return dispatch({
                 type: SettingActionTypes.GET_ANALYTIC_DATA,

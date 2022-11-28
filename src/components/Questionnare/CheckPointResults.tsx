@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import moment from "moment";
-import { User } from "@/store/auth/types";
-import { Answer } from "@/store/questions/types";
+import { User } from "../../store/auth/types";
+import { Answer } from "../../store/questions/types";
 import { TextNormal } from "../Typographies";
 import { getCurrentAge } from "../../util/func";
 import RetirementPacing from "./RetirementPacing";

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 import { TextNormal, TextGradient } from "../Typographies";
 import { SharedFillButton } from "..//Buttons/SharedFillButton";
-import { cx, humanizeDate } from "../../util/helpers";
+import { cx, humanizeDate } from "@/util/helpers";
+import Image from '@/components/common/Image';
 // import moment, { Moment } from "moment";
 import moment from "moment-timezone";
 
@@ -104,7 +105,7 @@ const AppointmentModal: React.FC<IAppointmentModalProps> = (props) => {
                         onClose();
                     }}
                 >
-                    <img
+                    <Image
                         src="/assets/images/ico-close.svg"
                         className="w-full"
                         alt="ico-close"

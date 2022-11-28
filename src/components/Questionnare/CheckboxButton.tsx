@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { isDesktop } from "react-device-detect";
-import useButtonMouseMove from "../../hooks/useButtonMouseMove";
-import { cx } from "../../util/helpers";
+import useButtonMouseMove from "@/hooks/useButtonMouseMove";
+import { cx } from "@/util/helpers";
+import Image from '@/components/common/Image';
 
 interface CheckboxButtonProps {
     isSelected: boolean;
@@ -44,14 +45,16 @@ const CheckboxButton: React.FC<CheckboxButtonProps> = ({
             </div>
             <div className="ml-auto w-[24px] md:w-[32px]">
                 {selected ? (
-                    <img
+                    <Image
                         src="/assets/images/ico-checkbox-selected.svg"
                         className="w-full"
+                        alt="check_button"
                     />
                 ) : (
-                    <img
+                    <Image
                         src="/assets/images/ico-checkbox.svg"
                         className="w-full"
+                        alt="check_button"
                     />
                 )}
             </div>
