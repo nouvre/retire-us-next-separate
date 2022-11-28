@@ -27,7 +27,6 @@ export const updateQuestionnare: AppThunk = (
   is_done?: boolean
 ) => {
   return async (dispatch: Dispatch) => {
-    console.log(iUserId)
     if (!iUserId) {
       axios.post("auth/update-questionnaire", { ...data, step: step });
     } else {

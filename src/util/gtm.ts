@@ -5,8 +5,5 @@ declare global {
 }
 
 export const gtm = (rest) => {
-  window.dataLayer?.push({
-    event: "VirtualPageView",
-    ...rest,
-  });
+  window.dataLayer.push(...rest);
 };

@@ -371,7 +371,7 @@ const PlansFeatures = ({
 									btnText="Choose Plan"
 									className="m-auto"
 									onClick={() =>
-										dispatch(selectPlan(summary.id, intro_user.id))
+										dispatch(selectPlan(summary.id, intro_user?.id))
 									}
 									icon={<span>&#183;&#183;</span>}
 									blue={true}

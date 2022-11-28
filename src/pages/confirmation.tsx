@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import TagManager from "react-gtm-module";
 import { ApplicationState } from "@/store/index";
 import { updateProfileStep } from "@/store/auth/action";
 import { SharedFillButton } from "@/components/Buttons/SharedFillButton";
 import Header from "@/components/Pages/Header";
 import Image from '@/components/common/Image';
+import { gtm } from "@/util/gtm"
 
 const Thankyou = () => {
 	const dispatch = useDispatch();
@@ -16,13 +16,11 @@ const Thankyou = () => {
 
 	useEffect(() => {
 		if (user) {
-			TagManager.dataLayer({
-				dataLayer: {
-					userName: user?.name,
-					email: user?.email,
-					message: "Thank you",
-				},
-				dataLayerName: "ThankyouDataLayer",
+			gtm({
+				event: "ThankyouDataLayer",
+				userName: user?.name,
+				email: user?.email,
+				message: "Thank you",
 			});
 		}
 	}, [user]);

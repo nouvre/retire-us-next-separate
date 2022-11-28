@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -29,7 +29,6 @@ for (let i = quizRenderStartOrderIndex; i <= quizRenderEndOrderIndex; i++)
 	quizSteps.push(questionAnswers[questionOrder[i]].answers);
 
 const Checkpoint: React.FC = () => {
-	// let lastQuizStep = 29;
 	const router = useRouter();
 	const step = useSelector((state: ApplicationState) => state.questions.step);
 	const answers = useSelector((state: ApplicationState) => state.questions.answers);
@@ -40,13 +39,11 @@ const Checkpoint: React.FC = () => {
 
 	const dispatch = useDispatch();
 
-	useEffect(() => {
+	useMemo(() => {
 		if (token) {
 			if (user?.profile_complete_step && step >= questionOrder.length)
 				router.replace(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step]);
 			else dispatch(getQuestionnare());
-		} else {
-			if (!intro_user) router.push("/intro");
 		}
 	}, [token]);
 
@@ -72,22 +69,16 @@ const Checkpoint: React.FC = () => {
 		setTimeout(async () => {
 			if (token && user) {
 				if (step >= questionOrder.length) {
-					await dispatch(updateQuestionnare(data, step, intro_user.id));
+					await dispatch(updateQuestionnare(data, step));
 					await dispatch(finishQuestionnare());
-					router.replace(
-						ProfileCompleteStep[user.authenticate_type][
-						user.profile_complete_step + 1
-						]
-					);
 				} else {
-					dispatch(updateQuestionnare(data, step, intro_user.id));
+					dispatch(updateQuestionnare(data, step));
 				}
 			} else {
 				if (step >= questionOrder.length) {
 					await dispatch(updateQuestionnare(data, step, intro_user.id, true));
 					router.replace("/checkpoint-result");
 				} else {
-					console.log('jherer')
 					await dispatch(updateQuestionnare(data, step, intro_user.id));
 				}
 			}
@@ -96,7 +87,7 @@ const Checkpoint: React.FC = () => {
 
 	const handlePrev = (data: Answer, step: number) => {
 		if (token && user) {
-			dispatch(updateQuestionnare(data, step, intro_user.id));
+			dispatch(updateQuestionnare(data, step));
 		} else {
 			dispatch(updateQuestionnare(data, step, intro_user.id));
 		}
@@ -177,17 +168,12 @@ const Checkpoint: React.FC = () => {
 		else return step - 4;
 	};
 
-	const getQuestionPage = (): any => {
+	const getQuestionPage = useCallback(() => {
 		if (step >= questionOrder.length) {
 			return (
-				<GeneralPage
-					key={0}
+				<Confetti
 					data={answers}
-					step={getStepperNumber()}
-					timer={false}
-					questionIndex={0}
-					handleNext={(e) => getHandleNext(step)(e, 1)}
-					handlePrev={(e) => handlePrev(e, -1)}
+					handleNext={(e) => handleNext(e, step + 1)}
 				/>
 			);
 		}
@@ -272,7 +258,7 @@ const Checkpoint: React.FC = () => {
 				/>
 			);
 		} else return <>{alert("Something wrong with questionnaire logic")}</>;
-	};
+	}, [answers]);
 
 	return (
 		<div className="w-full min-h-screen relative">

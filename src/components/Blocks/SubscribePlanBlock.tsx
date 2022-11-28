@@ -740,7 +740,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
 						<div className="w-full flex justify-center items-center">
 							<OutlineButton
 								btnText="Choose Plan"
-								onClick={() => dispatch(selectPlan(2, intro_user.id))}
+								onClick={() => dispatch(selectPlan(2, intro_user?.id))}
 								icon={<span>&#183;&#183;</span>}
 								blue={true}
 							/>
@@ -755,7 +755,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
 						<div className="w-full flex justify-center items-center">
 							<OutlineButton
 								btnText="Choose Plan"
-								onClick={() => dispatch(selectPlan(3, intro_user.id))}
+								onClick={() => dispatch(selectPlan(3, intro_user?.id))}
 								icon={<span>&#183;&#183;</span>}
 								blue={true}
 							/>
@@ -770,7 +770,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
 						<div className="w-full flex justify-center items-center rounded-br-[20px]">
 							<OutlineButton
 								btnText="Choose Plan"
-								onClick={() => dispatch(selectPlan(4, intro_user.id))}
+								onClick={() => dispatch(selectPlan(4, intro_user?.id))}
 								icon={<span>&#183;&#183;</span>}
 								blue={true}
 							/>

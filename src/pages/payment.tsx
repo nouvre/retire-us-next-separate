@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import TagManager from "react-gtm-module";
 import {
 	CardElement,
 	useStripe,
@@ -53,7 +52,12 @@ const Princing: React.FC = (props: any) => {
 		//     couponChanged = false;
 		// }
 		// window.dataLayer?.push();
-
+		gtm({
+			userName: user?.name,
+			email: user?.email,
+			price: calculateAmoutDue(),
+			message: "Payment success",
+		})
 		if (elements && stripe) {
 			const card = elements.getElement(CardElement);
 			if (card) {
@@ -70,14 +74,12 @@ const Princing: React.FC = (props: any) => {
 						)
 					);
 
-				TagManager.dataLayer({
-					dataLayer: {
-						userName: user?.name,
-						email: user?.email,
-						price: calculateAmoutDue(),
-						message: "Payment success",
-					},
-					dataLayerName: "PaymentDataLayer",
+				gtm({
+					event: "PaymentDataLayer",
+					userName: user?.name,
+					email: user?.email,
+					price: calculateAmoutDue(),
+					message: "Payment success",
 				});
 			}
 		}

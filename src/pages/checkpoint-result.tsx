@@ -8,8 +8,8 @@ import CheckPointResults from "@/components/Questionnare/CheckPointResults";
 import { Answer } from "@/store/questions/types";
 import { questionOrder } from "@/constants/variables";
 import { useQuestionnaire } from "@/util/func";
-import TagManager from "react-gtm-module";
 import Image from '@/components/common/Image';
+import { gtm } from "@/util/gtm"
 
 const QuestionnaireResult = (props: any) => {
 	const router = useRouter();
@@ -44,17 +44,16 @@ const QuestionnaireResult = (props: any) => {
 		if (user) {
 			dispatch(getQuestionnare());
 
-			TagManager.dataLayer({
-				dataLayer: {
-					userName: user?.name,
-					email: user?.email,
-					message: "Checkpoint result",
-				},
-				dataLayerName: "CheckpointResultDataLayer",
+			gtm({
+				event: "CheckpointResultDataLayer",
+				userName: user?.name,
+				email: user?.email,
+				message: "Checkpoint result"
 			});
-		} else {
-			if (step < questionOrder.length) router.push("/checkpoint");
 		}
+		// else {
+		// 	// if (step < questionOrder.length) router.push("/checkpoint");
+		// }
 	}, [step]);
 
 	const handleClick = () => {

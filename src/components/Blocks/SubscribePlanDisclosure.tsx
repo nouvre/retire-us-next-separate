@@ -117,7 +117,7 @@ const SubscribePlanDisclosure = ({
 								<OutlineButton
 									btnText="Choose Plan"
 									onClick={() =>
-										dispatch(selectPlan(plan?.id, intro_user.id))
+										dispatch(selectPlan(plan?.id, intro_user?.id))
 									}
 									icon={<span>&#183;&#183;</span>}
 									className="w-full justify-center"

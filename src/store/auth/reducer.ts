@@ -126,7 +126,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         user: {
           ...state.user,
           passTwoFactor: true,
-          twoFactorSent: false,
           profile_complete_step: action.payload.profile_complete_step,
           default_two_factor_method: action.two_factor_method,
         },

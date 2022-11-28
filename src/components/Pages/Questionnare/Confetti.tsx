@@ -4,18 +4,19 @@ import { Answer } from "@/store/questions/types";
 
 interface ComponentProps {
     data: Answer;
-    step: number;
+    step?: number;
     handleNext: (e: Answer) => void;
 }
 
 const Confetti: React.FC<ComponentProps> = (props) => {
     const [submitData] = useState<Answer>(props.data);
-    const [isExploding, setIsExploding] = useState<boolean>(true);
+    const [isExploding, setIsExploding] = useState<boolean>(props.step ? true : false);
 
     useEffect(() => {
         setTimeout(() => {
             setIsExploding(false);
-            props.handleNext({ ...submitData });
+            if (props.step)
+                props.handleNext({ ...submitData });
         }, 2000)
     }, [])
 
@@ -26,7 +27,7 @@ const Confetti: React.FC<ComponentProps> = (props) => {
                 <div className="w-full h-[72px] bg-[#DDE3F0] rounded-full pl-10 pr-[180px] py-[30px] mb-4 relative">
                     <div className="h-3 bg-gradient-to-r from-[#4D7EF2] to-[#5FD4F4] rounded-full"></div>
                     <div className="flex justify-center items-center w-[142px] h-[142px] bg-white rounded-full absolute right-0 top-[-38px]">
-                        <span className="text-   text-transparent bg-clip-text bg-gradient-to-br from-[#4D7EF2] to-[#5FD4F4] font-bold">100%</span>
+                        <span className="text-4xl text-transparent bg-clip-text bg-gradient-to-br from-[#4D7EF2] to-[#5FD4F4] font-bold">100%</span>
                     </div>
                 </div>
                 <div className="flex justify-center mt-40">

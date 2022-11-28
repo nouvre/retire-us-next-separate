@@ -268,7 +268,7 @@ const Recommendation = ({ allSubscriptions }) => {
 				)}
 			</div>
 
-			{user?.authenticate_type !== 2 && (
+			{user?.authenticate_type != 2 && (
 				<>
 					<div className="recommend-plan-block pt-20 pb-[100px] hidden md:block">
 						<div className="md:w-full lg:max-w-[960px] xl:max-w-[1280px] mx-auto">
@@ -292,7 +292,7 @@ const Recommendation = ({ allSubscriptions }) => {
 				<div className="d-flex w-full justify-center pt-12 pb-[100px]">
 					<div
 						className="max-w-[400px] mx-auto flex h-[60px] justify-center items-center rounded-[60px] bg-[#001F55] text-white text-[18px] font-bold cursor-pointer"
-						onClick={() => dispatch(selectPlan(0, intro_user.id))}
+						onClick={() => dispatch(selectPlan(0, intro_user?.id))}
 					>
 						Continue
 					</div>
