@@ -10,5 +10,5 @@ export const auth =
         token
       )}`;
     else delete axios.defaults.headers.common["Authorization"];
-    next(action);
+    return next(action);
   };

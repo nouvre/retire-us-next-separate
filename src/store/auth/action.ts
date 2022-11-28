@@ -1,16 +1,14 @@
-import { AuthActionTypes } from "./types";
-import { SettingActionTypes } from "../setting/types";
-import { ThunkAction } from "redux-thunk";
-import { ActionCreator, Action, Dispatch, AnyAction } from "redux";
-import { ApplicationState } from "../index";
-import { Toast } from "@/components/common/notification";
-import axios from "../../util/api";
-import { CommonActionTypes } from "../common/types";
-import { PURGE } from "redux-persist";
+import { AuthActionTypes } from './types';
+import { SettingActionTypes } from '../setting/types';
+import { ThunkAction } from 'redux-thunk';
+import { ActionCreator, Dispatch, AnyAction } from 'redux';
+import { ApplicationState } from '../index';
+import { Toast } from '@/components/common/notification';
+import axios from '../../util/api';
+import { CommonActionTypes } from '../common/types';
+import { PURGE } from 'redux-persist';
 
-export type AppThunk = ActionCreator<
-  ThunkAction<void, ApplicationState, unknown, AnyAction>
->;
+export type AppThunk = ActionCreator<ThunkAction<void, ApplicationState, unknown, AnyAction>>;
 
 interface RegisterData {
   name: string;
@@ -22,19 +20,19 @@ export const login: AppThunk = (email: string, password: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: CommonActionTypes.FETCH_START });
     return await axios
-      .post("auth/login", { email, password })
+      .post('auth/login', { email, password })
       .then(({ data }) => {
         dispatch({ type: CommonActionTypes.FETCH_SUCCESS });
         return dispatch({
           type: AuthActionTypes.EMAIL_LOGIN,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         dispatch({ type: CommonActionTypes.FETCH_ERROR });
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -43,17 +41,17 @@ export const login: AppThunk = (email: string, password: string) => {
 export const getUser: AppThunk = (email: string) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/get-user")
+      .post('auth/get-user')
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.GET_USER,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -61,7 +59,7 @@ export const getUser: AppThunk = (email: string) => {
 
 export const hasAccount = async (email: string) => {
   try {
-    return await axios.post("auth/has-account", email);
+    return await axios.post('auth/has-account', email);
   } catch (e) {
     return false;
   }
@@ -70,17 +68,17 @@ export const hasAccount = async (email: string) => {
 export const register: AppThunk = (userInfo: RegisterData) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/register", userInfo)
+      .post('auth/register', userInfo)
       .then((e) => {
         return dispatch({
           type: AuthActionTypes.REGISTER,
-          payload: e.data,
+          payload: e.data
         });
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -89,17 +87,17 @@ export const register: AppThunk = (userInfo: RegisterData) => {
 export const googleLogin: AppThunk = (token: string, payload: any = {}) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/google-login", { token, ...payload })
+      .post('auth/google-login', { token, ...payload })
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.GOOGLE_LOGIN,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -108,17 +106,17 @@ export const googleLogin: AppThunk = (token: string, payload: any = {}) => {
 export const facebookLogin: AppThunk = (token: string, payload: any = {}) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/facebook-login", { token, ...payload })
+      .post('auth/facebook-login', { token, ...payload })
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.FACEBOOK_LOGIN,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -126,19 +124,19 @@ export const facebookLogin: AppThunk = (token: string, payload: any = {}) => {
 export const signOut: AppThunk = () => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/logout")
+      .post('auth/logout')
       .then(({ data }) => {
         return dispatch({
           type: PURGE,
-          key: "root",
+          key: 'root',
           result: () => {
-            location.href = "/signin";
+            location.href = '/signin';
             return null;
-          },
+          }
         });
       })
       .catch((e) => {
-        Toast("", e.response.data.message, "danger");
+        Toast('', e.response.data.message, 'danger');
       });
   };
 };
@@ -146,32 +144,30 @@ export const updateDisclosure: AppThunk = (param) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: CommonActionTypes.FETCH_START });
     return await axios
-      .post("auth/update-disclosure", param)
+      .post('auth/update-disclosure', param)
       .then(({ data }) => {
         dispatch({ type: CommonActionTypes.FETCH_SUCCESS });
         if (data.docpath) {
-          document
-            .getElementById("docdown")
-            ?.setAttribute("href", data.docpath);
-          document.getElementById("docdown")?.setAttribute("target", "_blank");
-          document.getElementById("docdown")?.click();
-          Toast("", "Disclosure completed successfully!", "success");
+          document.getElementById('docdown')?.setAttribute('href', data.docpath);
+          document.getElementById('docdown')?.setAttribute('target', '_blank');
+          document.getElementById('docdown')?.click();
+          Toast('', 'Disclosure completed successfully!', 'success');
           return dispatch({
             type: AuthActionTypes.UPDATE_DISCLOSURE,
-            payload: data.userdata.original,
+            payload: data.userdata.original
           });
         } else {
-          console.log("Received Token", data.access_token);
-          Toast("", "Disclosure updated successfully!", "success");
+          console.log('Received Token', data.access_token);
+          Toast('', 'Disclosure updated successfully!', 'success');
           return dispatch({
             type: AuthActionTypes.UPDATE_DISCLOSURE,
-            payload: data,
+            payload: data
           });
         }
       })
       .catch((e) => {
         dispatch({ type: CommonActionTypes.FETCH_ERROR });
-        Toast("", e.response.data.message, "danger");
+        Toast('', e.response.data.message, 'danger');
       });
   };
 };
@@ -185,7 +181,7 @@ export const selectPlan: AppThunk = (plan_id, iUserId) => {
           dispatch({ type: CommonActionTypes.FETCH_SUCCESS });
 
           return dispatch({
-            type: AuthActionTypes.REQUEST_DATA,
+            type: AuthActionTypes.REQUEST_DATA
           });
         })
         .catch((e) => {
@@ -193,12 +189,12 @@ export const selectPlan: AppThunk = (plan_id, iUserId) => {
         });
     else
       return await axios
-        .post("auth/choose-plan", { plan_id })
+        .post('auth/choose-plan', { plan_id })
         .then(({ data }) => {
           dispatch({ type: CommonActionTypes.FETCH_SUCCESS });
           return dispatch({
             type: AuthActionTypes.SELECT_PLAN,
-            payload: data,
+            payload: data
           });
         })
         .catch((e) => {
@@ -209,10 +205,10 @@ export const selectPlan: AppThunk = (plan_id, iUserId) => {
 
 export const choosePlanAgain: AppThunk = () => {
   return async (dispatch: Dispatch) => {
-    return await axios.post("auth/choose-plan-again").then(({ data }) => {
+    return await axios.post('auth/choose-plan-again').then(({ data }) => {
       return dispatch({
         type: AuthActionTypes.CHOOSE_PLAN_AGAIN,
-        payload: data,
+        payload: data
       });
     });
   };
@@ -223,50 +219,47 @@ export const createSubscription: AppThunk = (
   couponCode
 ) => {
   let cCode: string;
-  if (couponCode == undefined) cCode = "";
+  if (couponCode == undefined) cCode = '';
   else cCode = couponCode;
 
   return async (dispatch: Dispatch) => {
     dispatch({ type: CommonActionTypes.FETCH_START });
     return await axios
-      .post("auth/create-subscription", { paymentMethod, cCode })
+      .post('auth/create-subscription', { paymentMethod, cCode })
       .then(({ data }) => {
-        Toast("", "Payment Successful", "success");
+        Toast('', 'Payment Successful', 'success');
 
         axios
-          .post("auth/send-email-to-admin")
+          .post('auth/send-email-to-admin')
           .then(() => {
-            console.log("Email has been sent successfully");
+            console.log('Email has been sent successfully');
           })
           .catch((err) => {
-            console.log("Email sending faild.");
+            console.log('Email sending faild.');
           });
         dispatch({ type: CommonActionTypes.FETCH_SUCCESS });
         return dispatch({
           type: AuthActionTypes.BUY_PLAN,
-          payload: data,
+          payload: data
         });
       })
       .catch((err) => {
         dispatch({ type: CommonActionTypes.FETCH_ERROR });
-        Toast("", "Payment failed", "danger");
+        Toast('', 'Payment failed', 'danger');
       });
   };
 };
-export const updateBankingAccessToken: AppThunk = (
-  plaid_tokens,
-  yodlee_tokens
-) => {
+export const updateBankingAccessToken: AppThunk = (plaid_tokens, yodlee_tokens) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/update-banking-access-token", {
+      .post('auth/update-banking-access-token', {
         plaid_tokens,
-        yodlee_tokens,
+        yodlee_tokens
       })
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.UPDATE_PLAID_ACCESS_TOKEN,
-          payload: data,
+          payload: data
         });
       });
   };
@@ -274,23 +267,21 @@ export const updateBankingAccessToken: AppThunk = (
 
 export const saveDataCollectionInfo: AppThunk = (formdata) => {
   return async (dispatch: Dispatch) => {
-    return await axios
-      .post("auth/save-data-collection", formdata)
-      .then(({ data }) => {
-        return dispatch({
-          type: AuthActionTypes.UPDATE_COLLECTION_DATA,
-          payload: data,
-        });
+    return await axios.post('auth/save-data-collection', formdata).then(({ data }) => {
+      return dispatch({
+        type: AuthActionTypes.UPDATE_COLLECTION_DATA,
+        payload: data
       });
+    });
   };
 };
 
 export const getUserDataCollection: AppThunk = () => {
   return async (dispatch: Dispatch) => {
-    return await axios.post("auth/get-user-collection").then(({ data }) => {
+    return await axios.post('auth/get-user-collection').then(({ data }) => {
       return dispatch({
         type: AuthActionTypes.GET_USER_COLLECTION,
-        payload: data.data,
+        payload: data.data
       });
     });
   };
@@ -299,72 +290,68 @@ export const getUserDataCollection: AppThunk = () => {
 export const putDataCollecionFile: AppThunk = (formdata) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/put-data-collection", formdata)
+      .post('auth/put-data-collection', formdata)
       .then(({ data }) => {
-        Toast("", "Document successfully uploaded", "success");
+        Toast('', 'Document successfully uploaded', 'success');
         return dispatch({
           type: AuthActionTypes.PUT_COLLECTION_FILE,
-          payload: data.data,
+          payload: data.data
         });
       })
       .catch((err) => {
-        Toast("", "Document upload failed", "danger");
+        Toast('', 'Document upload failed', 'danger');
       });
   };
 };
 
 export const deleteDataCollectionFile: AppThunk = (id) => {
   return async (dispatch: Dispatch) => {
-    return await axios
-      .post("auth/delete-data-collection", { id })
-      .then(({ data }) => {
-        Toast("", "Document successfully deleted", "success");
-        return dispatch({
-          type: AuthActionTypes.DELETE_COLLECTION_FILE,
-          payload: data.data,
-        });
+    return await axios.post('auth/delete-data-collection', { id }).then(({ data }) => {
+      Toast('', 'Document successfully deleted', 'success');
+      return dispatch({
+        type: AuthActionTypes.DELETE_COLLECTION_FILE,
+        payload: data.data
       });
+    });
   };
 };
 
 export const sendResetPasswordEmail: AppThunk = (email) => {
   return async (dispatch: Dispatch) => {
-    return await axios
-      .post("auth/forgot-password", { email })
-      .then(({ data }) => {
-        if (data.success) {
-          Toast("", data.result, "success");
-        } else {
-          Toast("", data.result, "danger");
-        }
-        return dispatch({
-          type: AuthActionTypes.SEND_FORGOT_PASSWORD_EMAIL,
-          payload: data.data,
-        });
+    return await axios.post('auth/forgot-password', { email }).then(({ data }) => {
+      if (data.success) {
+        Toast('', data.result, 'success');
+      } else {
+        Toast('', data.result, 'danger');
+      }
+      return dispatch({
+        type: AuthActionTypes.SEND_FORGOT_PASSWORD_EMAIL,
+        payload: data.data
       });
+    });
   };
 };
 
 export const resetPassword: AppThunk = (formdata) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/reset-password", formdata)
+      .post('auth/reset-password', formdata)
       .then(({ data }) => {
         if (data.success) {
-          Toast("", data.result, "success");
+          Toast('', data.result, 'success');
         } else {
-          Toast("", data.result, "danger");
+          Toast('', data.result, 'danger');
         }
 
-        location.href = "/signin";
+        location.href = '/signin';
         return dispatch({
-          type: AuthActionTypes.RESET_PASSWORD,
+          type: AuthActionTypes.RESET_PASSWORD
         });
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -373,7 +360,7 @@ export const resetPassword: AppThunk = (formdata) => {
 export const gotoProfileStep: AppThunk = () => {
   return (dispatch: Dispatch) => {
     return dispatch({
-      type: AuthActionTypes.GOTO_PROFILE_STEP,
+      type: AuthActionTypes.GOTO_PROFILE_STEP
     });
   };
 };
@@ -381,18 +368,18 @@ export const gotoProfileStep: AppThunk = () => {
 export const setLoadDashboard: AppThunk = () => {
   return (dispatch: Dispatch) => {
     return dispatch({
-      type: AuthActionTypes.LOAD_DASHBOARD,
+      type: AuthActionTypes.LOAD_DASHBOARD
     });
   };
 };
 
 export const sendEmailToUsers: AppThunk = () => {
   return async (dispatch: Dispatch) => {
-    return await axios.get("auth/send-email-to-users").then(({ data }) => {
+    return await axios.get('auth/send-email-to-users').then(({ data }) => {
       if (data.success) {
-        Toast("", data.result, "success");
+        Toast('', data.result, 'success');
       } else {
-        Toast("", data.result, "danger");
+        Toast('', data.result, 'danger');
       }
     });
   };
@@ -400,10 +387,10 @@ export const sendEmailToUsers: AppThunk = () => {
 
 export const verifyIdentify: AppThunk = () => {
   return async (dispatch: Dispatch) => {
-    return await axios.post("auth/verification_result").then(({ data }) => {
+    return await axios.post('auth/verification_result').then(({ data }) => {
       return dispatch({
         type: AuthActionTypes.ID_VERIFIED,
-        payload: data,
+        payload: data
       });
     });
   };
@@ -417,31 +404,31 @@ export const verifyPhoneNumber: AppThunk = (phoneNumber) => {
     if (!authData?.user?.email) {
       return dispatch({
         type: AuthActionTypes.REQUEST_ERROR,
-        payload: "Authentication failed",
+        payload: 'Authentication failed'
       });
     }
 
     return await axios
-      .post("auth/verify-phone", {
+      .post('auth/verify-phone', {
         phone_number: phoneNumber,
-        email: authData?.user?.email,
+        email: authData?.user?.email
       })
       .then(({ data }) => {
         if (data.success) {
-          Toast("", data.result || "Success", "success");
+          Toast('', data.result || 'Success', 'success');
 
           return dispatch({
             type: AuthActionTypes.VERIFY_PHONE_NUMBER,
-            payload: data,
+            payload: data
           });
         } else {
-          throw new Error(data.error || "Something went to wrong!");
+          throw new Error(data.error || 'Something went to wrong!');
         }
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -455,28 +442,28 @@ export const confirmCode: AppThunk = (code) => {
     if (!authData?.user?.email) {
       return dispatch({
         type: AuthActionTypes.REQUEST_ERROR,
-        payload: "Authentication failed",
+        payload: 'Authentication failed'
       });
     }
 
     return await axios
-      .post("auth/confirm-code", { code, email: authData?.user?.email })
+      .post('auth/confirm-code', { code, email: authData?.user?.email })
       .then(({ data }) => {
         if (data.success) {
-          Toast("", data.result || "Success", "success");
+          Toast('', data.result || 'Success', 'success');
 
           return dispatch({
             type: AuthActionTypes.CONFIRM_CODE,
-            payload: data,
+            payload: data
           });
         } else {
-          throw new Error(data.error || "Something went to wrong!");
+          throw new Error(data.error || 'Something went to wrong!');
         }
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -485,24 +472,24 @@ export const confirmCode: AppThunk = (code) => {
 export const twoFactorRequestSend: AppThunk = (data, isSMS = true) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/two-factor-request", data)
+      .post('auth/two-factor-request', data)
       .then(({ data }) => {
         if (data.success) {
-          Toast("", data.result || "Success", "success");
+          Toast('', data.result || 'Success', 'success');
 
           return dispatch({
             type: AuthActionTypes.TWO_FACTOR_REQUEST,
             payload: data,
-            two_factor_method: isSMS ? "sms" : "email",
+            two_factor_method: isSMS ? 'sms' : 'email'
           });
         } else {
-          throw new Error(data.error || "Something went to wrong!");
+          throw new Error(data.error || 'Something went to wrong!');
         }
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -511,22 +498,22 @@ export const twoFactorRequestSend: AppThunk = (data, isSMS = true) => {
 export const twoFactorRequestVerify: AppThunk = (code) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/two-factor-verify", { code })
+      .post('auth/two-factor-verify', { code })
       .then(({ data }) => {
         if (data.success) {
-          Toast("", data.result || "Success", "success");
+          Toast('', data.result || 'Success', 'success');
           return dispatch({
             type: AuthActionTypes.TWO_FACTOR_VERFIY,
-            payload: data.user,
+            payload: data.user
           });
         } else {
-          throw new Error(data.error || "Something went to wrong!");
+          throw new Error(data.error || 'Something went to wrong!');
         }
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -535,22 +522,22 @@ export const twoFactorRequestVerify: AppThunk = (code) => {
 export const twoFactorRequestResend: AppThunk = (data) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/two-factor-resend", data)
+      .post('auth/two-factor-resend', data)
       .then(({ data }) => {
         if (data.success) {
-          Toast("", data.result || "Success", "success");
+          Toast('', data.result || 'Success', 'success');
           return dispatch({
             type: AuthActionTypes.TWO_FACTOR_RESEND,
-            payload: data,
+            payload: data
           });
         } else {
-          throw new Error(data.error || "Something went to wrong!");
+          throw new Error(data.error || 'Something went to wrong!');
         }
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -559,7 +546,7 @@ export const twoFactorRequestResend: AppThunk = (data) => {
 export const updateTwoFactorEntry: AppThunk = () => {
   return async (dispatch: Dispatch) => {
     return dispatch({
-      type: AuthActionTypes.UPDATE_TWO_FACTOR_ENTRY,
+      type: AuthActionTypes.UPDATE_TWO_FACTOR_ENTRY
     });
   };
 };
@@ -571,16 +558,16 @@ export const updateUser: AppThunk = (userId, data) => {
       .then(({ data }) => {
         dispatch({
           type: SettingActionTypes.UPDATE_USER_ADMIN,
-          payload: data,
+          payload: data
         });
 
         return dispatch({
           type: AuthActionTypes.UPDATE_USER,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
-        Toast("", e.response.data.message, "danger");
+        Toast('', e.response.data.message, 'danger');
       });
   };
 };
@@ -588,15 +575,15 @@ export const updateUser: AppThunk = (userId, data) => {
 export const addProfile: AppThunk = (data) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("/user/profile", data)
+      .post('/user/profile', data)
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.UPDATE_USER_PROFILE,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
-        Toast("", e.response.data.message, "danger");
+        Toast('', e.response.data.message, 'danger');
       });
   };
 };
@@ -604,34 +591,34 @@ export const addProfile: AppThunk = (data) => {
 export const addAttachment: AppThunk = (data) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("/user/profile/add-attachment", data)
+      .post('/user/profile/add-attachment', data)
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.ADD_DOCUMENT_PROFILE,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
-        Toast("", e.response.data.message, "danger");
+        Toast('', e.response.data.message, 'danger');
       });
   };
 };
 
 export const updateTodolist: AppThunk = (todo_id) => {
-  console.log("todo id->", todo_id);
+  console.log('todo id->', todo_id);
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("/user/todolist", { todo_id })
+      .post('/user/todolist', { todo_id })
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.UPDATE_TODOLIST,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -640,19 +627,19 @@ export const updateTodolist: AppThunk = (todo_id) => {
 export const addDocument: AppThunk = (formdata) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/add-document", formdata)
+      .post('auth/add-document', formdata)
       .then(({ data }) => {
         dispatch({
           type: SettingActionTypes.ADD_DOCUMENT_ADMIN,
-          payload: data.data,
+          payload: data.data
         });
         return dispatch({
           type: AuthActionTypes.ADD_DOCUMENT,
-          payload: data.data,
+          payload: data.data
         });
       })
       .catch((err) => {
-        Toast("", "Document upload failed", "danger");
+        Toast('', 'Document upload failed', 'danger');
       });
   };
 };
@@ -660,16 +647,16 @@ export const addDocument: AppThunk = (formdata) => {
 export const updateDocument: AppThunk = (formdata) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/update-document", formdata)
+      .post('auth/update-document', formdata)
       .then(({ data }) => {
-        Toast("", "Document update success!", "success");
+        Toast('', 'Document update success!', 'success');
         return dispatch({
           type: AuthActionTypes.UPDATE_DOCUMENTS,
-          payload: data.data,
+          payload: data.data
         });
       })
       .catch((err) => {
-        Toast("", "Document update failed", "danger");
+        Toast('', 'Document update failed', 'danger');
       });
   };
 };
@@ -677,11 +664,11 @@ export const updateDocument: AppThunk = (formdata) => {
 export const getDocuments: AppThunk = () => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .get("auth/get-document")
+      .get('auth/get-document')
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.GET_DOCUMENTS,
-          payload: data.documents,
+          payload: data.documents
         });
       })
       .catch((err) => {});
@@ -695,11 +682,11 @@ export const deleteDocument: AppThunk = (doc_id) => {
       .then(({ data }) => {
         dispatch({
           type: SettingActionTypes.GET_DOCUMENTS_ADMIN,
-          payload: data.documents,
+          payload: data.documents
         });
         return dispatch({
           type: AuthActionTypes.GET_DOCUMENTS,
-          payload: data.documents,
+          payload: data.documents
         });
       })
       .catch((err) => {});
@@ -709,26 +696,26 @@ export const deleteDocument: AppThunk = (doc_id) => {
 export const sendCouponCode: AppThunk = (couponCode) => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .get("auth/send-couponCode", { params: { couponCode: couponCode } })
+      .get('auth/send-couponCode', { params: { couponCode: couponCode } })
       .then(({ data }) => {
         if (data.error) {
-          Toast("", data.error.message, "danger");
+          Toast('', data.error.message, 'danger');
           return dispatch({
             type: AuthActionTypes.UPDATE_COUPONDATA,
-            payload: null,
+            payload: null
           });
         } else {
           return dispatch({
             type: AuthActionTypes.UPDATE_COUPONDATA,
-            payload: data,
+            payload: data
           });
         }
       })
       .catch((err) => {
-        console.log("coupon error=>", err);
+        console.log('coupon error=>', err);
         return dispatch({
           type: AuthActionTypes.UPDATE_COUPONDATA,
-          payload: null,
+          payload: null
         });
       });
   };
@@ -737,18 +724,18 @@ export const sendCouponCode: AppThunk = (couponCode) => {
 export const enrollMeet: AppThunk = () => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/enroll-meet")
+      .post('auth/enroll-meet')
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.ENROLLMEET,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         console.log(e.response);
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -756,18 +743,18 @@ export const enrollMeet: AppThunk = () => {
 export const whealthConciergeMeet: AppThunk = () => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/whealthconcierge-meet")
+      .post('auth/whealthconcierge-meet')
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.WHEALTH_CONCIERGE_MEET,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         console.log(e.response);
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -775,18 +762,18 @@ export const whealthConciergeMeet: AppThunk = () => {
 export const advisorMeet: AppThunk = () => {
   return async (dispatch: Dispatch) => {
     return await axios
-      .post("auth/advisor-meet")
+      .post('auth/advisor-meet')
       .then(({ data }) => {
         return dispatch({
           type: AuthActionTypes.ADVISOR_MEET,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         console.log(e.response);
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };
@@ -796,19 +783,19 @@ export const updateProfileStep: AppThunk = (type) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: CommonActionTypes.FETCH_START });
     return await axios
-      .put("auth/profile-step", { type })
+      .put('auth/profile-step', { type })
       .then(({ data }) => {
         dispatch({ type: CommonActionTypes.FETCH_SUCCESS });
         return dispatch({
           type: AuthActionTypes.UPDATE_PROFILE_STEP,
-          payload: data,
+          payload: data
         });
       })
       .catch((e) => {
         dispatch({ type: CommonActionTypes.FETCH_ERROR });
         return dispatch({
           type: AuthActionTypes.REQUEST_ERROR,
-          payload: e.response,
+          payload: e.response
         });
       });
   };

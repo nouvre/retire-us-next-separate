@@ -49,14 +49,7 @@ const SignIn: React.FC = (props: any) => {
     const [addRule, setAddRule] = useState<boolean>(false);
 
     useEffect(() => {
-        if (user) {
-            if (user.role === "admin") router.push("/admin/dashboard");
-            else {
-                console.log('=============>', ProfileCompleteStep[user.authenticate_type][user.profile_complete_step])
-                router.push(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step]);
-                // dispatch(gotoProfileStep());
-            }
-        }
+        if (user && user.role === "admin") router.push("/admin/dashboard");
     }, [user]);
 
     const handleSubmit = (): void => {

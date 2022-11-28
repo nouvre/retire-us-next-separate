@@ -20,10 +20,6 @@ const SignUp: React.FC = () => {
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/])[A-Za-z\d@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/]{8,}$/g;
     const authTypeState = router.query;
 
-    useEffect(() => {
-        if (user) { dispatch(gotoProfileStep()); router.push('/checkpoint') }
-    }, [user]);
-
     const handleSubmit = (): void => {
         if (!pending)
             form.validateFields().then((data: any) => {
