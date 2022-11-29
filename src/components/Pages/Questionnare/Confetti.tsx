@@ -31,7 +31,7 @@ const Confetti: React.FC<ComponentProps> = (props) => {
                     </div>
                 </div>
                 <div className="flex justify-center mt-40">
-                    {/* {isExploding && <ConfettiExplosion particleSize={14} duration={4000} colors={['#F44274', '#BE1E68', '#B4DF86', '#B4DF86', '#F8B54A', '#6DD0E7', '#F8B54A', '#F71873']} floorWidth={1000} floorHeight={1000} />} */}
+                    {isExploding && <ConfettiExplosion particleSize={14} duration={4000} colors={['#F44274', '#BE1E68', '#B4DF86', '#B4DF86', '#F8B54A', '#6DD0E7', '#F8B54A', '#F71873']} floorWidth={1000} floorHeight={1000} />}
                 </div>
             </div>
         </div>
