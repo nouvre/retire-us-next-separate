@@ -5,5 +5,5 @@ declare global {
 }
 
 export const gtm = (rest) => {
-  window.dataLayer.push(...rest);
+  window.dataLayer.push(rest);
 };
