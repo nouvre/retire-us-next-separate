@@ -20,10 +20,11 @@ import { ApplicationState } from "@/store/index";
 import ArrowLeft from "@2fd/ant-design-icons/lib/ArrowLeft";
 import Image from '@/components/common/Image';
 import { gtm } from "@/util/gtm"
+import StripeElements from "@/containers/StripeElements";
 
 var couponChanged = false;
 
-const Princing: React.FC = (props: any) => {
+const Princing = () => {
 	const router = useRouter();
 	const stripe = useStripe();
 	const couponRef = useRef<HTMLInputElement>(null);
@@ -293,4 +294,13 @@ const Princing: React.FC = (props: any) => {
 	);
 };
 
-export default Princing;
+
+const PrincingWrapper = () => {
+	return (
+		<StripeElements>
+			<Princing />
+		</StripeElements>
+	)
+}
+
+export default PrincingWrapper;

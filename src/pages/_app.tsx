@@ -6,7 +6,6 @@ import { Provider } from 'react-redux'
 import { useStore } from '@/store/index'
 import { persistStore } from "redux-persist";
 import NextRoute from "@/containers/NextRoute";
-import StripeElements from "@/containers/StripeElements";
 import { ReactNotifications } from "react-notifications-component";
 import { HEAD_DATA } from "@/constants/variables";
 
@@ -33,14 +32,12 @@ export default function App({ Component, pageProps: { session, ...pageProps }, r
           <link rel="canonical" href={`${data.link}`} ></link>
         }
       </Head>
-      <StripeElements>
-        <Provider store={store}>
-          <ReactNotifications />
-          <NextRoute router={router}>
-            <Component {...pageProps} />
-          </NextRoute>
-        </Provider>
-      </StripeElements>
+      <Provider store={store}>
+        <ReactNotifications />
+        <NextRoute router={router}>
+          <Component {...pageProps} />
+        </NextRoute>
+      </Provider>
     </>
   )
 }
