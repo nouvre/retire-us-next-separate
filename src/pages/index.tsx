@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FunctionComponent } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '@/components/Pages/Header'
 import Footer from '@/components/Pages/Footer'
 import { FillButtonLink } from '@/components/Buttons/WhiteButtons'
@@ -92,7 +92,7 @@ const Home: React.FC<ComponentProps> = ({ homepage }) => {
             </div>
             {homepage?.hero?.image && (
               <Image
-                src={getImage(homepage.hero.image)}
+                src="/assets/images/home/hero.png"
                 alt="Hero People"
                 className="static md:absolute right-[80px] 2xl:right-[240px] bottom-[0] sm:w-[356px] lg:w-[570px] xl:w-[848px]"
               />
