@@ -69,6 +69,7 @@ const Intro = () => {
                         src="/assets/images/welcome-bg-mobile.svg"
                         alt=""
                         className="w-full block sm:hidden"
+                        onLoad={() => { if (ref.current) ref.current.style.visibility = "visible" }}
                     />
                     <div className="w-full absolute z-10 top-[40%] translate-y-[-40%] px-[50px]">
                         <div className="w-full text-black text-base md:text-2xl leading-1 md:leading-7 mb-1 md:mb-5 font-bold">
