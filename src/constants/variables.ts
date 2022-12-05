@@ -968,7 +968,7 @@ export const HEAD_DATA = [
         {
           name: "keywords",
           content:
-            "Financial Planning, Retirement Planning, Wealth Management Consultants, Financial Planning and Analysis, Certified Financial Planner, Financial Advisor",
+            "Financial Planning, Retirement Planning, Wealth Management Consultants, Financial Planning and Analysis, Financial Consulting Firm, Certified Financial Planner, Financial Advisor",
         },
       ],
       link: [{ rel: "canonical", href: "https://retire.us" }],
