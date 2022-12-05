@@ -232,7 +232,7 @@ const SignatureWrapper: React.FC = (props: any) => {
             <div className="flex items-center justify-between gap-[12px] mt-[32px] md:mt-[40px]">
               <Link
                 className="flex-1 text-[#001F55] text-[18px] text-center font-bold border border-[#001F55] px-[24px] py-[16px] rounded-full"
-                href="/forgot-password"
+                href="/recommendation"
               >
                 Cancel
               </Link>
