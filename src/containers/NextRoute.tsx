@@ -74,7 +74,7 @@ const NextRoute = ({ router, children }) => {
 	// }, [])
 
 	if (rehydrated || data?.attr.ssr)
-		return children;
+		return <div className="font-Lato">{children}</div>
 	else
 		return <PageLoader />
 };
