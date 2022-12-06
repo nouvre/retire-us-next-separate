@@ -76,10 +76,10 @@ const Checkpoint: React.FC = () => {
 				}
 			} else {
 				if (step >= questionOrder.length) {
-					await dispatch(updateQuestionnare(data, step, intro_user.id, true));
+					await dispatch(updateQuestionnare(data, step, intro_user?.id, true));
 					router.replace("/checkpoint-result");
 				} else {
-					await dispatch(updateQuestionnare(data, step, intro_user.id));
+					await dispatch(updateQuestionnare(data, step, intro_user?.id));
 				}
 			}
 		}, 1000);
@@ -89,7 +89,7 @@ const Checkpoint: React.FC = () => {
 		if (token && user) {
 			dispatch(updateQuestionnare(data, step));
 		} else {
-			dispatch(updateQuestionnare(data, step, intro_user.id));
+			dispatch(updateQuestionnare(data, step, intro_user?.id));
 		}
 	};
 
