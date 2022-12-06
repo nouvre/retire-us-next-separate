@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ApplicationState } from '@/store/index'
-import { updateDisclosure, updateUser, updateProfileStep } from '@/store/auth/action'
+import { updateDisclosure, updateUser, updateProfileStep, choosePlanAgain } from '@/store/auth/action'
 import Header from '@/components/Pages/Header'
 import Signature from '@/components/Pages/Disclosure/Signature'
 import TermsAndConditions from '@/components/common/TermsAndConditions'
@@ -230,12 +229,12 @@ const SignatureWrapper: React.FC = (props: any) => {
               </div>
             )}
             <div className="flex items-center justify-between gap-[12px] mt-[32px] md:mt-[40px]">
-              <Link
+              <button
                 className="flex-1 text-[#001F55] text-[18px] text-center font-bold border border-[#001F55] px-[24px] py-[16px] rounded-full"
-                href="/recommendation"
+                onClick={() => dispatch(choosePlanAgain())}
               >
                 Cancel
-              </Link>
+              </button>
               <button
                 className="flex-1 flex justify-center items-center text-white text-[18px] font-bold bg-[#00BB7A] disabled:bg-[#7ea195] px-[24px] py-[16px] rounded-full border border-[#00BB7A] disabled:border-[#7ea195]"
                 onClick={uploadSignature}

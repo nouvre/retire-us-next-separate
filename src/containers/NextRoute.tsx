@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spin, Space } from 'antd'
 import routes, { RouteConfig } from "@/constants/routes";
@@ -17,11 +17,12 @@ const PageLoader = () => (
 const NextRoute = ({ router, children }) => {
 	const dispatch = useDispatch();
 	const user = useSelector((state: ApplicationState) => state.auth.user);
+	const re_plan = useSelector((state: ApplicationState) => state.auth.re_plan);
 	const rehydrated = useSelector((state: ApplicationState) => state._persist.rehydrated);
 	const loadDashboard = useSelector((state: ApplicationState) => state.auth.loadDashboard);
 	const data = RouteConfig.find((item) => item.link === router.pathname);
 
-	useEffect(() => {
+	useMemo(() => {
 		if (user && user.role === 'user') {
 			if (!user.passTwoFactor && user.current_plan && process.env.NODE_ENV === 'production') {
 				router.push('/2fa-verify')
@@ -35,16 +36,20 @@ const NextRoute = ({ router, children }) => {
 						router.push('/verify')
 					} else if (user.isSignUpProcess) {
 						if (router.pathname.slice(1, 15) !== 'reset-password') {
-							if (!user.disclosure_agreements?.disclosure_pdf_link && routes[user.authenticate_type].indexOf('/disclosure') < user.profile_complete_step) {
-								router.push('/disclosure')
-							} else {
-								if (routes[user.authenticate_type][user.profile_complete_step] === '/dashboard') {
-									if (!loadDashboard) {
-										router.push(routes[user.authenticate_type][user.profile_complete_step])
-										dispatch(setLoadDashboard())
-									}
+							if (re_plan)
+								router.push('/recommendation');
+							else {
+								if (!user.disclosure_agreements?.disclosure_pdf_link && routes[user.authenticate_type].indexOf('/disclosure') < user.profile_complete_step) {
+									router.push('/disclosure')
 								} else {
-									router.push(routes[user.authenticate_type][user.profile_complete_step])
+									if (routes[user.authenticate_type][user.profile_complete_step] === '/dashboard') {
+										if (!loadDashboard) {
+											router.push(routes[user.authenticate_type][user.profile_complete_step])
+											dispatch(setLoadDashboard())
+										}
+									} else {
+										router.push(routes[user.authenticate_type][user.profile_complete_step])
+									}
 								}
 							}
 						}
@@ -52,7 +57,7 @@ const NextRoute = ({ router, children }) => {
 				}
 			}
 		}
-	}, [user])
+	}, [user, re_plan])
 
 	// useEffect(() => {
 	// 	const handleInvalidToken = (e: any) => {

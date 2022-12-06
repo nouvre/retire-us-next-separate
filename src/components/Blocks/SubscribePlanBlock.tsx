@@ -21,7 +21,6 @@ type RecommendedType = {
 
 const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
 	const dispatch = useDispatch();
-	const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
 
 	const retirementAge = answers?.wantToRetireAge || 0;
 	const [recommended, setRecommended] = useState<RecommendedType>({
@@ -740,7 +739,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
 						<div className="w-full flex justify-center items-center">
 							<OutlineButton
 								btnText="Choose Plan"
-								onClick={() => dispatch(selectPlan(2, intro_user?.id))}
+								onClick={() => dispatch(selectPlan(2))}
 								icon={<span>&#183;&#183;</span>}
 								blue={true}
 							/>
@@ -755,7 +754,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
 						<div className="w-full flex justify-center items-center">
 							<OutlineButton
 								btnText="Choose Plan"
-								onClick={() => dispatch(selectPlan(3, intro_user?.id))}
+								onClick={() => dispatch(selectPlan(3))}
 								icon={<span>&#183;&#183;</span>}
 								blue={true}
 							/>
@@ -770,7 +769,7 @@ const SubscribePlanBlock = ({ answers }: { answers: Answer | null }) => {
 						<div className="w-full flex justify-center items-center rounded-br-[20px]">
 							<OutlineButton
 								btnText="Choose Plan"
-								onClick={() => dispatch(selectPlan(4, intro_user?.id))}
+								onClick={() => dispatch(selectPlan(4))}
 								icon={<span>&#183;&#183;</span>}
 								blue={true}
 							/>

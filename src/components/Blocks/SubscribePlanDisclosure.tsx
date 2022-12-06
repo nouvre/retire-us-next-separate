@@ -21,7 +21,6 @@ const SubscribePlanDisclosure = ({
 	defaultOpen,
 }: ISubscribePlanDisclosureProps) => {
 	const dispatch = useDispatch();
-	const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
 
 	return (
 		<>
@@ -117,7 +116,7 @@ const SubscribePlanDisclosure = ({
 								<OutlineButton
 									btnText="Choose Plan"
 									onClick={() =>
-										dispatch(selectPlan(plan?.id, intro_user?.id))
+										dispatch(selectPlan(plan?.id))
 									}
 									icon={<span>&#183;&#183;</span>}
 									className="w-full justify-center"
