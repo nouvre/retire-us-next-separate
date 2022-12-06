@@ -171,10 +171,11 @@ export const updateDisclosure: AppThunk = (param) => {
       });
   };
 };
-export const selectPlan: AppThunk = (plan_id, iUserId) => {
-  return async (dispatch: Dispatch) => {
+export const selectPlan: AppThunk = (plan_id) => {
+  return async (dispatch: Dispatch, getState: () => ApplicationState) => {
     dispatch({ type: CommonActionTypes.FETCH_START });
-    if (iUserId)
+    const iUserId = getState().auth.intro_user?.id;
+    if (iUserId) {
       return await axios
         .post(`intro/${iUserId}/plan`, { plan_id })
         .then(({ data }) => {
@@ -187,9 +188,10 @@ export const selectPlan: AppThunk = (plan_id, iUserId) => {
         .catch((e) => {
           return dispatch({ type: CommonActionTypes.FETCH_ERROR });
         });
-    else
+    } else {
+      const re_plan = getState().auth.re_plan;
       return await axios
-        .post('auth/choose-plan', { plan_id })
+        .post('auth/choose-plan', { plan_id, re_plan })
         .then(({ data }) => {
           dispatch({ type: CommonActionTypes.FETCH_SUCCESS });
           return dispatch({
@@ -200,17 +202,13 @@ export const selectPlan: AppThunk = (plan_id, iUserId) => {
         .catch((e) => {
           return dispatch({ type: CommonActionTypes.FETCH_ERROR });
         });
+    }
   };
 };
 
 export const choosePlanAgain: AppThunk = () => {
   return async (dispatch: Dispatch) => {
-    return await axios.post('auth/choose-plan-again').then(({ data }) => {
-      return dispatch({
-        type: AuthActionTypes.CHOOSE_PLAN_AGAIN,
-        payload: data
-      });
-    });
+    return dispatch({ type: AuthActionTypes.CHOOSE_PLAN_AGAIN });
   };
 };
 

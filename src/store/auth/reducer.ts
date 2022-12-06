@@ -1,10 +1,10 @@
-import { Reducer } from "redux";
-import { Toast } from "@/components/common/notification";
-import { AuthState, AuthActionTypes } from "./types";
+import { Reducer } from 'redux';
+import { Toast } from '@/components/common/notification';
+import { AuthState, AuthActionTypes } from './types';
 
 const initialState: AuthState = {
   user: null,
-  token: "",
+  token: '',
   loadDashboard: false,
   answers: [],
   missingDataNum: 0,
@@ -13,6 +13,7 @@ const initialState: AuthState = {
   isFetching: false,
   coupon_data: null,
   intro_user: null,
+  re_plan: false
 };
 
 const reducer: Reducer<AuthState> = (state = initialState, action) => {
@@ -20,9 +21,18 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     case AuthActionTypes.REGISTER:
     case AuthActionTypes.EMAIL_LOGIN:
     case AuthActionTypes.FACEBOOK_LOGIN:
-    case AuthActionTypes.GOOGLE_LOGIN:
+    case AuthActionTypes.GOOGLE_LOGIN: {
+      return {
+        ...state,
+        token: action.payload.access_token,
+        user: {
+          ...action.payload.user,
+          passTwoFactor: state.user ? state.user.passTwoFactor : false
+        },
+        intro_user: null
+      };
+    }
     case AuthActionTypes.UPDATE_DISCLOSURE:
-    case AuthActionTypes.SELECT_PLAN:
     case AuthActionTypes.BUY_PLAN:
     case AuthActionTypes.UPDATE_QUESTIONNARE:
     case AuthActionTypes.UPDATE_PLAID_ACCESS_TOKEN:
@@ -31,45 +41,54 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     case AuthActionTypes.ENROLLMEET:
     case AuthActionTypes.WHEALTH_CONCIERGE_MEET:
     case AuthActionTypes.ADVISOR_MEET:
-    case AuthActionTypes.CHOOSE_PLAN_AGAIN:
     case AuthActionTypes.UPDATE_COLLECTION_DATA: {
       return {
         ...state,
         token: action.payload.access_token,
         user: {
           ...action.payload.user,
-          passTwoFactor: state.user ? state.user.passTwoFactor : false,
-        },
+          passTwoFactor: state.user ? state.user.passTwoFactor : false
+        }
       };
     }
-    // case AuthActionTypes.REGISTER: {
-    // }
+    case AuthActionTypes.SELECT_PLAN: {
+      return {
+        ...state,
+        token: action.payload.access_token,
+        user: {
+          ...action.payload.user,
+          passTwoFactor: state.user ? state.user.passTwoFactor : false
+        },
+        re_plan: false
+      };
+    }
+    case AuthActionTypes.CHOOSE_PLAN_AGAIN: {
+      return { ...state, re_plan: true };
+    }
     case AuthActionTypes.GET_USER:
     case AuthActionTypes.UPDATE_PROFILE_STEP: {
       return {
         ...state,
         user: {
           ...action.payload.user,
-          passTwoFactor: state.user ? state.user.passTwoFactor : false,
-        },
+          passTwoFactor: state.user ? state.user.passTwoFactor : false
+        }
       };
     }
     case AuthActionTypes.GOTO_PROFILE_STEP: {
       return {
         ...state,
-        user: { ...state.user, isSignUpProcess: true },
+        user: { ...state.user, isSignUpProcess: true }
       };
     }
     case AuthActionTypes.PUT_COLLECTION_FILE:
     case AuthActionTypes.DELETE_COLLECTION_FILE:
     case AuthActionTypes.GET_USER_COLLECTION: {
-      let missing = action.payload.filter(
-        (e) => e.datas.length === 0 && e.require
-      ).length;
+      let missing = action.payload.filter((e) => e.datas.length === 0 && e.require).length;
       return {
         ...state,
         missingDataNum: missing,
-        userCollectionData: action.payload,
+        userCollectionData: action.payload
       };
     }
     case AuthActionTypes.LOGOUT: {
@@ -92,8 +111,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         user: {
           ...state.user,
           phone_number,
-          phone_number_verified_at,
-        },
+          phone_number_verified_at
+        }
       };
     }
 
@@ -103,8 +122,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         isFetching: false,
         user: {
           ...state.user,
-          twoFactorSent: true,
-        },
+          twoFactorSent: true
+        }
       };
     }
 
@@ -114,8 +133,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         isFetching: false,
         user: {
           ...state.user,
-          twoFactorSent: true,
-        },
+          twoFactorSent: true
+        }
       };
     }
 
@@ -127,8 +146,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
           ...state.user,
           passTwoFactor: true,
           profile_complete_step: action.payload.profile_complete_step,
-          default_two_factor_method: action.two_factor_method,
-        },
+          default_two_factor_method: action.two_factor_method
+        }
       };
     }
 
@@ -142,15 +161,15 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
 
     case AuthActionTypes.REQUEST_ERROR: {
       let errorMessage: any = Object.values(action.payload.data)[0];
-      console.log("error message->", errorMessage);
-      console.log("type=>", typeof errorMessage);
-      let message = "Invalid Code";
-      if (typeof errorMessage === "object") {
-        message = errorMessage.join("");
-      } else if (typeof errorMessage === "string") {
+      console.log('error message->', errorMessage);
+      console.log('type=>', typeof errorMessage);
+      let message = 'Invalid Code';
+      if (typeof errorMessage === 'object') {
+        message = errorMessage.join('');
+      } else if (typeof errorMessage === 'string') {
         message = errorMessage;
       }
-      Toast("", message, "danger");
+      Toast('', message, 'danger');
       return { ...state, isFetching: false };
     }
 
@@ -159,8 +178,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         ...state,
         user: {
           ...state.user,
-          twoFactorSent: false,
-        },
+          twoFactorSent: false
+        }
       };
     }
 
@@ -170,8 +189,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         user: {
           ...state.user,
           profile: action.payload.profile,
-          todos: action.payload.todos,
-        },
+          todos: action.payload.todos
+        }
       };
     }
 
@@ -182,9 +201,9 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
           ...state.user,
           profile: {
             ...state.user?.profile,
-            [action.payload.key]: action.payload.profile[action.payload.key],
-          },
-        },
+            [action.payload.key]: action.payload.profile[action.payload.key]
+          }
+        }
       };
     }
 
@@ -193,22 +212,22 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         ...state,
         user: {
           ...state.user,
-          todos: action.payload.todos,
-        },
+          todos: action.payload.todos
+        }
       };
     }
 
     case AuthActionTypes.ADD_DOCUMENT: {
       return {
         ...state,
-        documents: [...state.documents, action.payload],
+        documents: [...state.documents, action.payload]
       };
     }
 
     case AuthActionTypes.GET_DOCUMENTS: {
       return {
         ...state,
-        documents: action.payload,
+        documents: action.payload
       };
     }
 
@@ -217,14 +236,14 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         ...state,
         documents: state.documents.map((document) =>
           action.payload.id == document.id ? action.payload : document
-        ),
+        )
       };
     }
 
     case AuthActionTypes.UPDATE_COUPONDATA: {
       return {
         ...state,
-        coupon_data: action.payload,
+        coupon_data: action.payload
       };
     }
 
@@ -232,7 +251,7 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
       return {
         ...state,
         intro_user: action.payload,
-        isFetching: true,
+        isFetching: true
       };
     }
 

@@ -22,7 +22,6 @@ const PlansFeatures = ({
 	const [plansHeight, setPlansHeight] = useState<string[]>([]);
 
 	const dispatch = useDispatch();
-	const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
 
 	useEffect(() => {
 		if (features && summaries) {
@@ -371,7 +370,7 @@ const PlansFeatures = ({
 									btnText="Choose Plan"
 									className="m-auto"
 									onClick={() =>
-										dispatch(selectPlan(summary.id, intro_user?.id))
+										dispatch(selectPlan(summary.id))
 									}
 									icon={<span>&#183;&#183;</span>}
 									blue={true}
