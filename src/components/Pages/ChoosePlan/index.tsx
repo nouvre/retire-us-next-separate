@@ -19,15 +19,17 @@ const ChoosePlan = () => {
 					<SubscribePlanBlock answers={answers} />
 				</div>
 			</div>
-			<div className="w-full py-10 md:hidden">
-				<TextNormal className="text-[20px] text-center font-bold mb-8">
-					Recommended plan for you
-				</TextNormal>
+			<div className={`w-full md:hidden ${Object.keys(answers).length? "py-10": "pt-24"}`}>
+				{Object.keys(answers).length > 0 &&
+					<TextNormal className="text-[20px] text-center font-bold mb-8">
+						Recommended plan for you
+					</TextNormal>
+				}
 
 				<PlansFeatures
 					features={planFeatures}
 					summaries={planSummaries}
-					recommended={recommended}
+					recommended={Object.keys(answers).length ? recommended : null}
 				/>
 			</div>
 		</>
