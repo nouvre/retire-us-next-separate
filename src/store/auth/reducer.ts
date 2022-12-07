@@ -250,8 +250,7 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     case AuthActionTypes.INTRO_USER: {
       return {
         ...state,
-        intro_user: action.payload,
-        isFetching: true
+        intro_user: action.payload
       };
     }
 

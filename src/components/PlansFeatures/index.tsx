@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import { Tooltip } from "antd";
-import { TextNormal, TextGradient } from "../Typographies";
-import { OutlineButton, OutlineButtonLink } from "../Buttons/WhiteButtons";
+import { TextNormal, TextGradient } from "@/components/Typographies";
+import { OutlineButton, OutlineButtonLink } from "@/components/Buttons/WhiteButtons";
 import { selectPlan } from "@/store/auth/action";
 import Image from '@/components/common/Image';
-import { ApplicationState } from "@/store/index";
 
 interface PlansFeaturesProps {
 	features: any;
@@ -18,41 +18,9 @@ const PlansFeatures = ({
 	summaries,
 	recommended,
 }: PlansFeaturesProps) => {
-	const [planTab, setPlanTab] = useState<number | null>(0);
-	const [plansHeight, setPlansHeight] = useState<string[]>([]);
-
 	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (features && summaries) {
-			const calcPlansHeight = () => {
-				setPlansHeight([]);
-
-				const plans = document.querySelectorAll(".plan-inner");
-				const plansHeightArr: string[] = [];
-
-				plans.forEach((plan: any) => {
-					plansHeightArr.push(`${plan.offsetHeight}px`);
-				});
-
-				setPlansHeight(plansHeightArr);
-			};
-
-			calcPlansHeight();
-			window.addEventListener("load", calcPlansHeight);
-			window.addEventListener("orientationchange", calcPlansHeight);
-			window.addEventListener("resize", calcPlansHeight);
-
-			return () => {
-				window.removeEventListener("load", calcPlansHeight);
-				window.removeEventListener(
-					"orientationchange",
-					calcPlansHeight
-				);
-				window.removeEventListener("resize", calcPlansHeight);
-			};
-		}
-	}, [features, summaries]);
+	const router = useRouter()
+	const [planTab, setPlanTab] = useState<number | null>(0);
 
 	useEffect(() => {
 		if (recommended?.tax) {
@@ -263,12 +231,7 @@ const PlansFeatures = ({
 						</div>
 						<div
 							style={{
-								height:
-									plansHeight.length === 0
-										? "100%"
-										: planTab === index
-											? plansHeight[index]
-											: "0",
+								height: planTab === index ? 'fit-content' : '0',
 							}}
 							className="plan-inner relative duration-[0.5s] overflow-hidden bg-[#F7F9FC]"
 						>
@@ -365,17 +328,33 @@ const PlansFeatures = ({
 									</div>
 								))}
 							</div>
-							<div className="py-[12px] px-[24px] bg-[#EEF1F8] rounded-bl-[20px] rounded-br-[20px]">
-								<OutlineButton
-									btnText="Choose Plan"
-									className="m-auto"
-									onClick={() =>
-										dispatch(selectPlan(summary.id))
-									}
-									icon={<span>&#183;&#183;</span>}
-									blue={true}
-								/>
-							</div>
+							{router.pathname == "/pricing" ?
+								<div className="py-[12px] px-[24px] bg-[#EEF1F8] rounded-bl-[20px] rounded-br-[20px]">
+									<OutlineButtonLink
+										href="/signup"
+										params={{
+											auth_type: true,
+											plan_id: summary.id,
+										}}
+										btnText="Choose Plan"
+										icon={<span>&#183;&#183;</span>}
+										className="w-max justify-center mx-auto"
+										blue
+									/>
+								</div>
+								:
+								<div className="py-[12px] px-[24px] bg-[#EEF1F8] rounded-bl-[20px] rounded-br-[20px]">
+									<OutlineButton
+										btnText="Choose Plan"
+										className="m-auto"
+										onClick={() =>
+											dispatch(selectPlan(summary.id))
+										}
+										icon={<span>&#183;&#183;</span>}
+										blue={true}
+									/>
+								</div>
+							}
 						</div>
 					</div>
 				))}
