@@ -81,7 +81,7 @@ export interface AuthState {
   documents: Document[];
   isFetching: boolean;
   coupon_data: any | null;
-  intro_user?: User | null;
+  intro_user: User | null;
   re_plan: boolean;
 }
 
