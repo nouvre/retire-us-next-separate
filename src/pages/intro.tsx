@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ApplicationState } from "@/store/index";
+import { useDispatch } from "react-redux";
 import Header from "@/components/Pages/Header";
 import { SharedFillButton } from "@/components/Buttons/SharedFillButton";
 import { introRegister } from "@/store/questions/action";
@@ -17,9 +16,6 @@ const Intro = () => {
     const router = useRouter();
     const dispatch = useDispatch();
     const ref = useRef<HTMLDivElement>(null)
-    const isFetching = useSelector(
-        (state: ApplicationState) => state.auth.isFetching
-    );
 
     const [disable, setDisable] = useState<boolean>(true);
     const [email, setEmail] = useState<string>("");
@@ -48,11 +44,10 @@ const Intro = () => {
         });
     }, []);
 
-    useEffect(() => {
-        if (isFetching) {
-            router.push("/checkpoint");
-        }
-    }, [isFetching]);
+    const handleSubmit = async () => {
+        await dispatch(introRegister(email));
+        router.push("/checkpoint");
+    }
 
     return (
         <div className="w-full h-screen bg-[#EEF1F8]" ref={ref} style={{ visibility: "hidden" }}>
@@ -97,7 +92,7 @@ const Intro = () => {
                         className="flex items-center text-base lg:text-lg font-bold px-6 py-4"
                         pill={true}
                         disabled={disable}
-                        onClick={() => dispatch(introRegister(email))}
+                        onClick={handleSubmit}
                     >
                         <span>Get Started</span>
                         <Image
