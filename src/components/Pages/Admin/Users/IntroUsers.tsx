@@ -42,7 +42,6 @@ const IntroUsers: React.FC = (props) => {
 				tempUsers.push(user);
 			}
 		});
-		console.log(users)
 		setFilterUsers(tempUsers);
 	}, [filterText, users]);
 
@@ -100,6 +99,7 @@ const IntroUsers: React.FC = (props) => {
 			key: 'checkpoint_date',
 			width: '40%',
 			render: (text) => <>{moment(text).format("MM-DD-YYYY")}</>,
+			sorter: (a, b) => moment(a.created_at).diff(moment(b.created_at)),
 		},
 	];
 
@@ -117,7 +117,7 @@ const IntroUsers: React.FC = (props) => {
 					onChange={(e) => setFilterText(e.target.value)}
 				/>
 				<div className="mt-4">
-					<Table columns={columns} dataSource={filterUsers} onRow={(record, rowIndex) => {
+					<Table columns={columns} dataSource={filterUsers} pagination={{ pageSize: 20 }} onRow={(record, rowIndex) => {
 						return {
 							onClick: (event) => { handleClickUser(record) }, // click row
 							onContextMenu: (event) => {
