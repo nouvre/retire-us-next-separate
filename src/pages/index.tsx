@@ -38,7 +38,7 @@ const Home: React.FC<ComponentProps> = ({ homepage }) => {
     setTopLabel(null)
     sessionStorage.setItem('topLabel', 'off')
   }
-
+  
   return (
     <div className="w-full h-screen">
       <Header

@@ -48,9 +48,9 @@ const SignIn: React.FC = (props: any) => {
 
     const [addRule, setAddRule] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (user && user.role === "admin") router.push("/admin/dashboard");
-    }, [user]);
+    // useEffect(() => {
+    //     if (user && user.role === "admin") router.push("/admin/dashboard");
+    // }, [user]);
 
     const handleSubmit = (): void => {
         if (!pending)

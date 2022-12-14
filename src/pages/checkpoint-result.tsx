@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { ApplicationState } from "@/store/index";
-import { getQuestionnare } from "@/store/questions/action";
 import Header from "@/components/Pages/Header";
 import CheckPointResults from "@/components/Questionnare/CheckPointResults";
-import { Answer } from "@/store/questions/types";
 import { questionOrder } from "@/constants/variables";
-import { useQuestionnaire } from "@/util/func";
 import Image from '@/components/common/Image';
+import { ApplicationState } from "@/store/index";
+import { getAnswers } from "@/store/questions/selector";
+import { useQuestionnaire } from "@/util/func";
 import { gtm } from "@/util/gtm"
 
 const QuestionnaireResult = (props: any) => {
 	const router = useRouter();
-	const dispatch = useDispatch();
-
 	const user = useSelector((state: ApplicationState) => state.auth.user);
-	const answers: Answer = useSelector((state: ApplicationState) => state.questions.answers);
-	const step = useSelector((state: ApplicationState) => state.questions.step);
+	const answers = useSelector(getAnswers);
+	const step = answers.step;
 
 	const [showPage, setShowPage] = useState<boolean>(user?.user_type == "intro" ? true : false);
 
@@ -42,8 +39,6 @@ const QuestionnaireResult = (props: any) => {
 
 	useEffect(() => {
 		if (user) {
-			dispatch(getQuestionnare());
-
 			gtm({
 				event: "CheckpointResultDataLayer",
 				userName: user?.name,
@@ -51,10 +46,7 @@ const QuestionnaireResult = (props: any) => {
 				message: "Checkpoint result"
 			});
 		}
-		// else {
-		// 	// if (step < questionOrder.length) router.push("/checkpoint");
-		// }
-	}, [step]);
+	}, [user]);
 
 	const handleClick = () => {
 		router.push("/recommendation");

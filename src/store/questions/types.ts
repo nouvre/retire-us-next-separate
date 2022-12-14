@@ -193,5 +193,5 @@ export interface Answer {
     step40Answer_1: number;
     step40Answer_2: number;
     step40Answer_3: number;
-    step: number | undefined;
+    step: number;
 }

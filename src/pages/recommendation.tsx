@@ -1,15 +1,14 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useRef, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { ApplicationState } from "@/store/index";
 import { selectPlan } from "@/store/auth/action";
-import { getQuestionnare } from "@/store/questions/action";
 import { fallback } from "@/constants/fallback";
 import Header from "@/components/Pages/Header";
 import ChoosePlan from "@/components/Pages/ChoosePlan";
 import Recommend from "@/components/Pages/Recommendation";
 import { fetchAPI } from "@/util/cms";
-import { Answer } from "@/store/questions/types";
+import { getAnswers } from "@/store/questions/selector";
 
 
 const Recommendation = ({ allSubscriptions }) => {
@@ -18,17 +17,10 @@ const Recommendation = ({ allSubscriptions }) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const lazyLoadWrapperRef = useRef<HTMLDivElement>(null);
 	const user = useSelector((state: ApplicationState) => state.auth.user);
-	const answers: Answer = useSelector((state: ApplicationState) => state.questions.answers);
+	const answers = useSelector(getAnswers);
 	const re_plan = useSelector((state: ApplicationState) => state.auth.re_plan);
 	const isFetching = useSelector((state: ApplicationState) => state.auth.isFetching);
 
-	useMemo(() => {
-		const fetchData = async () => {
-			await dispatch(getQuestionnare());
-		}
-		if (user)
-			fetchData()
-	}, [user])
 
 	useMemo(() => {
 		if (isFetching && !user) router.push("/sso");
