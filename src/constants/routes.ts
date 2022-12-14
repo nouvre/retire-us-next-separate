@@ -102,10 +102,11 @@ export const RouteConfig: IRouteConfig[] = [
 			if (user) {
 				if (answers.step >= questionOrder.length)
 					router.push("/checkpoint-result")
-			} else {
-				if (!answers.step)
-					router.push("/intro");
-			}
+			} 
+			// else {
+			// 	if (!answers.step)
+			// 		router.push("/intro");
+			// }
 		}
 	},
 	{
