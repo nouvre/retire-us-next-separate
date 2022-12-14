@@ -70,7 +70,7 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
       return {
         ...state,
         user: {
-          ...action.payload.user,
+          ...state.user,
           passTwoFactor: false
         }
       };
