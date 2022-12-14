@@ -44,7 +44,7 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
     case AuthActionTypes.UPDATE_COLLECTION_DATA: {
       return {
         ...state,
-        token: action.payload.access_token,
+        token: action.payload.access_token? action.payload.access_token: state.token,
         user: {
           ...action.payload.user,
           passTwoFactor: false
