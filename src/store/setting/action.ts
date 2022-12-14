@@ -213,22 +213,6 @@ export const removeDynamicList: AppThunk = (id) => {
     };
 };
 
-export const getAnswers: AppThunk = (userId) => {
-    return async (dispatch: Dispatch) => {
-        return await axios
-            .get(`/${userId}/answers`)
-            .then(({ data }) => {
-                return dispatch({
-                    type: SettingActionTypes.GET_ANSWERS,
-                    payload: data.answers,
-                });
-            })
-            .catch((e) => {
-                Toast("", e.response.data.message, "danger");
-            });
-    };
-};
-
 export const updateCheckPointResult: AppThunk = (userId, col, value) => {
     return async (dispatch: Dispatch) => {
         return await axios

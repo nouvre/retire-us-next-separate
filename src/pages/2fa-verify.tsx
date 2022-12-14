@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import {
 	twoFactorRequestSend,
 	twoFactorRequestResend,
@@ -13,6 +14,7 @@ import VerifyCode from "@/components/Pages/TwoFactorVerify/VerifyCode";
 import Image from '@/components/common/Image';
 
 const TwoFactorVerify: React.FC = () => {
+	const router = useRouter();
 	const dispatch = useDispatch();
 	const [isSMS, setIsSMS] = useState<boolean>(true);
 	const user = useSelector((state: ApplicationState) => state.auth.user);

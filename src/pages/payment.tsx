@@ -52,13 +52,7 @@ const Princing = () => {
 		//     dispatch(sendCouponCode(couponRef.current?.value));
 		//     couponChanged = false;
 		// }
-		// window.dataLayer?.push();
-		gtm({
-			userName: user?.name,
-			email: user?.email,
-			price: calculateAmoutDue(),
-			message: "Payment success",
-		})
+		
 		if (elements && stripe) {
 			const card = elements.getElement(CardElement);
 			if (card) {
@@ -68,7 +62,7 @@ const Princing = () => {
 					card: { token: tokenResult.token?.id as string },
 				});
 				if (!pending)
-					dispatch(
+					await dispatch(
 						createSubscription(
 							result.paymentMethod?.id,
 							couponData?.id
@@ -82,6 +76,7 @@ const Princing = () => {
 					price: calculateAmoutDue(),
 					message: "Payment success",
 				});
+
 			}
 		}
 	};
@@ -144,16 +139,6 @@ const Princing = () => {
 					"display: block !important;width: 100px; height: 96px;";
 		};
 	}, []);
-
-	useEffect(() => {
-		if (!selectedPlan) {
-			if (current_plan) {
-				router.push("/");
-			} else {
-				router.push("/pricing");
-			}
-		}
-	}, [selectedPlan]);
 
 	useEffect(() => {
 		if (stripe) {

@@ -188,6 +188,7 @@ const PlansFeatures = ({
 												auth_type: true,
 												plan_id: item.id,
 											}}
+											as={item.href}
 											btnText="Choose Plan"
 											icon={<span>&#183;&#183;</span>}
 											className="w-max justify-center mx-auto"

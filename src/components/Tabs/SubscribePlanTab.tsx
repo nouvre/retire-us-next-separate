@@ -67,6 +67,7 @@ export const SubscribeDesktopPlanTab = ({
                     <DarkButtonLink
                         href={href}
                         params={{ auth_type: true, plan_id }}
+                        as={href}
                         src="/assets/images/dots-white-btn.svg"
                         btnText="Choose this plan"
                     />
@@ -178,6 +179,7 @@ export const SubscribeMobilePlanTab = ({
                             <DarkButtonLink
                                 href={href}
                                 params={{ auth_type: true, plan_id }}
+                                as={href}
                                 src="/assets/images/dots-white-btn.svg"
                                 btnText="Choose this plan"
                             />

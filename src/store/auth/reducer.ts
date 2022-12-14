@@ -47,7 +47,7 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         token: action.payload.access_token,
         user: {
           ...action.payload.user,
-          passTwoFactor: state.user ? state.user.passTwoFactor : false
+          passTwoFactor: false
         }
       };
     }
@@ -57,7 +57,7 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         token: action.payload.access_token,
         user: {
           ...action.payload.user,
-          passTwoFactor: state.user ? state.user.passTwoFactor : false
+          passTwoFactor: false
         },
         re_plan: false
       };
@@ -71,7 +71,7 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         ...state,
         user: {
           ...action.payload.user,
-          passTwoFactor: state.user ? state.user.passTwoFactor : false
+          passTwoFactor: false
         }
       };
     }
@@ -122,7 +122,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         isFetching: false,
         user: {
           ...state.user,
-          twoFactorSent: true
+          twoFactorSent: true,
+          passTwoFactor: false,
         }
       };
     }
@@ -133,7 +134,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         isFetching: false,
         user: {
           ...state.user,
-          twoFactorSent: true
+          twoFactorSent: true,
+          passTwoFactor: false,
         }
       };
     }
@@ -161,8 +163,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
 
     case AuthActionTypes.REQUEST_ERROR: {
       let errorMessage: any = Object.values(action.payload.data)[0];
-      console.log('error message->', errorMessage);
-      console.log('type=>', typeof errorMessage);
       let message = 'Invalid Code';
       if (typeof errorMessage === 'object') {
         message = errorMessage.join('');
@@ -178,7 +178,8 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
         ...state,
         user: {
           ...state.user,
-          twoFactorSent: false
+          twoFactorSent: false,
+          passTwoFactor: false,
         }
       };
     }

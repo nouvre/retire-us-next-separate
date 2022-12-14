@@ -11,6 +11,7 @@ interface DarkButtonLinkProps {
     params?: RouterParamsProps;
     src: string;
     btnText: string;
+    as?: string
 }
 interface DarkArrowButtonProps {
     href: string;
@@ -18,10 +19,11 @@ interface DarkArrowButtonProps {
 }
 
 
-export const DarkButtonLink = ({ href, params, src, btnText }: DarkButtonLinkProps) => {
+export const DarkButtonLink = ({ href, params, src, btnText, as }: DarkButtonLinkProps) => {
     return (
         <Link
             href={{ pathname: href, query: { ...params } }}
+            as={as}
             className="flex transition duration-300 font-bold text-[18px] text-[#FFFFFF] bg-[#001F55] hover:bg-[#173A78] hover:text-white active:bg-[#001F55] font-Lato py-[15px] px-6 rounded-full w-max mx-0"
         >
             <div className="flex items-center gap-4">

@@ -40,6 +40,7 @@ export interface User {
   checkpoint: Checkpoint | null;
   user_type: string;
   re_plan?: boolean;
+  answers: [{ meta_key: string, meta_value: string }];
 }
 
 interface UserPlan {

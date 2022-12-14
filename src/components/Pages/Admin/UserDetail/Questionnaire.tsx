@@ -206,7 +206,7 @@ const Questionnaire: React.FC = () => {
         step40Answer_1: 0,
         step40Answer_2: 0,
         step40Answer_3: 0,
-        step: undefined,
+        step: 0,
     };
 
     selectedUser?.answers.forEach((a) => {

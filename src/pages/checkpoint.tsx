@@ -13,9 +13,9 @@ import Steps38 from "@/components/Pages/Questionnare/Steps38";
 import Confetti from "@/components/Pages/Questionnare/Confetti";
 import { ApplicationState } from "@/store/index";
 import { Answer } from "@/store/questions/types";
-import { updateQuestionnare, getQuestionnare, finishQuestionnare } from "@/store/questions/action";
+import { updateQuestionnare, finishQuestionnare } from "@/store/questions/action";
+import { getAnswers } from "@/store/questions/selector";
 import { questionOrder, step6OrderIndex, step6_4OrderIndex, quizRenderStartOrderIndex, quizRenderEndOrderIndex, QuestionTypes, questionAnswers, QuestionAnswer } from "@/constants/variables";
-import ProfileCompleteStep from "@/constants/routes";
 
 declare global {
 	interface Window {
@@ -30,8 +30,8 @@ for (let i = quizRenderStartOrderIndex; i <= quizRenderEndOrderIndex; i++)
 
 const Checkpoint: React.FC = () => {
 	const router = useRouter();
-	const step = useSelector((state: ApplicationState) => state.questions.step);
-	const answers = useSelector((state: ApplicationState) => state.questions.answers);
+	const answers = useSelector(getAnswers);
+	const step = answers.step * 1;
 	const token = useSelector((state: ApplicationState) => state.auth.token);
 	const user = useSelector((state: ApplicationState) => state.auth.user);
 	const intro_user = useSelector((state: ApplicationState) => state.auth.intro_user);
@@ -39,13 +39,13 @@ const Checkpoint: React.FC = () => {
 
 	const dispatch = useDispatch();
 
-	useMemo(() => {
-		if (token) {
-			if (user?.profile_complete_step && step >= questionOrder.length)
-				router.replace(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step]);
-			else dispatch(getQuestionnare());
-		}
-	}, [token]);
+	// useMemo(() => {
+	// 	if (token) {
+	// 		if (user?.profile_complete_step && step >= questionOrder.length)
+	// 			router.replace(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step]);
+	// 		else dispatch(getQuestionnare());
+	// 	}
+	// }, [token]);
 
 	useEffect(() => {
 		let habspotEl: HTMLElement | null;
