@@ -49,7 +49,7 @@ const QuestionnaireResult = (props: any) => {
 	}, [user]);
 
 	const handleClick = () => {
-		router.push("/recommendation");
+		router.push({pathname: "/recommendation", query: {from: "checkpoint-result"}}, "/recommendation");
 	};
 
 	return (

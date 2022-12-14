@@ -102,7 +102,7 @@ export const RouteConfig: IRouteConfig[] = [
 			if (user) {
 				if (answers.step >= questionOrder.length)
 					router.push("/checkpoint-result")
-			} 
+			}
 			// else {
 			// 	if (!answers.step)
 			// 		router.push("/intro");
@@ -136,7 +136,9 @@ export const RouteConfig: IRouteConfig[] = [
 			auth: true,
 		},
 		render: (params) => {
-			const { router, planState } = params;
+			const { router, planState, re_plan } = params;
+			if (re_plan)
+				router.push("/recommendation")
 			if (planState.cPlan) {
 				router.push({ pathname: "/2fa-verify", query: { from: "payment" } }, "/2fa-verify");
 			}
@@ -201,8 +203,8 @@ export const RouteConfig: IRouteConfig[] = [
 			auth: false,
 		},
 		render: (params) => {
-			const { router, user, re_plan } = params;
-			if (!re_plan && user) {
+			const { router, user, planState, re_plan } = params;
+			if (!re_plan && user && planState.sPlan) {
 				const path = getRedirectPath(params);
 				router.push(path);
 			}
