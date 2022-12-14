@@ -239,11 +239,8 @@ export const RouteConfig: IRouteConfig[] = [
 		render: (params) => {
 			const { router, user } = params;
 			if (user) {
-				if (user.authenticate_type === "1") {
-					router.push("/checkpoint");
-				} else if (user.authenticate_type === "2") {
-					router.push("/disclosure");
-				}
+				const path = getRedirectPath(params);
+				router.push(path);
 			}
 		}
 	},
