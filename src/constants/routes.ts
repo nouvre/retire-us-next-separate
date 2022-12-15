@@ -1,26 +1,4 @@
-import { questionOrder } from "@/constants/variables"
-
-/* eslint-disable import/no-anonymous-default-export */
-export default {
-	"1": [
-		"/checkpoint",
-		"/checkpoint-result",
-		"/disclosure",
-		"/payment",
-		"/2fa-verify",
-		"/confirmation",
-		"/dashboard",
-	],
-	"2": [
-		"/disclosure",
-		"/payment",
-		"/2fa-verify",
-		"/confirmation",
-		"/checkpoint",
-		"/checkpoint-result",
-		"/dashboard",
-	],
-};
+import { questionOrder } from "@/constants/variables";
 
 interface IAttr {
 	name: string;
@@ -28,13 +6,13 @@ interface IAttr {
 	auth: boolean
 }
 
-interface IRouteConfig {
+interface ICRoutes {
 	link: string;
 	attr: IAttr;
 	render?: (params) => void;
 }
 
-export const RouteConfig: IRouteConfig[] = [
+export const CRoutes: ICRoutes[] = [
 	{
 		link: "/",
 		attr:
@@ -103,10 +81,6 @@ export const RouteConfig: IRouteConfig[] = [
 				if (answers.step >= questionOrder.length)
 					router.push("/checkpoint-result")
 			}
-			// else {
-			// 	if (!answers.step)
-			// 		router.push("/intro");
-			// }
 		}
 	},
 	{
@@ -283,7 +257,7 @@ export const RouteConfig: IRouteConfig[] = [
 	},
 ];
 
-const getRedirectPath = (params) => {
+export const getRedirectPath = (params) => {
 	const { user, answers, disclosure, planState } = params;
 
 	if (answers.step >= questionOrder.length && disclosure && planState.sPlan && planState.cPlan) {

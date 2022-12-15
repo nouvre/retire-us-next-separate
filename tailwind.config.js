@@ -13,6 +13,7 @@ module.exports = {
     boxShadow: {
       header: "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
       option: "0px 4px 12px rgba(85, 101, 126, 0.1)",
+      context: '0 4px 8px rgba(0, 0, 0, 0.2)'
     },
     extend: {
       keyframes: {
