@@ -4,9 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ApplicationState } from "@/store/index";
 
-import ArrowRight from "@2fd/ant-design-icons/lib/ArrowRight";
 import ArrowLeft from "@2fd/ant-design-icons/lib/ArrowLeft";
-import InputMask from "react-input-mask";
 import { addAttachment } from "@/store/auth/action";
 
 const formSchema = Yup.object().shape({

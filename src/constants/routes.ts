@@ -255,6 +255,60 @@ export const CRoutes: ICRoutes[] = [
 			}
 		}
 	},
+	{
+		link: "/documents",
+		attr:
+		{
+			name: "Document",
+			ssr: false,
+			auth: true,
+		},
+	},
+	{
+		link: "/start-planning",
+		attr:
+		{
+			name: "StartPlanning",
+			ssr: false,
+			auth: true,
+		},
+	},
+	{
+		link: "/support",
+		attr:
+		{
+			name: "Support",
+			ssr: false,
+			auth: true,
+		},
+	},
+	{
+		link: "/verify",
+		attr:
+		{
+			name: "Verify",
+			ssr: false,
+			auth: true,
+		},
+	},
+	{
+		link: "/contact-us",
+		attr:
+		{
+			name: "ContactUs",
+			ssr: false,
+			auth: true,
+		},
+	},
+	{
+		link: "/admin/dashboard",
+		attr:
+		{
+			name: "AdminDashboard",
+			ssr: false,
+			auth: true,
+		},
+	},
 ];
 
 export const getRedirectPath = (params) => {

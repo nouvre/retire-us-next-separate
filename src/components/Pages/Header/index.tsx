@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import { ApplicationState } from "@/store/index";
+import { useRouter } from "next/router";
 
-import { gotoProfileStep, signOut } from "@/store/auth/action";
+import { ApplicationState } from "@/store/index";
+import { signOut } from "@/store/auth/action";
 import DeskTop from "./DeskTop";
 import Mobile from "./Mobile";
 import Drawer from "@/components/common/Drawer";
 import { cx } from "@/util/helpers";
 import { navigation } from "@/constants/variables";
 import TopLabel from "@/components/TopLabel";
-import { useRouter } from "next/router";
 
 interface ComponentProps {
     opacity: boolean;
@@ -49,7 +49,7 @@ const Header: React.FC<ComponentProps> = ({
         if (user?.role == "admin") {
             router.push("/admin/dashboard");
         } else {
-            dispatch(gotoProfileStep());
+            router.push("/dashboard");
         }
     };
 

@@ -34,7 +34,7 @@ const DeskTop: React.FC<HeaderProps> = ({
         if (user?.role == "admin") {
             router.push("/admin/dashboard");
         } else {
-            dispatch(gotoProfileStep());
+            router.push("/dashboard")
         }
     };
 
