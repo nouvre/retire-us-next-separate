@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Divider } from "antd";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { gotoProfileStep } from "@/store/auth/action";
 import {
     login,
     hasAccount,
@@ -17,15 +16,9 @@ import {
 import FacebookLogin from "react-facebook-login";
 import { ApplicationState } from "@/store/index";
 import Header from "@/components/Pages/Header";
-// import { useSession, signIn, signOut } from "next-auth/react"
 import Image from '@/components/common/Image';
 import { useRouter } from "next/router";
-import ProfileCompleteStep from '@/constants/routes'
 
-interface locationStateProps {
-    plan_id: number;
-    auth_type: boolean;
-}
 
 interface FormData {
     email: string;
@@ -34,23 +27,15 @@ interface FormData {
 
 const SignIn: React.FC = (props: any) => {
     const router = useRouter();
-    // const { data: session } = useSession();
     const [form] = Form.useForm();
     const dispatch = useDispatch();
-    const user = useSelector((state: ApplicationState) => state.auth.user);
-    const pending = useSelector(
-        (state: ApplicationState) => state.common.pending
-    );
+    const pending = useSelector((state: ApplicationState) => state.common.pending);
     const authTypeState = router.query;
 
     const pattern =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/])[A-Za-z\d@$!%*#?&^()_+\-=\[\]{};':"\\|,.<>\/]{8,}$/g;
 
     const [addRule, setAddRule] = useState<boolean>(false);
-
-    // useEffect(() => {
-    //     if (user && user.role === "admin") router.push("/admin/dashboard");
-    // }, [user]);
 
     const handleSubmit = (): void => {
         if (!pending)

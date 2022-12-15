@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -38,14 +38,6 @@ const Checkpoint: React.FC = () => {
 	const questionStep6Answers = questionAnswers[questionOrder[step6OrderIndex]].answers;
 
 	const dispatch = useDispatch();
-
-	// useMemo(() => {
-	// 	if (token) {
-	// 		if (user?.profile_complete_step && step >= questionOrder.length)
-	// 			router.replace(ProfileCompleteStep[user.authenticate_type][user.profile_complete_step]);
-	// 		else dispatch(getQuestionnare());
-	// 	}
-	// }, [token]);
 
 	useEffect(() => {
 		let habspotEl: HTMLElement | null;

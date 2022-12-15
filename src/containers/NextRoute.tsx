@@ -1,10 +1,8 @@
-import { useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Spin, Space } from 'antd'
-import routes, { RouteConfig } from "@/constants/routes";
+import { CRoutes } from "@/constants/routes";
 import { ApplicationState } from '@/store/index';
-import { setLoadDashboard, verifyIdentify } from '@/store/auth/action';
-import { Toast } from '@/components/common/notification';
 import { getAnswers } from "@/store/questions/selector";
 import { getDisclosure } from "@/store/auth/selector";
 import { getPlanState } from "@/store/plan/selector";
@@ -18,95 +16,34 @@ const PageLoader = () => (
 )
 
 const NextRoute = ({ router, children }) => {
-	const dispatch = useDispatch();
 	const user = useSelector((state: ApplicationState) => state.auth.user);
 	const re_plan = useSelector((state: ApplicationState) => state.auth.re_plan);
 	const rehydrated = useSelector((state: ApplicationState) => state._persist.rehydrated);
-	const loadDashboard = useSelector((state: ApplicationState) => state.auth.loadDashboard);
 	const answers = useSelector(getAnswers);
 	const disclosure = useSelector(getDisclosure);
 	const planState = useSelector(getPlanState);
-	const data = RouteConfig.find((item) => item.link === router.pathname);
-
-	// useMemo(() => {
-	// 	if (user && user.role === 'user') {
-	// 		if (!user.passTwoFactor && user.current_plan && process.env.NODE_ENV === 'production') {
-	// 			router.push('/2fa-verify')
-	// 		} else {
-	// 			if (router.pathname.slice(0, 13) == '?success=true') {
-	// 				dispatch(verifyIdentify())
-	// 				router.push('/dashboard')
-	// 			} else {
-	// 				if (router.pathname.slice(0, 14) == '?success=false') {
-	// 					Toast('ID verify failed', 'Please check your information and retry.', 'danger')
-	// 					router.push('/verify')
-	// 				} else if (user.isSignUpProcess) {
-	// 					if (router.pathname.slice(1, 15) !== 'reset-password') {
-	// 						if (re_plan)
-	// 							router.push('/recommendation');
-	// 						else {
-	// 							if (!user.disclosure_agreements?.disclosure_pdf_link && routes[user.authenticate_type].indexOf('/disclosure') < user.profile_complete_step) {
-	// 								router.push('/disclosure')
-	// 							} else {
-	// 								if (routes[user.authenticate_type][user.profile_complete_step] === '/dashboard') {
-	// 									if (!loadDashboard) {
-	// 										router.push(routes[user.authenticate_type][user.profile_complete_step])
-	// 										dispatch(setLoadDashboard())
-	// 									}
-	// 								} else {
-	// 									router.push(routes[user.authenticate_type][user.profile_complete_step])
-	// 								}
-	// 							}
-	// 						}
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }, [user, re_plan])
-
-	// useEffect(() => {
-	// 	const handleInvalidToken = (e: any) => {
-	// 		console.log("-------------------!!!->", e)
-	// 		if (e.key === 'persist:root' && e.oldValue && !e.newValue) {
-	// 			location.href = '/signin'
-	// 		}
-	// 	}
-	// 	window.addEventListener('storage', handleInvalidToken)
-
-	// 	return function cleanup() {
-	// 		window.removeEventListener('storage', handleInvalidToken)
-	// 	}
-	// }, [])
-
-	// data?.render()
-	// if(typeof window === 'object') {
-	// 	router.push('/');
-
-	// 	return <div>test</div>;
-	// }
-	
+	const cRoute = CRoutes.find((item) => item.link === router.pathname);	
 
 	useEffect(() => {
-		if (data?.attr.auth && !user && rehydrated) 
+		if (cRoute?.attr.auth && !user && rehydrated) 
 			router.push("/")
 	}, [rehydrated])
 
 	useEffect(() => {
-		if(typeof data?.render === "function")
-			data.render({router, rehydrated, user, answers, disclosure, planState, re_plan});
+		if(typeof cRoute?.render === "function")
+			cRoute.render({router, rehydrated, user, answers, disclosure, planState, re_plan});
 	})
 	
-	if(rehydrated && !data)
+	if(rehydrated && !cRoute)
 		return <div className="font-Lato">{children}</div>
 		
-	if (data?.attr.auth && !user && rehydrated)
+	if (cRoute?.attr.auth && !user && rehydrated)
 		return <PageLoader />
 		
-	if(data?.attr.auth && user)
+	if(cRoute?.attr.auth && user)
 		return <div className="font-Lato">{children}</div>
 		
-	if (!data?.attr.auth && data?.attr.ssr)
+	if (!cRoute?.attr.auth && cRoute?.attr.ssr)
 		return <div className="font-Lato">{children}</div>
 	else
 		return <PageLoader />
