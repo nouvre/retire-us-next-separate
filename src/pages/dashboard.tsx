@@ -8,8 +8,8 @@ import RetirementPacing from '@/components/Questionnare/RetirementPacing'
 import TaxPlaning from '@/components/Questionnare/TaxPlaning'
 import RiskOfFailure from '@/components/Questionnare/RiskOfFailure'
 import { SharedFillButton } from '@/components/Buttons/SharedFillButton'
-import { getQuestionnare } from '@/store/questions/action'
-import { getUser, advisorMeet } from '@/store/auth/action'
+import { getAnswers } from '@/store/questions/selector'
+import { advisorMeet } from '@/store/auth/action'
 import { Todo } from '@/store/auth/types'
 import { ApplicationState } from '@/store/index'
 import { useQuestionnaire } from '@/util/func'
@@ -23,9 +23,7 @@ const Main = () => {
   const router = useRouter()
 
   const user = useSelector((state: ApplicationState) => state.auth.user)
-  const answers = useSelector(
-    (state: ApplicationState) => state.questions.answers,
-  )
+  const answers = useSelector(getAnswers);
 
   const [retirementYear, setRetirementYear] = useState<number>(0)
   const [retirementTimeline, setRetirementTimeline] = useState<number>(0)
@@ -41,11 +39,6 @@ const Main = () => {
     checkTaxRF1,
     checkCfpRF3,
   } = useQuestionnaire({ answers })
-
-  useEffect(() => {
-    dispatch(getQuestionnare())
-    dispatch(getUser())
-  }, [])
 
   useEffect(() => {
     if (answers) {
@@ -109,15 +102,11 @@ const Main = () => {
             window.open(user?.rep.url)
           }
         }
-
-        // if (todo.link !== "/dashboard" && todo.type === "window")
-        //     dispatch(updateTodolist(todo.id));
       }
     }
   }
 
   const handleCompletePlanningReview = () => {
-    // dispatch(gotoProfileStep());
     router.push('/start-planning')
   }
 
@@ -610,14 +599,6 @@ const Main = () => {
                   />
                 </div>
               </div>
-              {/* {!user?.profile && (
-                            <div className="w-full h-full bg-[#ffffffcc] rounded-[20px] backdrop-blur-xl absolute top-0 flex justify-center items-center">
-                                <Image className="w-[88px] h-[88px]"
-                                    src="/assets/images/lock-dark.svg"
-                                    alt="lock"
-                                />
-                            </div>
-                        )} */}
             </div>
           </div>
         </div>

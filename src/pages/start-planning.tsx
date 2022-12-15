@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 import { addProfile } from '@/store/auth/action'
 import Header from '@/components/Pages/Dashboard/Header'
 import PlanStep1 from '@/components/Pages/Dashboard/StartPlanning/planStep1'
@@ -12,16 +13,21 @@ import DashboardLayout from '@/layouts/DashboardLayout'
 var planData: any = {}
 
 const StartPlanning: React.FC = (props: any) => {
-  const [planStep, setPlanStep] = useState<number>(0)
-  const dispatch = useDispatch()
+  const router = useRouter();
+  const dispatch = useDispatch();
+  
+  const [planStep, setPlanStep] = useState<number>(0);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let formdata = new FormData()
     Object.keys(planData).map((key) => {
       formdata.append(key, planData[key])
     })
-    dispatch(addProfile(formdata))
+    const values = await dispatch(addProfile(formdata));
+    if(values.type === "update_user_profile")
+      router.push("/dashboard")
   }
+
   const handleNext = (data: any) => {
     console.log(data)
     if (planStep === 4) {
