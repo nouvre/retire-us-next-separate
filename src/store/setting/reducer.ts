@@ -142,6 +142,12 @@ const reducer: Reducer = (state = initialState, action) => {
                 },
             };
         }
+        case SettingActionTypes.DELETE_USER: {
+            return {
+                ...state,
+                registeredUsers: state.registeredUsers.filter((item) => item.id != action.payload),
+            };
+        }
         default: {
             return state;
         }

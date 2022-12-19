@@ -300,15 +300,15 @@ export const CRoutes: ICRoutes[] = [
 			auth: true,
 		},
 	},
-	{
-		link: "/admin/dashboard",
-		attr:
-		{
-			name: "AdminDashboard",
-			ssr: false,
-			auth: true,
-		},
-	},
+	// {
+	// 	link: "/admin/dashboard",
+	// 	attr:
+	// 	{
+	// 		name: "AdminDashboard",
+	// 		ssr: false,
+	// 		auth: true,
+	// 	},
+	// },
 ];
 
 export const getRedirectPath = (params) => {
