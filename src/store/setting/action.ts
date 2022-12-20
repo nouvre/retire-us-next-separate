@@ -10,6 +10,18 @@ export type AppThunk = ActionCreator<
     ThunkAction<void, ApplicationState, null, Action<string>>
 >;
 
+export const deleteUser: AppThunk = (id) => {
+    return async (dispatch: Dispatch) => {
+        return await axios
+            .delete("/user", { data: { user_id: id } })
+            .then(() => {
+                return dispatch({
+                    type: SettingActionTypes.DELETE_USER,
+                    payload: id,
+                });
+            });
+    };
+};
 export const addDataCollectionField: AppThunk = (formdata) => {
     return async (dispatch: Dispatch) => {
         return await axios

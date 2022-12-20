@@ -20,6 +20,7 @@ export enum SettingActionTypes {
   UPDATE_USER_ADMIN = "UPDATE_USER_ADMIN",
   GET_ANSWERS = "GET_ANSWERS",
   CHECK_POINT_RESULTS = "CHECK_POINT_RESULTS",
+  DELETE_USER = "DELETE_USER",
 }
 
 export interface SettingState {

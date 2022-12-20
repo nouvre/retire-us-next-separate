@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { Fragment, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Dialog, Transition } from '@headlessui/react'
+import moment from "moment";
 import Link from "next/link";
 import { Table } from "antd";
 import { User } from "@/store/setting/types";
+import { deleteUser } from "@/store/setting/action";
 import { ApplicationState } from "@/store/index";
-import AccountIcon from "@2fd/ant-design-icons/lib/Account";
-import moment from "moment";
+import AccountCircle from "@2fd/ant-design-icons/lib/AccountCircle";
+import MinusCircle from "@2fd/ant-design-icons/lib/MinusCircle";
 
 const RegisteredUser: React.FC = () => {
+    const dispatch = useDispatch();
     const registeredUsers = useSelector(
         (state: ApplicationState) => state.settings.registeredUsers
     );
     const [users, setUsers] = useState<User[]>([]);
     const [filterText, setFilterText] = useState<string>("");
+    const [isOpen, setIsOpen] = useState(false)
+    const [user, setUser] = useState<User>();
 
     useEffect(() => {
         let tempUsers: User[] = [];
@@ -88,16 +94,22 @@ const RegisteredUser: React.FC = () => {
             title: "",
             dataIndex: "",
             render: (text: string, row: User) => (
-                <div className="w-full h-full flex justify-evenly items-center">
+                <div className="w-full h-full flex items-center">
+                    <div className="mr-2" onClick={() => { setIsOpen(true); setUser(row); }}>
+                        <MinusCircle className="rounded-full bg-white text-red-600 text-[32px] text-lg flex justify-center items-center hover:cursor-pointer"/>
+                    </div>
                     <Link href={`users/${row.id}`}>
-                        <button className="w-8 h-8 rounded-full bg-[#87cf68] text-white text-lg flex justify-center items-center">
-                            <AccountIcon />
-                        </button>
+                        <AccountCircle className="rounded-full bg-white text-[#87cf68] text-[32px] flex justify-center items-center"/>
                     </Link>
                 </div>
             ),
         },
     ];
+
+    const handleClick = async () => {
+        await dispatch(deleteUser(user?.id));
+        setIsOpen(false);
+    }
 
     return (
         <div className="w-full">
@@ -116,6 +128,63 @@ const RegisteredUser: React.FC = () => {
                 rowKey={"id"}
                 showSorterTooltip={false}
             />
+            <Transition appear show={isOpen} as={Fragment}>
+                <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
+                <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
+                    <div className="fixed inset-0 bg-black bg-opacity-25" />
+                </Transition.Child>
+
+                <div className="fixed inset-0 overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 text-center">
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 scale-95"
+                        enterTo="opacity-100 scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 scale-100"
+                        leaveTo="opacity-0 scale-95"
+                    >
+                        <Dialog.Panel className="w-full max-w-sm transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                        <div className="mt-2">
+                            <p className="text-lg text-gray-900 text-center">
+                                Are you sure you want to remove
+                            </p>
+                            <p className="text-lg text-gray-900 text-center">
+                                this user?
+                            </p>
+                        </div>
+
+                        <div className="flex justify-evenly items-center mt-4">
+                            <button
+                                type="button"
+                                className="inline-flex justify-center rounded-md border border-transparent bg-blue-400 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                onClick={handleClick}
+                            >
+                                Yes
+                            </button>
+                            <button
+                                type="button"
+                                className="inline-flex justify-center rounded-md border border-transparent bg-red-400 px-4 py-2 text-sm font-medium text-white hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                No
+                            </button>
+                        </div>
+                        </Dialog.Panel>
+                    </Transition.Child>
+                    </div>
+                </div>
+                </Dialog>
+            </Transition>
         </div>
     );
 };
