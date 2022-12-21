@@ -1,10 +1,11 @@
 @import '~@fontsource/karla/index.css';
 @import '~@fontsource/source-sans-pro/index.css';
-@import '~@fontsource/lato/index.css';
 @import '~@fontsource/windsong/index.css';
 @import '~@fontsource/great-vibes/index.css';
 @import '~@fontsource/homemade-apple/index.css';
 
+//font
+@import "./_fonts.scss";
 //Signin
 @import "./Auth/siginin.scss";
 //Dashboard
