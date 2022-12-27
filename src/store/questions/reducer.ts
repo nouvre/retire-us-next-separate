@@ -25,6 +25,13 @@ const reducer: Reducer<QuestionState> = (state = initialState, action) => {
     case QuestionActionTypes.CHANGE_STEP: {
       return { ...state, step: action.payload };
     }
+    case QuestionActionTypes.REMOVE_QUESTIONNARE: {
+      return {
+        ...state,
+        answers: {},
+        step: 0,
+      };
+    }
     default: {
       return state;
     }

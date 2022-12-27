@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Header from "@/components/Pages/Header";
 import Footer from "@/components/Pages/Footer";
 import Accordion from "@/components/Accordion";
@@ -11,8 +12,11 @@ import PlansFeatures from "@/components/PlansFeatures";
 import { getImage, fetchAPI } from "@/util/cms";
 import { fallback } from "@/constants/fallback";
 import Image from '@/components/common/Image';
+import { AuthActionTypes } from '@/store/auth/types';
+import { QuestionActionTypes } from '@/store/questions/types';
 
 const Pricing: React.FC = ({ pricing }: any) => {
+	const dispatch = useDispatch();
 	const [topLabel, setTopLabel] = useState<any>(null);
 
 	useEffect(() => {
@@ -26,6 +30,9 @@ const Pricing: React.FC = ({ pricing }: any) => {
 		}
 
 		getCmsData();
+
+		dispatch({type: AuthActionTypes.CLEAR_INTRO_USER});
+		dispatch({type: QuestionActionTypes.REMOVE_QUESTIONNARE});
 	}, []);
 
 	const closeTopLabel = () => {
