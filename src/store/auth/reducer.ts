@@ -255,6 +255,13 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
       };
     }
 
+    case AuthActionTypes.CLEAR_INTRO_USER: {
+      return {
+        ...state,
+        intro_user: null
+      };
+    }
+
     default: {
       return state;
     }

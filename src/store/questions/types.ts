@@ -3,6 +3,7 @@ export enum QuestionActionTypes {
     CHANGE_STEP = "change_step",
     SELECT_ANSWER = "select_answer",
     UPDATE_QUESTION = "update_question",
+    REMOVE_QUESTIONNARE = "REMOVE_QUESTIONNARE",
 }
 
 export interface QuestionState {
